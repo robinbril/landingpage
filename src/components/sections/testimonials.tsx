@@ -37,32 +37,6 @@ export default function Testimonials() {
     },
     {
       id: 2,
-      name: "Cristian Arboleda",
-      role: {
-        en: ".NET Developer",
-        nl: ".NET Ontwikkelaar",
-      },
-      image: "https://media.licdn.com/dms/image/v2/D4E03AQFpSzu3OzUbsw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1716325332651?e=1749081600&v=beta&t=B0fWr05TNfeqcZf7FU-EvHDq1foIRm8bxTMgJobmGVA",
-      content: {
-        en: "Omar is a talented developer with a strong drive to grow and improve. Always supporting colleagues, his greatest strength is quickly learning new skills and adapting to processes.",
-        nl: "Omar is een getalenteerde ontwikkelaar met een sterke drang om te groeien. Hij ondersteunt collega's en leert snel nieuwe vaardigheden. Het is een genoegen om met hem samen te werken.",
-      },
-    },
-    {
-      id: 3,
-      name: "Ihor Tolkachov",
-      role: {
-        en: "We change the world for deskless workforces🚀",
-        nl: "We veranderen de wereld voor werknemers zonder bureau🚀",
-      },
-      image: "https://media.licdn.com/dms/image/v2/D4E03AQHBTYV9e3Cehw/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1715115312907?e=1749081600&v=beta&t=CLGqT-xHCJk8sDNETLF4xjWWDSJRsev0kcySbUm6FEs",
-      content: {
-        en: "Working with Omar at Vloto showed his reliability and skill. Together we created an automatic fine scanner that reduced a 30-minute process to just 10 seconds—truly impressive efficiency improvement.",
-        nl: "Het werken met Omar bij Vloto toonde zijn betrouwbaarheid en vaardigheid. Samen creëerden we een automatische boetescanner die een proces van 30 minuten reduceerde tot slechts 10 seconden.",
-      },
-    },
-    {
-      id: 4,
       name: "Oeds de Meer",
       role: {
         en: "Process & Information Manager @ SBB",
@@ -75,7 +49,7 @@ export default function Testimonials() {
       },
     },
     {
-      id: 5,
+      id: 3,
       name: "Laura Britton",
       role: {
         en: "Project Manager Medical Affairs @ Sedgwick",
@@ -85,19 +59,6 @@ export default function Testimonials() {
       content: {
         en: "Dedicated, helpful and reliable.",
         nl: "Toegewijd, behulpzaam en betrouwbaar.",
-      },
-    },
-    {
-      id: 6,
-      name: "Sarah de Vries",
-      role: {
-        en: "Product Manager @ TechCorp",
-        nl: "Product Manager @ TechCorp",
-      },
-      image: "/images/references/default-avatar.jpg",
-      content: {
-        en: "Working with Virelio transformed our workflow. The AI agent they built handles our customer inquiries 24/7, saving us countless hours. Professional, fast, and exactly what we needed.",
-        nl: "Samenwerken met Virelio transformeerde onze workflow. De AI agent die ze bouwden behandelt 24/7 onze klantvragen en bespaart ons ontelbare uren. Professioneel, snel, en precies wat we nodig hadden.",
       },
     },
   ];
@@ -125,8 +86,8 @@ export default function Testimonials() {
               transition={{ delay: 0.1 }}
             >
               {language === 'nl'
-                ? "Wat onze klanten en collega's over ons zeggen"
-                : "What our clients and colleagues say about us"}
+                ? "Wat klanten en collega's over Robin zeggen"
+                : "What clients and colleagues say about Robin"}
             </motion.p>
           </div>
 

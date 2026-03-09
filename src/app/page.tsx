@@ -14,74 +14,54 @@ import { siteConfig } from "@/lib/config";
 import JsonLd from "@/components/seo/json-ld";
 import { faqSchema, testimonialsSchema, servicesSchema, workshopSchema } from "@/lib/schema";
 
-// Sample FAQ data for the landing page
+// FAQ data aligned with actual offerings
 const faqData = {
   items: [
     {
-      question: "What services does Virelio offer?",
+      question: "Wat doet Virelio?",
       answer:
-        "Virelio specializes in AI solutions, SaaS development, KYC integrations, and e-commerce automation to help businesses thrive in the digital age.",
+        "Virelio bouwt AI-agents, RAG-systemen en procesautomatiseringen voor bedrijven van 20-200 medewerkers. Van interne kennisbanken tot workflows die automatisch de juiste mensen informeren.",
     },
     {
-      question: "How can Virelio help my business?",
+      question: "Hoe snel kan ik resultaat verwachten?",
       answer:
-        "We provide innovative technology solutions tailored to your business needs, helping you improve efficiency, enhance customer experience, and drive growth in the digital marketplace.",
+        "Na een gratis intake en quick scan lever ik binnen 2 weken een werkend prototype op jullie eigen data. Geen maandenlange trajecten — je ziet direct wat het oplevert.",
     },
     {
-      question: "Where is Virelio located?",
+      question: "Waar is Virelio gevestigd?",
       answer:
-        "Virelio is based in Amsterdam, Netherlands, but we work with clients globally.",
+        "Virelio is gevestigd in Amstelveen en werkt met klanten door heel Nederland.",
     },
   ],
 };
 
-// Testimonials data for structured data
+// Testimonials data for structured data - real references only
 const testimonialsData = {
   items: [
-    // {
-    //   author: "Azeez Bayonle Abideen",
-    //   role: "User Experience Designer @ Vloto",
-    //   text: "I have the pleasure of working with Omar, where he has consistently demonstrated exceptional skills as a backend developer, delivering efficient, maintainable code, tackling complex problems with innovative solutions, and fostering a collaborative team environment.",
-    // },
     {
-      author: "Azeez Bayonle Abideen",
-      role: "User Experience Designer",
-      text: "I have the pleasure of working with Omar, where he has consistently demonstrated exceptional skills as a backend developer, delivering efficient, maintainable code, tackling complex problems with innovative solutions, and fostering a collaborative team environment.",
+      author: "Giulio Piccolo",
+      role: "Lead Engineer @ Suit Supply",
+      text: "Robin werkte als data consultant mee in ons team en viel op door zijn snelle ontwikkeling en sterke basis in AI. Hij pakte zelfstandig complexe onderwerpen op en leverde waardevolle inzichten.",
     },
     {
-      author: "Cristian Arboleda",
-      role: ".NET Developer",
-      text: "Omar is a talented developer with a strong drive to continuously grow and improve himself. He is always willing to support his colleagues, which makes him a valuable team player.",
-    },
-    // {
-    //   author: "Ihor Tolkachov",
-    //   role: "Frontend Developer",
-    //   text: "I had the pleasure of working with Omar at Vloto B.V., where he proved to be a reliable and skilled colleague. His communication, planning, and coding abilities were evident in all our projects.",
-    // },
-    {
-      author: "Ihor Tolkachov",
-      role: "Frontend Developer",
-      text: "I had the pleasure of working with Omar where he proved to be a reliable and skilled colleague. His communication, planning, and coding abilities were evident in all our projects.",
+      author: "Oeds de Meer",
+      role: "Proces- & informatiemanager @ SBB",
+      text: "Robin leverde continu scherpe analyses en werkte met tools als Excel, SQL en Looker. Hij herkent patronen in data, denkt analytisch en levert visuele inzichten.",
     },
     {
-      author: "Sophia Chen",
-      role: "Product Manager at TechInnovate",
-      text: "Working with Omar and his team at Virelio has transformed our product development workflow. Their AI solutions have automated processes that used to take days into minutes.",
-    },
-    {
-      author: "Jan van der Meer",
-      role: "CTO at Dutch E-commerce Solutions",
-      text: "The shop automation system developed by Virelio has revolutionized how we manage our e-commerce operations. Omar's deep understanding of both the technical and business aspects of e-commerce allowed for a solution that seamlessly integrates with our existing platforms.",
+      author: "Laura Britton",
+      role: "Project Manager Medical Affairs @ Sedgwick",
+      text: "Toegewijd, behulpzaam en betrouwbaar.",
     },
   ],
 };
 
 export const metadata: Metadata = generateMetadata({
-  title: "Innovative Solutions for Modern Challenges",
+  title: "Robin Bril | AI Agents & Automatisering voor bedrijven",
   description:
-    "We specialize in AI solutions, SaaS platforms, KYC integrations, and shop automations to help businesses thrive in the digital age.",
+    "Ik bouw AI-agents, RAG-systemen en automatiseringen waarmee jouw team in weken doet waar anders maanden voor nodig zijn. Senior AI Engineer — Amstelveen.",
   keywords:
-    "AI solutions, SaaS development, KYC integration, e-commerce automation, web development, technology consulting, Virelio",
+    "AI agents, RAG systemen, procesautomatisering, AI engineer, Robin Bril, Virelio, AI kennisbank, document intelligence, AI oplossingen Nederland",
   pathname: "/",
 });
 

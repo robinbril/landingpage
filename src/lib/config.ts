@@ -1,51 +1,48 @@
 export const siteConfig = {
   name: "Virelio",
-  description: "Innovative Solutions for Modern Challenges",
-  url: "https://virelio.nl", // Updated domain
-  metadataBase: "https://virelio.nl", // Updated domain
+  description: "AI Agents & Automatisering voor bedrijven",
+  url: "https://virelio.nl",
+  metadataBase: "https://virelio.nl",
   logoUrl: "/logo.svg",
   ogImage: "/og-image.jpg",
-  twitterHandle: "@Virelio",
-  locale: "nl", // Changed default locale to Dutch
+  twitterHandle: "@robinbril",
+  locale: "nl",
   authors: [
     {
-      name: "Virelio Team",
-      url: "https://virelio.nl", // Landing page, no /team page
+      name: "Robin Bril",
+      url: "https://virelio.nl",
     },
   ],
   socials: {
-    twitter: "https://twitter.com/Virelio",
-    github: "https://github.com/Virelio",
-    linkedin: "https://linkedin.com/company/Virelio",
+    twitter: "https://twitter.com/robinbril",
+    github: "https://github.com/robinbril",
+    linkedin: "https://linkedin.com/in/robinbril",
   },
   contact: {
-    email: "info@Virelio.nl",
-    phone: "+31 (0)6 12345678",
-    address: "Amsterdam, Netherlands",
+    email: "robin@virelio.nl",
+    phone: "+31 (0)6 40446732",
+    address: "Amstelveen, Netherlands",
   },
   themeColor: "#ffffff",
   keywords: [
-    "AI Solutions",
-    "AI Spraakassistent",
-    "Voice AI",
-    "AI Telefonie",
-    "SaaS platforms",
-    "KYC integrations",
-    "Shop Automations",
-    "Web Development",
-    "Software Development",
-    "Digital Innovation",
-    "Technology Solutions",
-    "Zakelijke Automatisering",
-    "Nederlandse AI",
-    "Amsterdam AI bedrijf",
+    "AI Agents",
+    "AI Automatisering",
+    "RAG Systemen",
+    "Procesautomatisering",
+    "AI Engineer",
+    "Robin Bril",
+    "Virelio",
+    "AI Kennisbank",
+    "Document Intelligence",
+    "AI Oplossingen Nederland",
+    "Amstelveen AI",
+    "LangChain",
+    "AI Consultancy",
   ],
-  // For language-specific URLs (better for SEO)
   alternateLanguages: {
     nl: "https://virelio.nl",
     en: "https://virelio.nl/en",
   },
-  // Add sections for the one-page layout
   sections: {
     projects: "#projects",
     services: "#services",
