@@ -55,6 +55,7 @@ export default function AsciiHeroBg() {
     }
 
     function render(timestamp: number) {
+      if (!ctx || !canvas) return;
       const t = timestamp * 0.001;
       timeRef.current = t;
 
