@@ -5,11 +5,11 @@
 /* Voice AI specific styles */
 @layer components {
   .btn-primary {
-    @apply bg-blue-600 hover:bg-blue-700 text-white font-semibold py-4 px-8 rounded-lg transition-all duration-200 transform hover:scale-105 min-h-[44px] touch-manipulation;
+    @apply bg-orange-500 hover:bg-orange-600 text-white font-semibold py-4 px-8 rounded-lg transition-all duration-200 transform hover:scale-105 min-h-[44px] touch-manipulation;
   }
 
   .btn-secondary {
-    @apply bg-white border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold py-4 px-8 rounded-lg transition-all duration-200 min-h-[44px] touch-manipulation;
+    @apply bg-white border-2 border-orange-500 text-orange-600 hover:bg-orange-500 hover:text-white font-semibold py-4 px-8 rounded-lg transition-all duration-200 min-h-[44px] touch-manipulation;
   }
 
   .btn-cta {
@@ -46,10 +46,10 @@
   --text-secondary-light: #374151;
   --text-muted-light: #6B7280;
 
-  --accent-blue: #3B82F6;
-  --accent-blue-hover: #2563EB;
-  --accent-blue-light: #EFF6FF;
-  --accent-pink: #EC4899;
+  --accent-orange: #e67e22;
+  --accent-orange-hover: #d35400;
+  --accent-orange-light: #fef5ee;
+  --accent-coral: #ff7f50;
 
   --border-light: #E5E7EB;
   --border-medium: #D1D5DB;
@@ -69,8 +69,8 @@
   --text-muted-dark: #737373;
   /* Very muted */
 
-  --accent-teal-muted: #86efac;
-  /* Softer green instead of bright teal */
+  --accent-warm: #f39c12;
+  /* Warm golden for dark mode */
 
   --border-subtle-dark: rgba(255, 255, 255, 0.06);
   --border-default-dark: rgba(255, 255, 255, 0.1);
@@ -292,8 +292,8 @@ a:hover {
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 217.2 91.2% 59.8%;
-    /* Blue #3B82F6 */
+    --primary: 28 80% 52%;
+    /* Orange #e67e22 */
     --primary-foreground: 0 0% 100%;
 
     --secondary: 220 14.3% 95.9%;
@@ -310,13 +310,13 @@ a:hover {
 
     --border: 220 13% 91%;
     --input: 220 13% 91%;
-    --ring: 217.2 91.2% 59.8%;
+    --ring: 28 80% 52%;
 
     --radius: 0.5rem;
 
     /* Light theme specific */
-    --accent-pink: 330.4 81.2% 60.4%;
-    /* Pink #EC4899 */
+    --accent-coral: 16 100% 66%;
+    /* Coral #ff7f50 */
     --success: 142.1 76.2% 36.3%;
     /* Green #10B981 */
   }
@@ -335,8 +335,8 @@ a:hover {
     --popover: 0 0% 7%;
     --popover-foreground: 0 0% 93%;
 
-    --primary: 142 76% 73%;
-    /* Soft green #86efac */
+    --primary: 36 90% 65%;
+    /* Warm amber #f0a050 */
     --primary-foreground: 0 0% 7%;
 
     --secondary: 0 0% 10%;
@@ -353,7 +353,7 @@ a:hover {
 
     --border: 0 0% 10%;
     --input: 0 0% 10%;
-    --ring: 142 76% 73%;
+    --ring: 36 90% 65%;
   }
 }
 

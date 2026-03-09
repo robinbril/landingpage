@@ -53,7 +53,7 @@ export default function GuaranteeSection() {
                                 transition={{ delay: 0.2 + index * 0.1 }}
                             >
                                 <div className="flex-shrink-0">
-                                    <Check className="h-6 w-6 text-blue-600" strokeWidth={3} />
+                                    <Check className="h-6 w-6 text-orange-500" strokeWidth={3} />
                                 </div>
                                 <p className="text-base sm:text-lg text-gray-800 leading-relaxed px-2">
                                     {guarantee}

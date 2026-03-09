@@ -69,7 +69,7 @@ export default function IntakeExplanationSection() {
                         {/* Progress bar container */}
                         <div className="absolute top-[60px] left-0 right-0 h-1 bg-gray-200 hidden md:block">
                             <motion.div
-                                className="h-full bg-gradient-to-r from-blue-500 to-blue-600 rounded-full"
+                                className="h-full bg-gradient-to-r from-orange-500 to-orange-600 rounded-full"
                                 initial={{ width: "0%" }}
                                 whileInView={{ width: "100%" }}
                                 viewport={{ once: true }}
@@ -92,7 +92,7 @@ export default function IntakeExplanationSection() {
                                         {/* Step number badge - centered at top */}
                                         <div className="flex justify-center mb-6">
                                             <motion.div
-                                                className="w-12 h-12 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold text-xl shadow-lg z-10 relative"
+                                                className="w-12 h-12 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold text-xl shadow-lg z-10 relative"
                                                 initial={{ scale: 0 }}
                                                 whileInView={{ scale: 1 }}
                                                 viewport={{ once: true }}
@@ -197,14 +197,14 @@ export default function IntakeExplanationSection() {
                                         href="tel:+31640446732"
                                         className="flex items-center gap-3 p-4 bg-gray-700/50 rounded-lg hover:bg-gray-700 transition-colors text-base"
                                     >
-                                        <Phone className="h-5 w-5 text-blue-400 flex-shrink-0" />
+                                        <Phone className="h-5 w-5 text-orange-400 flex-shrink-0" />
                                         <span className="text-white font-medium">06-4044 6732</span>
                                     </a>
                                     <a
                                         href="mailto:robin.bril@gmail.com"
                                         className="flex items-center gap-3 p-4 bg-gray-700/50 rounded-lg hover:bg-gray-700 transition-colors text-base"
                                     >
-                                        <Mail className="h-5 w-5 text-blue-400 flex-shrink-0" />
+                                        <Mail className="h-5 w-5 text-orange-400 flex-shrink-0" />
                                         <span className="text-white font-medium">robin.bril@gmail.com</span>
                                     </a>
                                     <a
@@ -213,7 +213,7 @@ export default function IntakeExplanationSection() {
                                         rel="noopener noreferrer"
                                         className="flex items-center gap-3 p-4 bg-gray-700/50 rounded-lg hover:bg-gray-700 transition-colors text-base"
                                     >
-                                        <MessageCircle className="h-5 w-5 text-blue-400 flex-shrink-0" />
+                                        <MessageCircle className="h-5 w-5 text-orange-400 flex-shrink-0" />
                                         <span className="text-white font-medium">WhatsApp</span>
                                     </a>
                                 </motion.div>

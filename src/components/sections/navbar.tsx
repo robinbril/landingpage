@@ -278,18 +278,18 @@ export default function Navbar() {
                   {/* Email Button */}
                   <motion.a
                     href={`mailto:${t.contact?.emailAddress || 'contact@virelio.com'}`}
-                    className="flex items-center gap-4 px-6 py-4 bg-gradient-to-r from-blue-500/10 to-indigo-500/10 hover:from-blue-500/20 hover:to-indigo-500/20 rounded-2xl border border-blue-500/20 hover:border-blue-500/40 transition-all duration-300 group hover:shadow-lg"
+                    className="flex items-center gap-4 px-6 py-4 bg-gradient-to-r from-orange-500/10 to-amber-500/10 hover:from-blue-500/20 hover:to-indigo-500/20 rounded-2xl border border-orange-500/20 hover:border-orange-500/40 transition-all duration-300 group hover:shadow-lg"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <div className="flex items-center justify-center w-12 h-12 bg-blue-500/20 rounded-full group-hover:bg-blue-500/30 transition-colors">
-                      <Icon icon={Mail} className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                    <div className="flex items-center justify-center w-12 h-12 bg-orange-500/20 rounded-full group-hover:bg-orange-500/30 transition-colors">
+                      <Icon icon={Mail} className="h-5 w-5 text-orange-500 dark:text-orange-400" />
                     </div>
                     <div className="flex-1">
-                      <p className="font-semibold text-blue-700 dark:text-blue-300">
+                      <p className="font-semibold text-orange-700 dark:text-orange-300">
                         {t.contact?.email || "Email Us"}
                       </p>
-                      <p className="text-sm text-blue-600/80 dark:text-blue-400/80 truncate">
+                      <p className="text-sm text-orange-600/80 dark:text-orange-400/80 truncate">
                         {t.contact?.emailAddress || "contact@virelio.com"}
                       </p>
                     </div>

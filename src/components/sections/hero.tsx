@@ -65,10 +65,10 @@ function HeroContent() {
             variants={itemVariants}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm"
           >
-            <span className="text-xs sm:text-sm font-medium text-blue-400">
+            <span className="text-xs sm:text-sm font-medium text-orange-400">
               {language === 'nl' ? 'AI Agents voor bedrijven' : 'AI Agents for businesses'}
             </span>
-            <Icon icon={Shield} className="h-3 w-3 sm:h-4 sm:w-4 text-blue-400" />
+            <Icon icon={Shield} className="h-3 w-3 sm:h-4 sm:w-4 text-orange-400" />
           </motion.div>
 
           {/* Hero Content - Mobile Optimized */}
@@ -80,11 +80,11 @@ function HeroContent() {
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight max-w-5xl px-4 sm:px-0 leading-tight text-white">
               {language === 'nl' ? (
                 <>
-                  Virelio bouwt <em className="not-italic font-black text-blue-400">Agents</em>.
+                  Virelio bouwt <em className="not-italic font-black text-orange-400">Agents</em>.
                 </>
               ) : (
                 <>
-                  Virelio builds <em className="not-italic font-black text-blue-400">Agents</em>.
+                  Virelio builds <em className="not-italic font-black text-orange-400">Agents</em>.
                 </>
               )}
             </h1>
@@ -114,7 +114,7 @@ function HeroContent() {
           >
             <Button
               size="lg"
-              className="bg-blue-500 hover:bg-blue-400 text-white shadow-lg shadow-blue-500/25 hover:shadow-blue-400/30 hover:shadow-xl transition-all duration-300 px-8 sm:px-12 py-5 sm:py-6 text-base sm:text-lg group w-full sm:w-auto"
+              className="bg-orange-500 hover:bg-orange-400 text-white shadow-lg shadow-orange-500/25 hover:shadow-orange-400/30 hover:shadow-xl transition-all duration-300 px-8 sm:px-12 py-5 sm:py-6 text-base sm:text-lg group w-full sm:w-auto"
               asChild
             >
               <a
@@ -145,8 +145,8 @@ function HeroContent() {
               const StatIcon = stat.icon;
               return (
                 <div key={idx} className="flex items-center gap-2">
-                  <div className="p-1.5 rounded-full bg-blue-500/10">
-                    <StatIcon className="h-4 w-4 text-blue-400" />
+                  <div className="p-1.5 rounded-full bg-orange-500/10">
+                    <StatIcon className="h-4 w-4 text-orange-400" />
                   </div>
                   <span className="text-sm font-medium text-gray-400">
                     {stat.label}
