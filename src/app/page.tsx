@@ -7,6 +7,7 @@ import Services from "@/components/sections/services";
 import Testimonials from "@/components/sections/testimonials";
 import Footer from "@/components/sections/footer";
 import FloatingWhatsAppButton from "@/components/floating-whatsapp-button";
+import AIChatWidget from "@/components/ai-chat-widget";
 import IntakeExplanationSection from "@/components/sections/intake-explanation-section";
 import GuaranteeSection from "@/components/sections/guarantee-section";
 import { generateMetadata } from "@/lib/metadata";
@@ -93,6 +94,7 @@ export default function Home() {
 
         <Footer />
         <FloatingWhatsAppButton />
+        <AIChatWidget />
       </main>
     </>
   );
