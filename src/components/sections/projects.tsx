@@ -11,6 +11,7 @@ import {
   GraduationCap,
   Award,
   Quote,
+  Linkedin,
 } from "lucide-react";
 
 // ─── Experience Data ──────────────────────────────────────────────────────────
@@ -19,7 +20,6 @@ interface ExperienceEntry {
   company: string;
   role: { nl: string; en: string };
   period: string;
-  logo?: string;
   highlights: { nl: string; en: string }[];
   tags?: string[];
   current?: boolean;
@@ -57,7 +57,6 @@ const EXPERIENCE: ExperienceEntry[] = [
       en: "Data Consultant & AI Developer",
     },
     period: "2024 – heden",
-    logo: "/images/companies/capgemini.webp",
     highlights: [
       {
         nl: "Lead developer van DefGPT Pro voor het Ministerie van Defensie: eerste volledig private on-premise AI-platform voor een enterprise-organisatie",
@@ -82,7 +81,6 @@ const EXPERIENCE: ExperienceEntry[] = [
       en: "Data Analyst",
     },
     period: "2022 – 2024",
-    logo: "/images/companies/e-flux.jpeg",
     highlights: [
       {
         nl: "Looker- en BigQuery-dashboards voor meerdere afdelingen binnen het Google-ecosysteem",
@@ -194,17 +192,17 @@ export default function Projects() {
           transition={{ duration: 0.6, delay: 0.15 }}
           className="bg-white rounded-3xl border border-[#4a2c2a]/8 shadow-lg shadow-[#4a2c2a]/5 overflow-hidden"
         >
-          {/* Profile Header - compact */}
+          {/* Profile Header */}
           <div className="px-6 sm:px-8 pt-6 sm:pt-8 pb-5 border-b border-[#4a2c2a]/5">
-            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6">
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-5">
               {/* Photo */}
               <div className="relative flex-shrink-0">
-                <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full overflow-hidden border-[3px] border-[#e67e22]/20 shadow-md">
+                <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-white shadow-lg">
                   <Image
                     src="/images/contact/robin.jpeg"
                     alt="Robin Bril"
-                    width={96}
-                    height={96}
+                    width={80}
+                    height={80}
                     className="object-cover w-full h-full"
                   />
                 </div>
@@ -215,28 +213,37 @@ export default function Projects() {
 
               {/* Info */}
               <div className="text-center sm:text-left flex-1">
-                <h3 className="text-xl sm:text-2xl font-black text-[#4a2c2a]">
-                  Robin Bril
-                </h3>
-                <p className="text-sm sm:text-base text-[#e67e22] font-semibold mt-0.5">
-                  Senior AI Specialist
-                </p>
+                <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+                  <div>
+                    <h3 className="text-2xl font-bold text-[#4a2c2a] tracking-tight">
+                      Robin Bril
+                    </h3>
+                    <p className="text-base text-[#8e6d6b] font-medium">
+                      AI-engineer & dataconsultant
+                    </p>
+                  </div>
+                  <a
+                    href="https://www.linkedin.com/in/robin-bril/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#4a2c2a]/10 text-[#8e6d6b] bg-[#fdf2e9]/60 text-xs font-medium hover:bg-[#fdf2e9] transition-colors self-start"
+                  >
+                    <Linkedin className="h-3.5 w-3.5" />
+                    LinkedIn
+                  </a>
+                </div>
                 <div className="flex items-center justify-center sm:justify-start gap-1.5 mt-1.5 text-[#8e6d6b]">
-                  <MapPin className="h-3 w-3" />
-                  <span className="text-xs">Amsterdam, Nederland</span>
+                  <MapPin className="h-3.5 w-3.5" />
+                  <span className="text-sm">Amsterdam, Nederland</span>
                 </div>
 
-                {/* Stats row */}
-                <div className="flex items-center justify-center sm:justify-start gap-5 mt-4">
+                {/* Stats as pills */}
+                <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 mt-3">
                   {STATS.map((stat, i) => (
-                    <div key={i} className="text-center sm:text-left">
-                      <div className="text-lg sm:text-xl font-black text-[#4a2c2a]">
-                        {stat.value}
-                      </div>
-                      <div className="text-[10px] sm:text-[11px] text-[#8e6d6b]">
-                        {isNL ? stat.label.nl : stat.label.en}
-                      </div>
-                    </div>
+                    <span key={i} className="inline-flex items-center gap-1 px-3 py-1 rounded-full border border-[#4a2c2a]/8 text-xs text-[#4a2c2a]/70 bg-white/60">
+                      <span className="font-bold text-[#4a2c2a]">{stat.value}</span>
+                      {isNL ? stat.label.nl : stat.label.en}
+                    </span>
                   ))}
                 </div>
               </div>
@@ -278,15 +285,6 @@ export default function Projects() {
                   {/* Content */}
                   <div className="pb-1 flex-1 min-w-0">
                     <div className="flex flex-wrap items-center gap-1.5 mb-0.5">
-                      {exp.logo && (
-                        <Image
-                          src={exp.logo}
-                          alt={exp.company}
-                          width={18}
-                          height={18}
-                          className="rounded-sm object-contain"
-                        />
-                      )}
                       <span className="font-bold text-[#4a2c2a] text-sm">
                         {exp.company}
                       </span>
