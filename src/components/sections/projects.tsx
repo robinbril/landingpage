@@ -96,6 +96,7 @@ const TESTIMONIALS = [
     },
     author: "Mark Vervuurt",
     role: "Lead AI Engineer, Capgemini",
+    hidden: true,
   },
   {
     quote: {
@@ -104,6 +105,7 @@ const TESTIMONIALS = [
     },
     author: "Giulio Piccolo",
     role: "Lead Data Engineer, E-flux by Road",
+    hidden: false,
   },
 ];
 
@@ -317,7 +319,7 @@ export default function Projects() {
           {/* Testimonials - compact */}
           <div className="px-6 sm:px-8 pb-6 sm:pb-8 border-t border-[#4a2c2a]/5 pt-5">
             <div className="grid sm:grid-cols-2 gap-4">
-              {TESTIMONIALS.map((t, i) => (
+              {TESTIMONIALS.filter((t) => !t.hidden).map((t, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 12 }}
