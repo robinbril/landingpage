@@ -15,24 +15,31 @@ export default function IntakeExplanationSection() {
     const steps = [
         {
             icon: Calendar,
-            title: language === 'nl' ? '30 min kennismaken' : '30 min introduction',
+            title: language === 'nl' ? '30 min kennismaken' : '30 min intro call',
             description: language === 'nl'
-                ? 'We bespreken je uitdaging, waar je nu staat, en waar je naartoe wilt.'
-                : 'We discuss your challenge, where you are now, and where you want to go.'
+                ? 'Gratis en vrijblijvend. We bespreken je uitdaging en of een digitale medewerker past.'
+                : 'Free and no obligation. We discuss your challenge and if a digital employee fits.'
         },
         {
             icon: FileText,
-            title: language === 'nl' ? 'Voorstel binnen 4u' : 'Proposal within 4h',
+            title: language === 'nl' ? 'Voorstel vanuit mij' : 'My proposal to you',
             description: language === 'nl'
-                ? 'Je krijgt een strak voorstel: wat we bouwen, hoe lang het duurt, en wat het kost.'
-                : 'You get a tight proposal: what we\'ll build, how long it takes, and what it costs.'
+                ? 'Je krijgt een strak voorstel: welke agent, hoe lang het duurt, en wat het kost.'
+                : 'You get a tight proposal: which agent, how long it takes, and what it costs.'
+        },
+        {
+            icon: Check,
+            title: language === 'nl' ? '1 verdiepingssessie' : '1 deep-dive session',
+            description: language === 'nl'
+                ? 'We duiken in je processen, data en systemen. Hierna weet ik precies wat ik moet bouwen.'
+                : 'We dive into your processes, data and systems. After this I know exactly what to build.'
         },
         {
             icon: Rocket,
-            title: language === 'nl' ? 'Live in 2 weken' : 'Live in 2 weeks',
+            title: language === 'nl' ? 'Bouwen & overdragen' : 'Build & handover',
             description: language === 'nl'
-                ? 'Akkoord? We beginnen direct. Binnen 2 weken heb je een werkende oplossing.'
-                : 'Approved? We start immediately. Within 2 weeks you have a working solution.'
+                ? 'Binnen 2-4 weken heb je werkende agents. Ik draag ze aan jullie over. Geen terugkerende kosten.'
+                : 'Within 2-4 weeks you have working agents. I hand them over to you. No recurring costs.'
         }
     ];
 
@@ -59,8 +66,8 @@ export default function IntakeExplanationSection() {
                             transition={{ delay: 0.1 }}
                         >
                             {language === 'nl'
-                                ? 'Van kennismaking tot werkende oplossing in 3 simpele stappen'
-                                : 'From introduction to working solution in 3 simple steps'}
+                                ? 'Van kennismaking tot werkende agents in 4 stappen'
+                                : 'From introduction to working agents in 4 steps'}
                         </motion.p>
                     </div>
 
@@ -77,7 +84,7 @@ export default function IntakeExplanationSection() {
                             />
                         </div>
 
-                        <div className="grid md:grid-cols-3 gap-8 relative">
+                        <div className="grid md:grid-cols-4 gap-6 relative">
                             {steps.map((step, index) => {
                                 const Icon = step.icon;
                                 return (
@@ -169,7 +176,7 @@ export default function IntakeExplanationSection() {
                             </div>
                             <div className="flex items-center gap-2">
                                 <Check className="h-4 w-4 text-[#e67e22]" strokeWidth={2.5} />
-                                <span>{language === 'nl' ? 'Geld-terug garantie' : 'Money-back guarantee'}</span>
+                                <span>{language === 'nl' ? 'Geen terugkerende kosten' : 'No recurring costs'}</span>
                             </div>
                         </div>
 

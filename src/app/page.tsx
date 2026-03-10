@@ -4,11 +4,11 @@ import Hero from "@/components/sections/hero";
 import CompanySlider from "@/components/sections/company-slider";
 import Projects from "@/components/sections/projects";
 import Services from "@/components/sections/services";
-import Testimonials from "@/components/sections/testimonials";
+// import Testimonials from "@/components/sections/testimonials";
 import Footer from "@/components/sections/footer";
 import AIChatWidget from "@/components/ai-chat-widget";
 import IntakeExplanationSection from "@/components/sections/intake-explanation-section";
-import GuaranteeSection from "@/components/sections/guarantee-section";
+// import GuaranteeSection from "@/components/sections/guarantee-section";
 import { generateMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/lib/config";
 import JsonLd from "@/components/seo/json-ld";
@@ -70,7 +70,7 @@ export default function Home() {
     <>
       {/* Adding structured data for better SEO */}
       <JsonLd data={faqSchema(faqData)} />
-      <JsonLd data={testimonialsSchema(testimonialsData)} />
+      {/* <JsonLd data={testimonialsSchema(testimonialsData)} /> */}
       <JsonLd data={servicesSchema()} />
       <JsonLd data={workshopSchema()} />
 
@@ -78,16 +78,14 @@ export default function Home() {
         <Navbar />
         <Hero />
         <CompanySlider />
-        <GuaranteeSection />
+        {/* GuaranteeSection removed */}
         <div id={siteConfig.sections.services.substring(1)}>
           <Services />
         </div>
         <div id={siteConfig.sections.projects.substring(1)}>
           <Projects />
         </div>
-        <div id={siteConfig.sections.testimonials.substring(1)}>
-          <Testimonials />
-        </div>
+        {/* Testimonials section removed */}
         <IntakeExplanationSection />
 
 
