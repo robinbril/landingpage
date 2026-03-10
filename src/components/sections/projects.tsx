@@ -55,7 +55,7 @@ const getProjects = (language: string): Project[] => {
       impact: isNL ? "2.500+ dagelijkse gebruikers" : "2,500+ daily users",
       category: "AI & RAG",
       icon: Brain,
-      color: "from-blue-500 to-cyan-500",
+      color: "from-orange-500 to-amber-500",
       results: []
     },
     {
@@ -130,7 +130,7 @@ const getProjects = (language: string): Project[] => {
       impact: isNL ? "90% snellere onboarding" : "90% faster onboarding",
       category: "AI Agents",
       icon: Cog,
-      color: "from-cyan-500 to-blue-500",
+      color: "from-amber-500 to-orange-500",
       results: []
     },
     {

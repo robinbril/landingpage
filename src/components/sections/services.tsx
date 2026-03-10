@@ -58,7 +58,7 @@ const getServices = (language: string): Service[] => {
         language === 'nl' ? 'Met bronnen - geen hallucinaties' : 'With sources - no hallucinations'
       ],
       highlight: language === 'nl' ? 'Populair' : 'Popular',
-      gradient: "from-blue-500 to-cyan-500"
+      gradient: "from-orange-500 to-amber-500"
     },
     {
       id: "ai-agents",
@@ -134,8 +134,8 @@ const Services = () => {
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 px-4">
             {language === 'nl'
-              ? <>Oplossingen die <span className="text-[#3B82F6] dark:text-[#86efac]">werken</span></>
-              : <>Solutions that <span className="text-[#3B82F6] dark:text-[#86efac]">work</span></>
+              ? <>Oplossingen die <span className="text-orange-500 dark:text-orange-400">werken</span></>
+              : <>Solutions that <span className="text-orange-500 dark:text-orange-400">work</span></>
             }
           </h2>
 

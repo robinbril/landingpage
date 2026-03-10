@@ -278,7 +278,7 @@ export default function Navbar() {
                   {/* Email Button */}
                   <motion.a
                     href={`mailto:${t.contact?.emailAddress || 'contact@virelio.com'}`}
-                    className="flex items-center gap-4 px-6 py-4 bg-gradient-to-r from-orange-500/10 to-amber-500/10 hover:from-blue-500/20 hover:to-indigo-500/20 rounded-2xl border border-orange-500/20 hover:border-orange-500/40 transition-all duration-300 group hover:shadow-lg"
+                    className="flex items-center gap-4 px-6 py-4 bg-gradient-to-r from-orange-500/10 to-amber-500/10 hover:from-orange-500/20 hover:to-amber-500/20 rounded-2xl border border-orange-500/20 hover:border-orange-500/40 transition-all duration-300 group hover:shadow-lg"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >

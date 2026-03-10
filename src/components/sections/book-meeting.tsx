@@ -105,8 +105,8 @@ export default function BookMeeting() {
               className="group"
             >
               <div className="p-8 rounded-2xl border-2 border-border hover:border-primary bg-card transition-all duration-300 hover:shadow-xl">
-                <div className="w-16 h-16 mx-auto mb-6 rounded-xl bg-blue-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Video className="w-8 h-8 text-blue-500" />
+                <div className="w-16 h-16 mx-auto mb-6 rounded-xl bg-orange-500/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                  <Video className="w-8 h-8 text-orange-500" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2 text-center">Google Meet</h3>
                 <p className="text-sm text-muted-foreground text-center mb-4">
@@ -114,7 +114,7 @@ export default function BookMeeting() {
                 </p>
                 <Button
                   variant="outline"
-                  className="w-full group-hover:bg-blue-500 group-hover:text-white group-hover:border-blue-500 transition-all"
+                  className="w-full group-hover:bg-orange-500 group-hover:text-white group-hover:border-orange-500 transition-all"
                 >
                   {language === 'nl' ? 'Start call →' : 'Start call →'}
                 </Button>

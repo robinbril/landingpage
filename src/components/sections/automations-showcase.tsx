@@ -16,9 +16,9 @@ import { Zap, Workflow, Bot, Database, Mail, Calendar } from "lucide-react";
 const tools = [
   { Icon: SiSlack, color: "from-purple-500 to-purple-600", name: "Slack", angle: 0 },
   { Icon: SiNotion, color: "from-gray-800 to-gray-900", name: "Notion", angle: 45 },
-  { Icon: SiGoogledrive, color: "from-blue-500 to-blue-600", name: "Drive", angle: 90 },
+  { Icon: SiGoogledrive, color: "from-orange-500 to-orange-600", name: "Drive", angle: 90 },
   { Icon: Zap, color: "from-orange-500 to-orange-600", name: "Zapier", angle: 135 },
-  { Icon: SiTrello, color: "from-blue-400 to-blue-500", name: "Trello", angle: 180 },
+  { Icon: SiTrello, color: "from-orange-400 to-orange-500", name: "Trello", angle: 180 },
   { Icon: SiAsana, color: "from-pink-500 to-rose-600", name: "Asana", angle: 225 },
   { Icon: Bot, color: "from-emerald-500 to-green-600", name: "AI", angle: 270 },
   { Icon: SiGooglesheets, color: "from-green-600 to-green-700", name: "Sheets", angle: 315 },

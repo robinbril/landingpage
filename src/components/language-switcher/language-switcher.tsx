@@ -45,14 +45,14 @@ export default function LanguageSwitcher() {
     <div className="flex items-center space-x-2">
       <Link
         href={getDutchUrl()}
-        className={`px-2 py-1 rounded ${currentLang === 'nl' ? 'bg-blue-500 text-white' : 'text-gray-700 hover:bg-gray-100'}`}
+        className={`px-2 py-1 rounded ${currentLang === 'nl' ? 'bg-orange-500 text-white' : 'text-gray-700 hover:bg-gray-100'}`}
         onClick={() => setCurrentLang('nl')}
       >
         NL
       </Link>
       <Link
         href={getEnglishUrl()}
-        className={`px-2 py-1 rounded ${currentLang === 'en' ? 'bg-blue-500 text-white' : 'text-gray-700 hover:bg-gray-100'}`}
+        className={`px-2 py-1 rounded ${currentLang === 'en' ? 'bg-orange-500 text-white' : 'text-gray-700 hover:bg-gray-100'}`}
         onClick={() => setCurrentLang('en')}
       >
         EN
