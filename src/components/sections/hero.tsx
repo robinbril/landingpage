@@ -3,24 +3,18 @@
 import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { motion, useAnimation } from "framer-motion";
-import { Button } from "@/components/ui/button";
 import { useInView } from "react-intersection-observer";
-import { ChevronDown, Check, ArrowRight, Users, Trophy, Clock, Shield, MessageCircle } from "lucide-react";
+import { ChevronDown, ArrowRight } from "lucide-react";
 import { scrollToSection } from "@/lib/scroll-utils";
-import { Icon } from "@/components/ui/icon";
 import { useLanguage } from "@/lib/i18n/language-context";
 
 const AsciiHeroBg = dynamic(() => import("@/components/ascii-hero-bg"), { ssr: false });
-// import HeroParticles from "@/components/hero-particles";
 
 function HeroContent() {
   const { t, language } = useLanguage();
   const [ref, inView] = useInView({ threshold: 0.1 });
   const controls = useAnimation();
-  const [isMounted, setIsMounted] = useState(false);
-
   useEffect(() => {
-    setIsMounted(true);
     if (inView) controls.start("visible");
   }, [inView, controls]);
 
@@ -90,42 +84,29 @@ function HeroContent() {
             variants={itemVariants}
             className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-3"
           >
-            <Button
-              size="lg"
-              className="bg-[#4a2c2a] hover:bg-[#3a1c1a] text-white rounded-full px-6 sm:px-8 py-4 sm:py-5 text-sm sm:text-base font-medium shadow-lg shadow-[#4a2c2a]/20 hover:shadow-xl transition-all duration-300 group"
-              asChild
+            <a
+              href="#ready-to-start"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("ready-to-start");
+              }}
+              className="inline-flex items-center justify-center gap-2 bg-[#4a2c2a] hover:bg-[#3a1c1a] text-white rounded-full px-6 sm:px-8 py-4 sm:py-5 text-sm sm:text-base font-medium shadow-lg shadow-[#4a2c2a]/20 hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] group"
+              aria-label={language === 'nl' ? "Plan intake" : "Book intake"}
             >
-              <a
-                href="#ready-to-start"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection("ready-to-start");
-                }}
-                className="flex items-center justify-center gap-2"
-                aria-label={language === 'nl' ? "Plan intake" : "Book intake"}
-              >
-                {language === 'nl' ? 'Plan intake' : 'Book intake'}
-                <Icon icon={ArrowRight} className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </a>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="bg-white/80 hover:bg-white border border-[#4a2c2a]/15 text-[#4a2c2a] rounded-full px-6 sm:px-8 py-4 sm:py-5 text-sm sm:text-base font-medium backdrop-blur-sm hover:shadow-md transition-all duration-300 group"
-              asChild
+              {language === 'nl' ? 'Plan intake' : 'Book intake'}
+              <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            </a>
+            <a
+              href="#services"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollToSection("services");
+              }}
+              className="inline-flex items-center justify-center gap-2 bg-white/80 hover:bg-white border border-[#4a2c2a]/15 text-[#4a2c2a] rounded-full px-6 sm:px-8 py-4 sm:py-5 text-sm sm:text-base font-medium backdrop-blur-sm hover:shadow-md transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] group"
             >
-              <a
-                href="#services"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection("services");
-                }}
-                className="flex items-center justify-center gap-2"
-              >
-                {language === 'nl' ? 'Meer informatie' : 'Learn more'}
-                <Icon icon={ChevronDown} className="h-5 w-5 group-hover:translate-y-0.5 transition-transform" />
-              </a>
-            </Button>
+              {language === 'nl' ? 'Meer informatie' : 'Learn more'}
+              <ChevronDown className="h-5 w-5 group-hover:translate-y-0.5 transition-transform" />
+            </a>
           </motion.div>
         </motion.div>
       </div>

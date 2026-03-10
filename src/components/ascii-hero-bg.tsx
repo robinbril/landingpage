@@ -40,7 +40,7 @@ export default function ParticleHeroBg() {
           0.1,
           1000
         );
-        camera.position.set(0.0, 0.0, 0.7);
+        camera.position.set(0.0, 0.08, 0.48);
 
         renderer = new THREE.WebGLRenderer({ antialias: !isMobile, alpha: true, powerPreference: "low-power" });
         renderer.setSize(

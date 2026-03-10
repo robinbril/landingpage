@@ -167,7 +167,7 @@ function ROIScanner({
             onClick={onClose}
             className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50"
           />
-          <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
+          <div className="fixed inset-0 flex items-center justify-center z-50 p-4" role="dialog" aria-label={isNL ? "ROI Scanner" : "ROI Scanner"}>
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -233,7 +233,7 @@ function ROIScanner({
                     </span>
                     <span className="text-lg font-black text-[#e67e22]">&euro;{hourlyRate}</span>
                   </label>
-                  <input type="range" min={15} max={150} step={5} value={hourlyRate} onChange={(e) => setHourlyRate(Number(e.target.value))} className="w-full h-2 rounded-full appearance-none cursor-pointer accent-[#e67e22] bg-[#e67e22]/15" />
+                  <input type="range" min={15} max={150} step={5} value={hourlyRate} onChange={(e) => setHourlyRate(Number(e.target.value))} aria-label={isNL ? "Uurtarief medewerker" : "Employee hourly rate"} className="w-full h-2 rounded-full appearance-none cursor-pointer accent-[#e67e22] bg-[#e67e22]/15" />
                 </div>
 
                 <div>
@@ -243,7 +243,7 @@ function ROIScanner({
                     </span>
                     <span className="text-lg font-black text-[#e67e22]">{ftes}</span>
                   </label>
-                  <input type="range" min={1} max={10} value={ftes} onChange={(e) => setFtes(Number(e.target.value))} className="w-full h-2 rounded-full appearance-none cursor-pointer accent-[#e67e22] bg-[#e67e22]/15" />
+                  <input type="range" min={1} max={10} value={ftes} onChange={(e) => setFtes(Number(e.target.value))} aria-label={isNL ? "Aantal FTE's" : "Number of FTEs"} className="w-full h-2 rounded-full appearance-none cursor-pointer accent-[#e67e22] bg-[#e67e22]/15" />
                 </div>
 
                 <div>
@@ -253,7 +253,7 @@ function ROIScanner({
                     </span>
                     <span className="text-lg font-black text-[#e67e22]">{hoursPerWeek}h</span>
                   </label>
-                  <input type="range" min={1} max={40} value={hoursPerWeek} onChange={(e) => setHoursPerWeek(Number(e.target.value))} className="w-full h-2 rounded-full appearance-none cursor-pointer accent-[#e67e22] bg-[#e67e22]/15" />
+                  <input type="range" min={1} max={40} value={hoursPerWeek} onChange={(e) => setHoursPerWeek(Number(e.target.value))} aria-label={isNL ? "Uren per week per FTE" : "Hours per week per FTE"} className="w-full h-2 rounded-full appearance-none cursor-pointer accent-[#e67e22] bg-[#e67e22]/15" />
                 </div>
 
                 <div className="h-px bg-[#4a2c2a]/8" />

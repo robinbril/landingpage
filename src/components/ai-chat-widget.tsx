@@ -182,7 +182,7 @@ export default function AIChatWidget() {
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
-            className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-2"
+            className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2"
           >
             {/* Floating speech bubble label */}
             <motion.div
@@ -192,8 +192,8 @@ export default function AIChatWidget() {
               className="relative bg-white text-[#4a2c2a] text-xs font-semibold px-3 py-1.5 rounded-lg shadow-lg border border-[#4a2c2a]/8"
             >
               {language === "nl" ? "Even sparren?" : "Let's talk?"}
-              {/* Speech bubble tail */}
-              <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-white border-r border-b border-[#4a2c2a]/8 rotate-45" />
+              {/* Speech bubble tail — points toward button (right side) */}
+              <div className="absolute -bottom-1.5 right-5 w-3 h-3 bg-white border-r border-b border-[#4a2c2a]/8 rotate-45" />
             </motion.div>
 
             {/* Circular icon button */}

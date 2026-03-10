@@ -288,7 +288,7 @@ function AgentNodeDesktop({ agent, isActive, onClick, language, delay }: {
             <Bot className="h-4 w-4 lg:h-5 lg:w-5 text-white" />
           </div>
         </div>
-        <span className="text-[11px] lg:text-xs font-bold text-[#4a2c2a] whitespace-nowrap max-w-[100px] lg:max-w-[120px] text-center leading-tight px-1.5 py-0.5 rounded-md bg-white/80 backdrop-blur-sm">
+        <span className="text-[11px] lg:text-xs font-bold text-[#4a2c2a] whitespace-nowrap max-w-[100px] lg:max-w-[120px] text-center leading-tight">
           {isNL ? agent.labelNL : agent.labelEN}
         </span>
       </div>
@@ -536,7 +536,7 @@ export default function AgentOrgVisual() {
         </motion.div>
 
         {/* ── Desktop: Network left + Detail panel right ── */}
-        <div className="hidden md:flex items-start gap-6 lg:gap-8 max-w-6xl mx-auto">
+        <div className="hidden md:flex items-center gap-6 lg:gap-8 max-w-6xl mx-auto">
           {/* Network visualization — takes remaining space */}
           <div className="flex-1 min-w-0">
             <div
@@ -587,7 +587,7 @@ export default function AgentOrgVisual() {
           </div>
 
           {/* Detail panel — fixed width on right, vertically centered */}
-          <div className="w-[300px] lg:w-[340px] flex-shrink-0 sticky top-24">
+          <div className="w-[300px] lg:w-[340px] flex-shrink-0">
             <DetailPanel
               agent={activeAgentData}
               language={language}

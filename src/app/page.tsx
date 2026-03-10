@@ -3,7 +3,6 @@ import dynamic from "next/dynamic";
 import Navbar from "@/components/sections/navbar";
 import Hero from "@/components/sections/hero";
 import CompanySlider from "@/components/sections/company-slider";
-// import Testimonials from "@/components/sections/testimonials";
 import Footer from "@/components/sections/footer";
 import IntakeExplanationSection from "@/components/sections/intake-explanation-section";
 import GuaranteeSection from "@/components/sections/guarantee-section";
@@ -98,10 +97,7 @@ export default function Home() {
         <div id={siteConfig.sections.projects.substring(1)}>
           <Projects />
         </div>
-        {/* Testimonials section removed */}
         <IntakeExplanationSection />
-
-
         <Footer />
         <AIChatWidget />
       </main>

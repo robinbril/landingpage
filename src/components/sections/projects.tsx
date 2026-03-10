@@ -12,6 +12,7 @@ import {
   Award,
   Quote,
   Linkedin,
+  Check,
 } from "lucide-react";
 
 // ─── Experience Data ──────────────────────────────────────────────────────────
@@ -21,8 +22,6 @@ interface ExperienceEntry {
   role: { nl: string; en: string };
   period: string;
   highlights: { nl: string; en: string }[];
-  tags?: string[];
-  current?: boolean;
 }
 
 const EXPERIENCE: ExperienceEntry[] = [
@@ -34,7 +33,6 @@ const EXPERIENCE: ExperienceEntry[] = [
     },
     period: "2026 – heden",
     highlights: [],
-    tags: ["AI Engineering", "Enterprise AI"],
   },
   {
     company: "Virelio",
@@ -43,8 +41,10 @@ const EXPERIENCE: ExperienceEntry[] = [
       en: "AI Engineer & Founder",
     },
     period: "2024 – heden",
-    highlights: [],
-    tags: ["Multi-agent AI", "RAG", "MCP"],
+    highlights: [
+      { nl: "10+ klanten geholpen met AI-agents en automatiseringen", en: "10+ clients helped with AI agents and automations" },
+      { nl: "Van intake tot live oplossing in 2 weken", en: "From intake to live solution in 2 weeks" },
+    ],
   },
   {
     company: "Capgemini / Ministerie van Defensie",
@@ -54,7 +54,6 @@ const EXPERIENCE: ExperienceEntry[] = [
     },
     period: "2024 – 2026",
     highlights: [],
-    tags: ["Multi-agent AI", "MCP-servers", "On-premise"],
   },
   {
     company: "E-flux by Road",
@@ -64,7 +63,6 @@ const EXPERIENCE: ExperienceEntry[] = [
     },
     period: "2022 – 2024",
     highlights: [],
-    tags: ["BigQuery", "Google Cloud"],
   },
   {
     company: "Quotum",
@@ -74,7 +72,6 @@ const EXPERIENCE: ExperienceEntry[] = [
     },
     period: "2020 – 2024",
     highlights: [],
-    tags: ["Full-stack Dev", "Data Engineering"],
   },
 ];
 
@@ -236,13 +233,11 @@ export default function Projects() {
                     transition={{ duration: 0.4, delay: 0.3 + index * 0.08 }}
                     className="flex gap-3 sm:gap-4 group"
                   >
-                    {/* Timeline dot */}
+                    {/* Timeline checkmark */}
                     <div className="flex-shrink-0 pt-1.5">
-                      <div className={`w-[15px] h-[15px] sm:w-[19px] sm:h-[19px] rounded-full border-2 transition-colors ${
-                        exp.current !== false && index < 2
-                          ? "bg-[#e67e22] border-[#e67e22] shadow-sm shadow-[#e67e22]/30"
-                          : "bg-white border-[#e67e22]/30"
-                      }`} />
+                      <div className="w-[15px] h-[15px] sm:w-[19px] sm:h-[19px] rounded-full border-2 border-[#e67e22]/40 bg-[#e67e22]/8 flex items-center justify-center">
+                        <Check className="h-2.5 w-2.5 sm:h-3 sm:w-3 text-[#e67e22]" />
+                      </div>
                     </div>
 
                     {/* Content */}
@@ -254,15 +249,12 @@ export default function Projects() {
                       <p className="text-xs text-[#8e6d6b] mt-0.5">
                         {isNL ? exp.role.nl : exp.role.en}
                       </p>
-                      {exp.tags && (
-                        <div className="flex flex-wrap gap-1 mt-1.5">
-                          {exp.tags.map((tag) => (
-                            <span
-                              key={tag}
-                              className="text-[10px] px-2 py-0.5 rounded-full bg-[#e67e22]/8 text-[#e67e22] font-medium"
-                            >
-                              {tag}
-                            </span>
+                      {exp.highlights.length > 0 && (
+                        <div className="mt-1.5 space-y-0.5">
+                          {exp.highlights.map((h, i) => (
+                            <p key={i} className="text-[11px] text-[#4a2c2a]/70">
+                              {isNL ? h.nl : h.en}
+                            </p>
                           ))}
                         </div>
                       )}
