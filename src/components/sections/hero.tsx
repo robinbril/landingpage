@@ -67,6 +67,7 @@ function HeroContent() {
               {language === 'nl' ? (
                 <>
                   Robin Bril bouwt{' '}
+                  <br className="sm:hidden" />
                   <em className="not-italic font-black text-orange-400">digitale medewerkers</em>.
                 </>
               ) : (
