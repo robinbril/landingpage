@@ -66,7 +66,7 @@ function HeroContent() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#e67e22]/5 border border-[#4a2c2a]/10 backdrop-blur-sm"
           >
             <span className="text-xs sm:text-sm font-medium text-orange-400">
-              {language === 'nl' ? 'AI Agents voor bedrijven' : 'AI Agents for businesses'}
+              {language === 'nl' ? 'Digitale medewerkers voor bedrijven' : 'Digital employees for businesses'}
             </span>
             <Icon icon={Shield} className="h-3 w-3 sm:h-4 sm:w-4 text-orange-400" />
           </motion.div>
@@ -80,11 +80,13 @@ function HeroContent() {
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight max-w-5xl px-4 sm:px-0 leading-tight text-[#4a2c2a]">
               {language === 'nl' ? (
                 <>
-                  Virelio bouwt <em className="not-italic font-black text-orange-400">Agents</em>.
+                  Robin Bril bouwt{' '}
+                  <em className="not-italic font-black text-orange-400">digitale medewerkers</em>.
                 </>
               ) : (
                 <>
-                  Virelio builds <em className="not-italic font-black text-orange-400">Agents</em>.
+                  Robin Bril builds{' '}
+                  <em className="not-italic font-black text-orange-400">digital employees</em>.
                 </>
               )}
             </h1>
@@ -96,13 +98,13 @@ function HeroContent() {
           >
             {language === 'nl' ? (
               <>
-                <span className="font-bold text-[#4a2c2a]">Klantenservice. Facturatie. Sales. Kennisbanken.</span><br />
-                Van idee tot werkende agent in 2 weken.
+                <span className="font-bold text-[#4a2c2a]">Klantenservice. Order processing. Sales. Kennisbanken.</span><br />
+                AI agents die zelfstandig werk overnemen. Live in 2 weken.
               </>
             ) : (
               <>
-                <span className="font-bold text-[#4a2c2a]">Customer service. Invoicing. Sales. Knowledge bases.</span><br />
-                From idea to working agent in 2 weeks.
+                <span className="font-bold text-[#4a2c2a]">Customer service. Order processing. Sales. Knowledge bases.</span><br />
+                AI agents that independently take over work. Live in 2 weeks.
               </>
             )}
           </motion.p>

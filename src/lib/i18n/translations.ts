@@ -287,9 +287,9 @@ export const translations = {
 
     // Hero
     hero: {
-      title: "Virelio bouwt AI.",
+      title: "Robin Bril bouwt digitale medewerkers.",
       subtitle:
-        "AI-chatbots, kennisbanken, automatiseringen. Maatwerk webshops en tools. Van idee naar werkend systeem in 2 weken.",
+        "AI agents die zelfstandig werk overnemen. Klantenservice, order processing, sales, kennisbanken. Live in 2 weken.",
       ctaButton: "Bekijk Onze Projecten",
       secondaryButton: "Laten We Kennismaken",
     },
@@ -1115,9 +1115,9 @@ export const translations = {
 
     // Hero
     hero: {
-      title: "Virelio builds AI.",
+      title: "Robin Bril builds digital employees.",
       subtitle:
-        "AI chatbots, knowledge bases, automations. Custom e-commerce and internal tools. From idea to working system in 2 weeks.",
+        "AI agents that independently take over work. Customer service, order processing, sales, knowledge bases. Live in 2 weeks.",
       ctaButton: "View Our Work",
       secondaryButton: "Let's Talk",
     },

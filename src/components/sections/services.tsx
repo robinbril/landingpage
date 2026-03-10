@@ -41,56 +41,70 @@ interface Service {
 }
 
 const getServices = (language: string): Service[] => {
-  const isNL = language === 'nl';
-
   return [
     {
-      id: "kennisbanken-rag",
-      title: language === 'nl' ? 'Kennisbanken' : 'Knowledge Bases',
-      tagline: language === 'nl' ? 'Antwoord in 3 seconden, niet 3 uur' : 'Answer in 3 seconds, not 3 hours',
+      id: "klantenservice-agents",
+      title: language === 'nl' ? 'Klantenservice Agents' : 'Customer Service Agents',
+      tagline: language === 'nl' ? '80% van tickets opgelost zonder mens' : '80% of tickets resolved without humans',
       description: language === 'nl'
-        ? 'Nieuw teamlid vraagt: "Hoe werkt proces X?" - AI doorzoekt 10.000 documenten en geeft het antwoord met bronvermelding. Direct productief.'
-        : 'New team member asks: "How does process X work?" - AI searches 10,000 documents and gives the answer with sources. Instantly productive.',
-      icon: Bot,
+        ? 'Een volledig agentic team dat je klantenservice draait. Beantwoordt vragen, verwerkt retouren, escaleert alleen wanneer nodig. 24/7, in elke taal.'
+        : 'A fully agentic team that runs your customer service. Answers questions, processes returns, escalates only when needed. 24/7, in any language.',
+      icon: Users,
       features: [
-        language === 'nl' ? '2 uur zoeken wordt 10 seconden vinden' : '2 hours searching becomes 10 seconds finding',
-        language === 'nl' ? 'Onboarding van 2 weken naar 2 dagen' : 'Onboarding from 2 weeks to 2 days',
-        language === 'nl' ? 'Met bronnen - geen hallucinaties' : 'With sources - no hallucinations'
+        language === 'nl' ? 'WhatsApp, email en chat — allemaal afgedekt' : 'WhatsApp, email and chat — all covered',
+        language === 'nl' ? 'Retentie-agent detecteert churn en start win-back' : 'Retention agent detects churn and starts win-back',
+        language === 'nl' ? 'Review-agent verzamelt feedback na elke interactie' : 'Review agent collects feedback after every interaction'
       ],
       highlight: language === 'nl' ? 'Populair' : 'Popular',
       gradient: "from-orange-500 to-amber-500"
     },
     {
-      id: "ai-agents",
-      title: language === 'nl' ? 'AI Agents' : 'AI Agents',
-      tagline: language === 'nl' ? 'Taken die zichzelf afhandelen' : 'Tasks that handle themselves',
+      id: "sales-agents",
+      title: language === 'nl' ? 'Sales & Lead Agents' : 'Sales & Lead Agents',
+      tagline: language === 'nl' ? 'Leads gekwalificeerd terwijl jij slaapt' : 'Leads qualified while you sleep',
       description: language === 'nl'
-        ? 'AI die zelfstandig werkt. Leest je inbox, beantwoordt vragen, plant meetings, volgt leads op, zonder dat jij ertussen zit.'
-        : 'AI that works independently. Reads your inbox, answers questions, schedules meetings, follows up on leads, without your involvement.',
-      icon: Cog,
+        ? 'Van inbound lead tot gepland gesprek — volledig automatisch. Kwalificeert, schrijft offertes, volgt op via mail en WhatsApp tot ze reageren.'
+        : 'From inbound lead to scheduled call — fully automatic. Qualifies, writes proposals, follows up via email and WhatsApp until they respond.',
+      icon: TrendingUp,
       features: [
-        language === 'nl' ? 'Inbox gelezen en beantwoord voordat jij wakker bent' : 'Inbox read and answered before you wake up',
-        language === 'nl' ? 'Leads automatisch gekwalificeerd en ingepland' : 'Leads automatically qualified and scheduled',
-        language === 'nl' ? 'Alleen escalaties in je inbox, geen ruis' : 'Only escalations in your inbox, no noise'
+        language === 'nl' ? 'Lead qualifying — scoort en plant meetings' : 'Lead qualifying — scores and schedules meetings',
+        language === 'nl' ? 'Outbound agent — gepersonaliseerde outreach op schaal' : 'Outbound agent — personalized outreach at scale',
+        language === 'nl' ? 'Offerte-agent — genereert proposals vanuit intake' : 'Proposal agent — generates proposals from intake'
       ],
       highlight: "",
       gradient: "from-amber-500 to-orange-600"
     },
     {
-      id: "automatiseringen",
-      title: language === 'nl' ? 'Automatiseringen' : 'Automations',
-      tagline: language === 'nl' ? 'Jij reviewt, AI doet de rest' : 'You review, AI does the rest',
+      id: "operations-agents",
+      title: language === 'nl' ? 'Operations & Admin Agents' : 'Operations & Admin Agents',
+      tagline: language === 'nl' ? 'Het werk dat niemand wil, gedaan door AI' : 'The work nobody wants, done by AI',
       description: language === 'nl'
-        ? 'Na elke meeting staat de samenvatting klaar. Actiepunten in je CRM. Rapport in draft. Jij hoeft alleen nog op "verzenden" te klikken.'
-        : 'After every meeting, the summary is ready. Action items in your CRM. Report in draft. You just need to click "send".',
-      icon: Rocket,
+        ? 'Order processing, facturatie, data-entry, meeting notes — alles wat je team vertraagt. AI agents die het 10x sneller en foutloos doen.'
+        : 'Order processing, invoicing, data entry, meeting notes — everything slowing your team down. AI agents that do it 10x faster and error-free.',
+      icon: Cog,
       features: [
-        language === 'nl' ? 'Meeting notities automatisch naar stakeholders' : 'Meeting notes automatically to stakeholders',
-        language === 'nl' ? 'Rapporten en analyses in draft, klaar voor review' : 'Reports and analyses in draft, ready for review',
-        language === 'nl' ? 'Data tussen systemen gesynchroniseerd zonder copy-paste' : 'Data synced between systems without copy-paste'
+        language === 'nl' ? 'Order processing — verwerkt, checkt voorraad, bevestigt' : 'Order processing — processes, checks stock, confirms',
+        language === 'nl' ? 'Facturatie-agent — facturen, herinneringen, matching' : 'Invoicing agent — invoices, reminders, matching',
+        language === 'nl' ? 'Data entry vanuit emails, PDFs en formulieren' : 'Data entry from emails, PDFs and forms'
       ],
       highlight: "",
       gradient: "from-orange-500 to-red-500"
+    },
+    {
+      id: "kennisbank-agents",
+      title: language === 'nl' ? 'Kennisbank & Intelligence' : 'Knowledge & Intelligence',
+      tagline: language === 'nl' ? '10.000 documenten — antwoord in 3 seconden' : '10,000 documents — answer in 3 seconds',
+      description: language === 'nl'
+        ? 'Je hele kennisbank doorzoekbaar met AI. Compliance checks, rapportages, marktonderzoek — agents die je team slimmer maken.'
+        : 'Your entire knowledge base searchable with AI. Compliance checks, reports, market research — agents that make your team smarter.',
+      icon: Brain,
+      features: [
+        language === 'nl' ? 'Kennisbank-agent met bronvermelding, geen hallucinaties' : 'Knowledge agent with sources, no hallucinations',
+        language === 'nl' ? 'Compliance-agent checkt documenten tegen regelgeving' : 'Compliance agent checks documents against regulations',
+        language === 'nl' ? 'Rapportage-agent genereert wekelijkse rapporten' : 'Reporting agent generates weekly reports'
+      ],
+      highlight: "",
+      gradient: "from-orange-600 to-amber-500"
     }
   ];
 };
@@ -134,21 +148,21 @@ const Services = () => {
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6 px-4">
             {language === 'nl'
-              ? <>Oplossingen die <span className="text-orange-500 dark:text-orange-400">werken</span></>
-              : <>Solutions that <span className="text-orange-500 dark:text-orange-400">work</span></>
+              ? <>Digitale medewerkers die <span className="text-orange-500 dark:text-orange-400">presteren</span></>
+              : <>Digital employees that <span className="text-orange-500 dark:text-orange-400">perform</span></>
             }
           </h2>
 
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
             {language === 'nl'
-              ? 'Dit zijn de meest gevraagde oplossingen. We bouwen alles op maat.'
-              : 'These are the most requested solutions. We build everything custom.'}
+              ? '20+ agent-types beschikbaar. Dit zijn de meest gevraagde categorieën.'
+              : '20+ agent types available. These are the most requested categories.'}
           </p>
         </motion.div>
 
 
         {/* Services Clean 3-Column Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" ref={ref}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6" ref={ref}>
           {services.map((service, index) => (
             <motion.div
               key={service.id}

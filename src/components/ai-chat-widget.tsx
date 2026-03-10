@@ -17,7 +17,7 @@ const INITIAL_MESSAGES_NL: Message[] = [
     id: "welcome",
     role: "assistant",
     content:
-      "Hey! Ik ben de Virelio AI-assistent. Vertel me wat je zoekt — automatisering, een AI-agent, of iets anders — en ik plan direct een intake voor je in.",
+      "Hey! Welke digitale medewerker zoek je? Vertel me je uitdaging en ik plan direct een gratis intake voor je in.",
     timestamp: new Date(),
   },
 ];
@@ -27,21 +27,21 @@ const INITIAL_MESSAGES_EN: Message[] = [
     id: "welcome",
     role: "assistant",
     content:
-      "Hey! I'm the Virelio AI assistant. Tell me what you're looking for — automation, an AI agent, or something else — and I'll schedule an intake for you right away.",
+      "Hey! Which digital employee are you looking for? Tell me your challenge and I'll schedule a free intake right away.",
     timestamp: new Date(),
   },
 ];
 
 const SUGGESTED_PROMPTS_NL = [
-  "Ik wil mijn facturatie automatiseren",
-  "We hebben een klantenservice agent nodig",
-  "Ik zoek een AI-oplossing voor mijn team",
+  "We willen onze klantenservice automatiseren",
+  "We hebben een order processing agent nodig",
+  "Onze kennisbank moet doorzoekbaar worden met AI",
 ];
 
 const SUGGESTED_PROMPTS_EN = [
-  "I want to automate my invoicing",
-  "We need a customer service agent",
-  "I'm looking for an AI solution for my team",
+  "We want to automate our customer service",
+  "We need an order processing agent",
+  "Our knowledge base needs to be searchable with AI",
 ];
 
 export default function AIChatWidget() {

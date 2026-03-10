@@ -6,7 +6,7 @@ import Projects from "@/components/sections/projects";
 import Services from "@/components/sections/services";
 import Testimonials from "@/components/sections/testimonials";
 import Footer from "@/components/sections/footer";
-import FloatingWhatsAppButton from "@/components/floating-whatsapp-button";
+import AIChatWidget from "@/components/ai-chat-widget";
 import IntakeExplanationSection from "@/components/sections/intake-explanation-section";
 import GuaranteeSection from "@/components/sections/guarantee-section";
 import { generateMetadata } from "@/lib/metadata";
@@ -18,9 +18,9 @@ import { faqSchema, testimonialsSchema, servicesSchema, workshopSchema } from "@
 const faqData = {
   items: [
     {
-      question: "Wat doet Virelio?",
+      question: "Wat doet Robin Bril / Virelio?",
       answer:
-        "Virelio bouwt AI-agents, RAG-systemen en procesautomatiseringen voor bedrijven van 20-200 medewerkers. Van interne kennisbanken tot workflows die automatisch de juiste mensen informeren.",
+        "Robin Bril bouwt digitale medewerkers: AI agents die zelfstandig werk overnemen. Van klantenservice teams tot order processing, sales agents en kennisbanken. Live in 2 weken.",
     },
     {
       question: "Hoe snel kan ik resultaat verwachten?",
@@ -57,11 +57,11 @@ const testimonialsData = {
 };
 
 export const metadata: Metadata = generateMetadata({
-  title: "Robin Bril | AI Agents & Automatisering voor bedrijven",
+  title: "Robin Bril | Digitale Medewerkers & AI Agents voor bedrijven",
   description:
-    "Ik bouw AI-agents, RAG-systemen en automatiseringen waarmee jouw team in weken doet waar anders maanden voor nodig zijn. Senior AI Engineer — Amstelveen.",
+    "Robin Bril bouwt digitale medewerkers: AI agents die zelfstandig werk overnemen. Klantenservice, order processing, sales, kennisbanken. Live in 2 weken.",
   keywords:
-    "AI agents, RAG systemen, procesautomatisering, AI engineer, Robin Bril, Virelio, AI kennisbank, document intelligence, AI oplossingen Nederland",
+    "digitale medewerkers, AI agents, klantenservice agent, order processing, sales agent, AI kennisbank, Robin Bril, Virelio, AI oplossingen Nederland",
   pathname: "/",
 });
 
@@ -92,7 +92,7 @@ export default function Home() {
 
 
         <Footer />
-        <FloatingWhatsAppButton />
+        <AIChatWidget />
       </main>
     </>
   );
