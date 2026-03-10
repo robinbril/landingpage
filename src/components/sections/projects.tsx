@@ -212,7 +212,7 @@ export default function Projects() {
           </div>
 
           {/* Experience Timeline - compact */}
-          <div className="px-6 sm:px-8 py-5">
+          <div className="px-6 sm:px-8 py-5 max-w-lg">
             <div className="flex items-center gap-2 mb-4">
               <Briefcase className="h-3.5 w-3.5 text-[#e67e22]" />
               <h4 className="text-xs font-bold uppercase tracking-wider text-[#4a2c2a]">
