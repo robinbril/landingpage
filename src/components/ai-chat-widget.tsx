@@ -178,21 +178,35 @@ export default function AIChatWidget() {
       {/* Chat Toggle Button - only visible after scrolling past hero */}
       <AnimatePresence>
         {!isOpen && showButton && (
-          <motion.button
+          <motion.div
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 bg-[#4a2c2a] text-white shadow-2xl rounded-full pl-5 pr-4 py-3"
-            aria-label={language === "nl" ? "Chat met Robin" : "Chat with Robin"}
+            className="fixed bottom-6 right-6 z-50 flex flex-col items-center gap-2"
           >
-            <span className="text-sm font-medium whitespace-nowrap">
+            {/* Floating speech bubble label */}
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="relative bg-white text-[#4a2c2a] text-xs font-semibold px-3 py-1.5 rounded-lg shadow-lg border border-[#4a2c2a]/8"
+            >
               {language === "nl" ? "Even sparren?" : "Let's talk?"}
-            </span>
-            <MessageCircle className="h-5 w-5 flex-shrink-0" />
-          </motion.button>
+              {/* Speech bubble tail */}
+              <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-white border-r border-b border-[#4a2c2a]/8 rotate-45" />
+            </motion.div>
+
+            {/* Circular icon button */}
+            <motion.button
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.92 }}
+              onClick={() => setIsOpen(true)}
+              className="w-14 h-14 rounded-full bg-[#4a2c2a] text-white shadow-2xl shadow-[#4a2c2a]/40 flex items-center justify-center hover:bg-[#3a1c1a] transition-colors duration-300"
+              aria-label={language === "nl" ? "Chat met Robin" : "Chat with Robin"}
+            >
+              <MessageCircle className="h-6 w-6" />
+            </motion.button>
+          </motion.div>
         )}
       </AnimatePresence>
 

@@ -2,6 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -179,10 +180,13 @@ export default function ZzpProfiles({ isEnglish = false }: ZzpProfilesProps) {
                   {/* Mobile: Image centered at top */}
                   <div className="flex flex-col items-center sm:items-start gap-3 sm:gap-0">
                     <div className="relative">
-                      <img
+                      <Image
                         src="/images/contact/omar_linkedin.jpeg"
                         alt="Omar Nassar - Backend Developer & AI Specialist"
+                        width={96}
+                        height={96}
                         className="w-20 h-20 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full object-cover object-center shadow-lg border-2 sm:border-4 border-white"
+                        loading="eager"
                       />
                       <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-white flex items-center justify-center">
                         <div className="w-2 h-2 bg-white rounded-full"></div>
@@ -337,10 +341,13 @@ export default function ZzpProfiles({ isEnglish = false }: ZzpProfilesProps) {
                   {/* Mobile: Image centered at top */}
                   <div className="flex flex-col items-center sm:items-start gap-3 sm:gap-0">
                     <div className="relative">
-                      <img
+                      <Image
                         src="/images/contact/robin.jpeg"
                         alt="Robin Bril - Business Analyst & Data Specialist"
+                        width={96}
+                        height={96}
                         className="w-20 h-20 sm:w-20 sm:h-20 md:w-24 md:h-24 rounded-full object-cover object-center shadow-lg border-2 sm:border-4 border-white"
+                        loading="eager"
                       />
                       <div className="absolute -bottom-2 -right-2 w-8 h-8 bg-green-500 rounded-full border-4 border-white flex items-center justify-center">
                         <div className="w-2 h-2 bg-white rounded-full"></div>

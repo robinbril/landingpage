@@ -272,10 +272,9 @@ function AgentNodeDesktop({ agent, isActive, onClick, language, delay }: {
       className="absolute cursor-pointer group"
       style={{ left: `${agent.x}%`, top: `${agent.y}%`, zIndex: 10 }}
     >
-      <motion.div
-        animate={{ y: [0, -6, 0] }}
-        transition={{ duration: 3 + Math.random() * 2, repeat: Infinity, ease: "easeInOut" }}
-        className="flex flex-col items-center gap-1"
+      <div
+        className="flex flex-col items-center gap-1 animate-float"
+        style={{ animationDelay: `${delay * 1000}ms`, animationDuration: `${3 + (delay * 2)}s` }}
       >
         <div className={`relative ${isActive ? "scale-110" : ""} transition-transform`}>
           <div className={`absolute -inset-1.5 rounded-full bg-gradient-to-br from-[#e67e22] to-[#ff7f50] transition-opacity ${
@@ -289,10 +288,10 @@ function AgentNodeDesktop({ agent, isActive, onClick, language, delay }: {
             <Bot className="h-4 w-4 lg:h-5 lg:w-5 text-white" />
           </div>
         </div>
-        <span className="text-[9px] lg:text-[10px] font-bold text-[#e67e22] whitespace-nowrap max-w-[85px] lg:max-w-[100px] text-center leading-tight">
+        <span className="text-[11px] lg:text-xs font-bold text-[#4a2c2a] whitespace-nowrap max-w-[100px] lg:max-w-[120px] text-center leading-tight px-1.5 py-0.5 rounded-md bg-white/80 backdrop-blur-sm">
           {isNL ? agent.labelNL : agent.labelEN}
         </span>
-      </motion.div>
+      </div>
     </motion.div>
   );
 }

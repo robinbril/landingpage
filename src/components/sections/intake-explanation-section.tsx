@@ -1,14 +1,12 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { Calendar, FileText, Rocket, ArrowRight, ChevronRight, Phone, Mail, MessageCircle, Check } from "lucide-react";
+import { Calendar, FileText, Rocket, ArrowRight, Check } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/language-context";
 import { Button } from "@/components/ui/button";
 
 export default function IntakeExplanationSection() {
     const { language } = useLanguage();
-    const [showContact, setShowContact] = useState(false);
 
     const steps = [
         {
@@ -79,13 +77,13 @@ export default function IntakeExplanationSection() {
                             <Button
                                 size="lg"
                                 asChild
-                                className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 sm:px-12 py-5 sm:py-6 text-base sm:text-lg rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                                className="bg-[#4a2c2a] hover:bg-[#3a1c1a] text-white px-10 sm:px-14 py-5 sm:py-6 text-base sm:text-lg rounded-full shadow-lg shadow-[#4a2c2a]/25 hover:shadow-xl hover:shadow-[#4a2c2a]/30 transition-all duration-500 ease-out hover:scale-[1.02] active:scale-[0.98]"
                             >
                                 <a
                                     href="https://calendly.com/quotum-consulting/30min"
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="flex items-center justify-center gap-2"
+                                    className="flex items-center justify-center gap-2.5"
                                 >
                                     {language === 'nl' ? 'Plan een gesprek' : 'Schedule a call'}
                                     <ArrowRight className="h-5 w-5" />
@@ -144,53 +142,6 @@ export default function IntakeExplanationSection() {
                         </div>
                     </div>
 
-                    {/* Bottom: contact */}
-                    <div className="text-center">
-                        <div className="max-w-sm mx-auto">
-                            <button
-                                onClick={() => setShowContact(!showContact)}
-                                className="flex items-center justify-center gap-2 text-foreground/70 hover:text-foreground transition-colors mx-auto group mb-4"
-                            >
-                                <span className="text-base">{language === 'nl' ? 'Of neem direct contact op' : 'Or contact directly'}</span>
-                                <ChevronRight
-                                    className={`h-5 w-5 transition-transform ${showContact ? 'rotate-90' : ''}`}
-                                />
-                            </button>
-
-                            {showContact && (
-                                <motion.div
-                                    initial={{ opacity: 0, height: 0 }}
-                                    animate={{ opacity: 1, height: 'auto' }}
-                                    exit={{ opacity: 0, height: 0 }}
-                                    className="bg-[#4a2c2a]/80 backdrop-blur-sm rounded-xl p-6 space-y-3 border border-[#4a2c2a]/40"
-                                >
-                                    <a
-                                        href="tel:+31640446732"
-                                        className="flex items-center gap-3 p-4 bg-[#4a2c2a]/60 rounded-lg hover:bg-[#4a2c2a]/70 transition-colors text-base"
-                                    >
-                                        <Phone className="h-5 w-5 text-orange-400 flex-shrink-0" />
-                                        <span className="text-[#fdf2e9] font-medium">06-4044 6732</span>
-                                    </a>
-                                    <a
-                                        href="mailto:robin.bril@gmail.com"
-                                        className="flex items-center gap-3 p-4 bg-[#4a2c2a]/60 rounded-lg hover:bg-[#4a2c2a]/70 transition-colors text-base"
-                                    >
-                                        <Mail className="h-5 w-5 text-orange-400 flex-shrink-0" />
-                                        <span className="text-[#fdf2e9] font-medium">robin.bril@gmail.com</span>
-                                    </a>
-                                    <a
-                                        href="https://wa.me/31640446732"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex items-center gap-3 p-4 bg-[#4a2c2a]/60 rounded-lg hover:bg-[#4a2c2a]/70 transition-colors text-base"
-                                    >
-                                        <MessageCircle className="h-5 w-5 text-orange-400 flex-shrink-0" />
-                                        <span className="text-[#fdf2e9] font-medium">WhatsApp</span>
-                                    </a>
-                                </motion.div>
-                            )}
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>

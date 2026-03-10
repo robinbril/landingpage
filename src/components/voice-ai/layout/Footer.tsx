@@ -22,12 +22,13 @@ export default function Footer({ currentLang }: FooterProps) {
           {/* Logo & Copyright */}
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-3">
-              <Image 
-                src="/images/logo.png" 
+              <Image
+                src="/images/logo.png"
                 alt={`${t.company.name} Logo`}
                 width={32}
                 height={32}
                 className="h-8 w-auto"
+                loading="eager"
               />
               <span className="text-lg font-bold text-slate-900">{t.company.name}</span>
             </div>

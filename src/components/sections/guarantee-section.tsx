@@ -62,13 +62,9 @@ export default function GuaranteeSection() {
                         {guarantees.map((item, index) => {
                             const Icon = item.icon;
                             return (
-                                <motion.div
+                                <div
                                     key={index}
                                     className="flex items-start gap-4 bg-[#fdf2e9]/5 border border-[#fdf2e9]/10 rounded-xl p-5"
-                                    initial={{ opacity: 0, x: -20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: 0.1 + index * 0.08 }}
                                 >
                                     <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-[#e67e22]/20 flex items-center justify-center">
                                         <Icon className="h-5 w-5 text-[#e67e22]" />
@@ -76,7 +72,7 @@ export default function GuaranteeSection() {
                                     <p className="text-base sm:text-lg text-[#fdf2e9]/90 leading-relaxed pt-1.5">
                                         {item.text}
                                     </p>
-                                </motion.div>
+                                </div>
                             );
                         })}
                     </div>

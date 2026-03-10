@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { useLanguage } from "@/lib/i18n/language-context";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -113,10 +114,13 @@ export default function WorkshopContact() {
         <div className="flex justify-center mb-6">
           <div className="flex items-center space-x-3">
             <div className="relative">
-              <img
+              <Image
                 src="/images/contact/robin.jpeg"
                 alt="Robin - Workshop Facilitator"
+                width={64}
+                height={64}
                 className="w-16 h-16 rounded-full object-cover shadow-lg border-2 border-white dark:border-gray-800"
+                loading="eager"
               />
             </div>
             <div className="text-left">

@@ -136,13 +136,25 @@ function ROIScanner({
     ? "#eab308"
     : "#ef4444";
 
+  // Format payback time in human-readable form
+  const formatPayback = (weeks: number): string => {
+    if (weeks < 1) return isNL ? "Terugverdientijd: <1 week" : "Payback: <1 week";
+    if (weeks <= 4) return isNL ? `Terugverdientijd: ${Math.ceil(weeks)} weken` : `Payback: ${Math.ceil(weeks)} weeks`;
+    if (weeks <= 52) {
+      const months = Math.ceil(weeks / 4.33);
+      return isNL ? `Terugverdientijd: ${months} maand${months > 1 ? "en" : ""}` : `Payback: ${months} month${months > 1 ? "s" : ""}`;
+    }
+    const years = (weeks / 52).toFixed(1);
+    return isNL ? `Terugverdientijd: ${years} jaar` : `Payback: ${years} year${Number(years) > 1 ? "s" : ""}`;
+  };
+
   const gaugeLabel = isVeryLucrative
     ? (isNL ? "Zeer lucratief" : "Very lucrative")
     : isLucrative
     ? (isNL ? "Lucratief" : "Lucrative")
     : paybackWeeks <= 12
-    ? (isNL ? "Terugverdiend in <3 maanden" : "Payback in <3 months")
-    : (isNL ? "Nog niet rendabel" : "Not yet profitable");
+    ? formatPayback(paybackWeeks)
+    : formatPayback(paybackWeeks);
 
   return (
     <AnimatePresence>
@@ -195,7 +207,7 @@ function ROIScanner({
                     />
                   </div>
                   <div className="flex justify-between text-[10px] text-[#8e6d6b] px-1">
-                    <span>{isNL ? "Niet rendabel" : "Not profitable"}</span>
+                    <span>{isNL ? "Lange terugverdientijd" : "Long payback"}</span>
                     <span>{isNL ? "Zeer lucratief" : "Very lucrative"}</span>
                   </div>
                   <motion.div

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { useLanguage } from "@/lib/i18n/language-context";
 
@@ -47,10 +48,13 @@ const CompanySlider = () => {
                   key={`first-${company.name}-${index}`}
                   className="flex-shrink-0 group"
                 >
-                  <img
+                  <Image
                     src={company.logo}
                     alt={company.name}
+                    width={40}
+                    height={40}
                     className="h-8 sm:h-10 w-auto object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                    loading="lazy"
                   />
                 </div>
               ))}
@@ -60,10 +64,13 @@ const CompanySlider = () => {
                   key={`second-${company.name}-${index}`}
                   className="flex-shrink-0 group"
                 >
-                  <img
+                  <Image
                     src={company.logo}
                     alt={company.name}
+                    width={40}
+                    height={40}
                     className="h-8 sm:h-10 w-auto object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                    loading="lazy"
                   />
                 </div>
               ))}
@@ -73,10 +80,13 @@ const CompanySlider = () => {
                   key={`third-${company.name}-${index}`}
                   className="flex-shrink-0 group"
                 >
-                  <img
+                  <Image
                     src={company.logo}
                     alt={company.name}
+                    width={40}
+                    height={40}
                     className="h-8 sm:h-10 w-auto object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                    loading="lazy"
                   />
                 </div>
               ))}

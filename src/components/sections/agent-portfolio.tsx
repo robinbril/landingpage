@@ -177,6 +177,7 @@ function AgentCard({ agent, index, onClick }: { agent: Agent; index: number; onC
                     width={300}
                     height={300}
                     className="w-full h-full object-cover mix-blend-multiply opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                    loading="lazy"
                 />
                 {/* Department pill overlay */}
                 <div className="absolute top-3 left-3">
@@ -258,6 +259,7 @@ function AgentModal({ agent, onClose }: { agent: Agent | null; onClose: () => vo
                         width={600}
                         height={340}
                         className="w-full h-full object-cover mix-blend-multiply opacity-80"
+                        loading="lazy"
                     />
                 </div>
 

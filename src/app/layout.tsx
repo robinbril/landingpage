@@ -156,6 +156,8 @@ export default function RootLayout({
   return (
     <html lang="nl" suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <JsonLd data={organizationSchema()} />
         <JsonLd data={websiteSchema()} />
         <GoogleAnalytics />

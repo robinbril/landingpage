@@ -1,19 +1,30 @@
 import { Metadata } from "next";
+import dynamic from "next/dynamic";
 import Navbar from "@/components/sections/navbar";
 import Hero from "@/components/sections/hero";
 import CompanySlider from "@/components/sections/company-slider";
-import Projects from "@/components/sections/projects";
-import Services from "@/components/sections/services";
 // import Testimonials from "@/components/sections/testimonials";
-import AgentOrgVisual from "@/components/sections/agent-org-visual";
 import Footer from "@/components/sections/footer";
-import AIChatWidget from "@/components/ai-chat-widget";
 import IntakeExplanationSection from "@/components/sections/intake-explanation-section";
 import GuaranteeSection from "@/components/sections/guarantee-section";
 import { generateMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/lib/config";
 import JsonLd from "@/components/seo/json-ld";
 import { faqSchema, testimonialsSchema, servicesSchema, workshopSchema } from "@/lib/schema";
+
+// Dynamic imports for below-the-fold components
+const AgentOrgVisual = dynamic(() => import("@/components/sections/agent-org-visual"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+const Services = dynamic(() => import("@/components/sections/services"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+const Projects = dynamic(() => import("@/components/sections/projects"), {
+  loading: () => <div className="min-h-[400px]" />,
+});
+const AIChatWidget = dynamic(() => import("@/components/ai-chat-widget"), {
+  ssr: false,
+});
 
 // FAQ data aligned with actual offerings
 const faqData = {

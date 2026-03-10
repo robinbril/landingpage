@@ -453,6 +453,16 @@ a:hover {
   animation: pulseGlow 2s infinite;
 }
 
+/* Agent node floating animation - CSS instead of JS for performance */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+  will-change: transform;
+}
+
 /* Noise texture overlay utility */
 .noise-overlay {
   position: relative;
