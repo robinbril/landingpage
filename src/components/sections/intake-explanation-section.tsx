@@ -5,11 +5,9 @@ import { motion } from "framer-motion";
 import { Calendar, FileText, Rocket, ArrowRight, ChevronRight, Phone, Mail, MessageCircle, Check } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/language-context";
 import { Button } from "@/components/ui/button";
-import DemoRequestModal from "@/components/demo-request-modal";
 
 export default function IntakeExplanationSection() {
     const { language } = useLanguage();
-    const [isModalOpen, setIsModalOpen] = useState(false);
     const [showContact, setShowContact] = useState(false);
 
     const steps = [
@@ -44,36 +42,61 @@ export default function IntakeExplanationSection() {
     ];
 
     return (
-        <section className="py-10 sm:py-16 bg-background relative overflow-hidden" id="intake">
-            <div className="container mx-auto px-4 relative z-10">
+        <section className="py-16 sm:py-24 bg-background relative overflow-hidden" id="intake">
+            <div id="ready-to-start" className="container mx-auto px-4 relative z-10">
                 <div className="max-w-5xl mx-auto">
                     {/* Header */}
-                    <div className="text-center mb-16">
+                    <div className="text-center mb-8">
                         <motion.h2
-                            className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 px-4"
+                            className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 px-4"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                         >
-                            {language === 'nl' ? 'Hoe werkt het?' : 'How does it work?'}
+                            {language === 'nl' ? 'Klaar om te beginnen?' : 'Ready to start?'}
                         </motion.h2>
 
                         <motion.p
-                            className="text-base sm:text-lg text-muted-foreground px-4"
+                            className="text-base sm:text-lg text-muted-foreground px-4 mb-8"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: 0.1 }}
                         >
                             {language === 'nl'
-                                ? 'Van kennismaking tot werkende agents in 4 stappen'
-                                : 'From introduction to working agents in 4 steps'}
+                                ? '30 minuten. Gratis. Geen verplichtingen.'
+                                : '30 minutes. Free. No commitments.'}
                         </motion.p>
+
+                        {/* Primary CTA - right below title */}
+                        <motion.div
+                            className="flex justify-center mb-16"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.2 }}
+                        >
+                            <Button
+                                size="lg"
+                                asChild
+                                className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 sm:px-12 py-5 sm:py-6 text-base sm:text-lg rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+                            >
+                                <a
+                                    href="https://calendly.com/quotum-consulting/30min"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center justify-center gap-2"
+                                >
+                                    {language === 'nl' ? 'Plan een gesprek' : 'Schedule a call'}
+                                    <ArrowRight className="h-5 w-5" />
+                                </a>
+                            </Button>
+                        </motion.div>
                     </div>
 
-                    {/* Steps with Progress Bar */}
-                    <div className="relative mb-32">
-                        {/* Progress bar container */}
+                    {/* Steps */}
+                    <div className="relative mb-16">
+                        {/* Progress bar */}
                         <div className="absolute top-[60px] left-0 right-0 h-1 bg-[#e67e22]/20 hidden md:block">
                             <motion.div
                                 className="h-full bg-gradient-to-r from-orange-500 to-orange-600 rounded-full"
@@ -96,7 +119,6 @@ export default function IntakeExplanationSection() {
                                         viewport={{ once: true }}
                                         transition={{ delay: 0.1 * index }}
                                     >
-                                        {/* Step number badge - centered at top */}
                                         <div className="flex justify-center mb-6">
                                             <motion.div
                                                 className="w-12 h-12 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold text-xl shadow-lg z-10 relative"
@@ -109,16 +131,12 @@ export default function IntakeExplanationSection() {
                                             </motion.div>
                                         </div>
 
-                                        {/* Card */}
                                         <div className="bg-card border border-border rounded-xl p-6 h-full text-center">
                                             <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4 mx-auto">
                                                 <Icon className="h-7 w-7 text-primary" />
                                             </div>
-
                                             <h3 className="font-semibold text-xl mb-3">{step.title}</h3>
-                                            <p className="text-muted-foreground leading-relaxed">
-                                                {step.description}
-                                            </p>
+                                            <p className="text-muted-foreground leading-relaxed">{step.description}</p>
                                         </div>
                                     </motion.div>
                                 );
@@ -126,52 +144,14 @@ export default function IntakeExplanationSection() {
                         </div>
                     </div>
 
-                    {/* Clean CTA Section */}
-                    <motion.div
-                        id="ready-to-start"
-                        className="bg-card border border-border rounded-2xl p-8 sm:p-12 text-center shadow-sm"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.4 }}
-                    >
-                        <h3 className="text-2xl sm:text-3xl font-bold mb-3 text-foreground">
-                            {language === 'nl' ? 'Klaar om te beginnen?' : 'Ready to start?'}
-                        </h3>
-
-                        <p className="text-base sm:text-lg text-muted-foreground mb-8">
-                            {language === 'nl'
-                                ? '30 minuten. Gratis. Geen verplichtingen.'
-                                : '30 minutes. Free. No commitments.'}
-                        </p>
-
-                        {/* Primary CTA */}
-                        <div className="mb-6 flex justify-center">
-                            <Button
-                                size="lg"
-                                asChild
-                                className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 sm:px-12 py-5 sm:py-6 text-base sm:text-lg rounded-xl shadow-md hover:shadow-lg transition-all duration-300 w-full sm:w-auto"
-                            >
-                                <a
-                                    href="https://calendly.com/quotum-consulting/30min"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center justify-center gap-2"
-                                >
-                                    {language === 'nl' ? 'Plan een gesprek' : 'Schedule a call'}
-                                    <ArrowRight className="h-5 w-5" />
-                                </a>
-                            </Button>
-                        </div>
-
-                        {/* Simple reassurance */}
-                        <p className="text-sm text-muted-foreground">
+                    {/* Bottom: reassurance + contact */}
+                    <div className="text-center">
+                        <p className="text-sm text-muted-foreground mb-4">
                             {language === 'nl'
                                 ? 'Geen verplichtingen. Geen verborgen kosten.'
                                 : 'No obligations. No hidden costs.'}
                         </p>
 
-                        {/* Contact Accordion */}
                         <div className="max-w-sm mx-auto">
                             <button
                                 onClick={() => setShowContact(!showContact)}
@@ -183,7 +163,6 @@ export default function IntakeExplanationSection() {
                                 />
                             </button>
 
-                            {/* Accordion content */}
                             {showContact && (
                                 <motion.div
                                     initial={{ opacity: 0, height: 0 }}
@@ -217,13 +196,9 @@ export default function IntakeExplanationSection() {
                                 </motion.div>
                             )}
                         </div>
-                    </motion.div>
+                    </div>
                 </div>
             </div>
-
-
-            {/* Demo Request Modal */}
-            <DemoRequestModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </section>
     );
 }

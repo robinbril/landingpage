@@ -19,6 +19,7 @@ import {
   X,
   ArrowRight,
   Zap,
+  ChevronDown,
 } from "lucide-react";
 import { scrollToSection } from "@/lib/scroll-utils";
 
@@ -152,7 +153,7 @@ const AGENT_NODES: AgentNode[] = [
   },
 ];
 
-// ─── SVG Connection Lines ────────────────────────────────────────────────────
+// ─── SVG Connection Lines (desktop only) ────────────────────────────────────
 
 function ConnectionLines({
   agents,
@@ -223,7 +224,7 @@ function ConnectionLines({
   );
 }
 
-// ─── Department Node ─────────────────────────────────────────────────────────
+// ─── Department Node (desktop network) ──────────────────────────────────────
 
 function DeptNode({ dept, isHighlighted, language, delay }: {
   dept: Department; isHighlighted: boolean; language: string; delay: number;
@@ -238,14 +239,14 @@ function DeptNode({ dept, isHighlighted, language, delay }: {
       className="absolute flex flex-col items-center gap-1.5"
       style={{ left: `${dept.x}%`, top: `${dept.y}%`, zIndex: 2 }}
     >
-      <div className={`w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-lg sm:rounded-xl lg:rounded-2xl border-2 flex items-center justify-center transition-all duration-300 ${
+      <div className={`w-12 h-12 lg:w-14 lg:h-14 rounded-xl lg:rounded-2xl border-2 flex items-center justify-center transition-all duration-300 ${
         isHighlighted
           ? "bg-[#4a2c2a] border-[#4a2c2a] shadow-lg shadow-[#4a2c2a]/30 scale-110"
           : "bg-white/80 border-[#4a2c2a]/20"
       }`}>
-        <Icon className={`h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6 transition-colors ${isHighlighted ? "text-[#fdf2e9]" : "text-[#4a2c2a]"}`} />
+        <Icon className={`h-5 w-5 lg:h-6 lg:w-6 transition-colors ${isHighlighted ? "text-[#fdf2e9]" : "text-[#4a2c2a]"}`} />
       </div>
-      <span className={`text-[9px] sm:text-[10px] lg:text-[11px] font-bold whitespace-nowrap transition-colors ${
+      <span className={`text-[10px] lg:text-[11px] font-bold whitespace-nowrap transition-colors ${
         isHighlighted ? "text-[#4a2c2a]" : "text-[#8e6d6b]"
       }`}>
         {language === "nl" ? dept.labelNL : dept.labelEN}
@@ -254,9 +255,9 @@ function DeptNode({ dept, isHighlighted, language, delay }: {
   );
 }
 
-// ─── Agent Node ──────────────────────────────────────────────────────────────
+// ─── Agent Node (desktop network) ───────────────────────────────────────────
 
-function AgentNodeComponent({ agent, isActive, onClick, language, delay }: {
+function AgentNodeDesktop({ agent, isActive, onClick, language, delay }: {
   agent: AgentNode; isActive: boolean; onClick: () => void; language: string; delay: number;
 }) {
   const isNL = language === "nl";
@@ -280,15 +281,15 @@ function AgentNodeComponent({ agent, isActive, onClick, language, delay }: {
           <div className={`absolute -inset-1.5 rounded-full bg-gradient-to-br from-[#e67e22] to-[#ff7f50] transition-opacity ${
             isActive ? "opacity-40 animate-pulse" : "opacity-0 group-hover:opacity-25"
           }`} />
-          <div className={`relative w-9 h-9 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full flex items-center justify-center transition-all duration-300 ${
+          <div className={`relative w-10 h-10 lg:w-12 lg:h-12 rounded-full flex items-center justify-center transition-all duration-300 ${
             isActive
               ? "bg-gradient-to-br from-[#e67e22] to-[#ff7f50] shadow-xl shadow-[#e67e22]/40"
               : "bg-gradient-to-br from-[#e67e22] to-[#ff7f50] shadow-md shadow-[#e67e22]/20 group-hover:shadow-lg"
           }`}>
-            <Bot className="h-4 w-4 sm:h-4 sm:w-4 lg:h-5 lg:w-5 text-white" />
+            <Bot className="h-4 w-4 lg:h-5 lg:w-5 text-white" />
           </div>
         </div>
-        <span className="text-[8px] sm:text-[9px] lg:text-[10px] font-bold text-[#e67e22] whitespace-nowrap max-w-[70px] sm:max-w-[85px] lg:max-w-[100px] text-center leading-tight">
+        <span className="text-[9px] lg:text-[10px] font-bold text-[#e67e22] whitespace-nowrap max-w-[85px] lg:max-w-[100px] text-center leading-tight">
           {isNL ? agent.labelNL : agent.labelEN}
         </span>
       </motion.div>
@@ -296,23 +297,24 @@ function AgentNodeComponent({ agent, isActive, onClick, language, delay }: {
   );
 }
 
-// ─── Detail Panel (Right Side) ──────────────────────────────────────────────
+// ─── Detail Panel ───────────────────────────────────────────────────────────
 
 function DetailPanel({ agent, language, onClose }: {
   agent: AgentNode | null; language: string; onClose: () => void;
 }) {
   const isNL = language === "nl";
+  const deptMap = Object.fromEntries(DEPARTMENTS.map((d) => [d.id, d]));
 
   return (
     <AnimatePresence mode="wait">
       {agent ? (
         <motion.div
           key={agent.id}
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: 20 }}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 10 }}
           transition={{ duration: 0.25 }}
-          className="bg-white border border-[#4a2c2a]/10 rounded-2xl p-5 shadow-lg h-fit"
+          className="bg-white border border-[#4a2c2a]/10 rounded-2xl p-5 shadow-lg"
         >
           <div className="flex items-start justify-between mb-3">
             <div className="flex items-center gap-2.5">
@@ -323,9 +325,17 @@ function DetailPanel({ agent, language, onClose }: {
                 <h4 className="text-sm font-bold text-[#4a2c2a]">
                   {isNL ? agent.labelNL : agent.labelEN} Agent
                 </h4>
-                <p className="text-[10px] font-semibold uppercase tracking-wider text-[#8e6d6b]">
-                  {agent.connects.length} {isNL ? "afdelingen verbonden" : "departments connected"}
-                </p>
+                <div className="flex flex-wrap gap-1 mt-1">
+                  {agent.connects.map((deptId) => {
+                    const dept = deptMap[deptId];
+                    if (!dept) return null;
+                    return (
+                      <span key={deptId} className="text-[9px] px-1.5 py-0.5 rounded-full bg-[#4a2c2a]/5 text-[#8e6d6b] font-medium">
+                        {isNL ? dept.labelNL : dept.labelEN}
+                      </span>
+                    );
+                  })}
+                </div>
               </div>
             </div>
             <button onClick={onClose} className="p-1 hover:bg-[#fdf2e9] rounded-lg transition-colors">
@@ -354,30 +364,140 @@ function DetailPanel({ agent, language, onClose }: {
             <ArrowRight className="h-3 w-3" />
           </button>
         </motion.div>
-      ) : (
-        <div className="h-fit min-h-[200px]" />
-      )}
+      ) : null}
     </AnimatePresence>
   );
 }
 
-// ─── Animated Cursor Hint ────────────────────────────────────────────────────
+// ─── Mobile Agent Card ──────────────────────────────────────────────────────
+
+function MobileAgentCard({ agent, isActive, onClick, language }: {
+  agent: AgentNode; isActive: boolean; onClick: () => void; language: string;
+}) {
+  const isNL = language === "nl";
+  const deptMap = Object.fromEntries(DEPARTMENTS.map((d) => [d.id, d]));
+  const Icon = agent.icon;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="w-full"
+    >
+      <button
+        onClick={onClick}
+        className={`w-full text-left rounded-xl border transition-all duration-200 ${
+          isActive
+            ? "bg-white border-[#e67e22]/30 shadow-md"
+            : "bg-white/60 border-[#4a2c2a]/8 hover:border-[#e67e22]/20"
+        }`}
+      >
+        <div className="flex items-center gap-3 p-3">
+          <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 transition-all ${
+            isActive
+              ? "bg-gradient-to-br from-[#e67e22] to-[#ff7f50] shadow-md shadow-[#e67e22]/30"
+              : "bg-gradient-to-br from-[#e67e22]/80 to-[#ff7f50]/80"
+          }`}>
+            <Bot className="h-4 w-4 text-white" />
+          </div>
+          <div className="flex-1 min-w-0">
+            <div className="text-sm font-bold text-[#4a2c2a] truncate">
+              {isNL ? agent.labelNL : agent.labelEN}
+            </div>
+            <div className="text-xs text-[#8e6d6b] truncate">
+              {agent.connects.length} {isNL ? "afdelingen" : "departments"}
+            </div>
+          </div>
+          <ChevronDown className={`h-4 w-4 text-[#8e6d6b] flex-shrink-0 transition-transform duration-200 ${isActive ? "rotate-180" : ""}`} />
+        </div>
+      </button>
+
+      <AnimatePresence>
+        {isActive && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
+            className="overflow-hidden"
+          >
+            <div className="px-3 pb-3 pt-1">
+              <div className="bg-white rounded-xl border border-[#4a2c2a]/5 p-3.5">
+                <p className="text-sm text-[#4a2c2a]/70 mb-3 leading-relaxed">
+                  {isNL ? agent.descNL : agent.descEN}
+                </p>
+
+                <div className="flex flex-wrap gap-1 mb-3">
+                  {agent.connects.map((deptId) => {
+                    const dept = deptMap[deptId];
+                    if (!dept) return null;
+                    const DeptIcon = dept.icon;
+                    return (
+                      <span key={deptId} className="inline-flex items-center gap-1 text-[10px] px-2 py-1 rounded-full bg-[#4a2c2a]/5 text-[#8e6d6b] font-medium">
+                        <DeptIcon className="h-3 w-3" />
+                        {isNL ? dept.labelNL : dept.labelEN}
+                      </span>
+                    );
+                  })}
+                </div>
+
+                <div className="space-y-1.5 mb-3">
+                  {(isNL ? agent.detailNL : agent.detailEN).map((item, i) => (
+                    <div key={i} className="flex items-start gap-2 text-xs text-[#4a2c2a]/80">
+                      <Zap className="h-3 w-3 text-[#e67e22] flex-shrink-0 mt-0.5" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+
+                <button
+                  onClick={() => scrollToSection("ready-to-start")}
+                  className="w-full flex items-center justify-center gap-1.5 min-h-[44px] px-3 py-2.5 rounded-xl bg-[#4a2c2a] text-white text-xs font-medium hover:bg-[#3a1c1a] transition-colors"
+                >
+                  {isNL ? "Plan afspraak" : "Book a call"}
+                  <ArrowRight className="h-3 w-3" />
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+}
+
+// ─── Animated Cursor Hint (desktop only) ────────────────────────────────────
 
 function AnimatedCursorHint({
   containerWidth,
   containerHeight,
+  inView,
 }: {
   containerWidth: number;
   containerHeight: number;
+  inView: boolean;
 }) {
-  // Target position: order-agent node at x:42, y:38
-  const targetX = (42 / 100) * containerWidth;
-  const targetY = (38 / 100) * containerHeight;
+  const [hasPlayed, setHasPlayed] = useState(false);
+
+  useEffect(() => {
+    if (inView && !hasPlayed) {
+      const timer = setTimeout(() => setHasPlayed(true), 4000);
+      return () => clearTimeout(timer);
+    }
+  }, [inView, hasPlayed]);
+
+  if (!inView || hasPlayed) return null;
+
+  const targetX = (25 / 100) * containerWidth;
+  const targetY = (12 / 100) * containerHeight;
+  const startX = (42 / 100) * containerWidth;
+  const startY = (38 / 100) * containerHeight;
 
   return (
     <motion.div
       className="absolute pointer-events-none"
-      style={{ left: 0, top: 0, width: "100%", height: "100%" }}
+      style={{ left: 0, top: 0, width: "100%", height: "100%", zIndex: 30 }}
     >
       <motion.svg
         width="24"
@@ -386,24 +506,19 @@ function AnimatedCursorHint({
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         className="absolute"
-        style={{
-          left: targetX,
-          top: targetY,
-          transform: "translate(-6px, -6px)",
-        }}
-        initial={{ opacity: 0, x: -100, y: -100 }}
+        initial={{ opacity: 0, left: startX, top: startY }}
         animate={{
-          opacity: [1, 1, 0],
-          x: [0, 0, 0],
-          y: [0, 0, 0],
+          opacity: [0, 1, 1, 1, 0],
+          left: [startX, startX, targetX, targetX, targetX],
+          top: [startY, startY, targetY, targetY, targetY],
         }}
         transition={{
           duration: 3.5,
-          times: [0, 0.7, 1],
+          times: [0, 0.15, 0.55, 0.8, 1],
           ease: "easeInOut",
+          delay: 1.5,
         }}
       >
-        {/* Standard pointer cursor arrow */}
         <path
           d="M3 3L10.5 17.5L13 12.5L19 13.5L3 3Z"
           fill="#e67e22"
@@ -412,24 +527,19 @@ function AnimatedCursorHint({
         />
       </motion.svg>
 
-      {/* Click pulse animation at target */}
       <motion.div
         className="absolute rounded-full border-2 border-[#e67e22]"
-        style={{
-          width: 40,
-          height: 40,
-          left: targetX - 20,
-          top: targetY - 20,
-        }}
-        initial={{ scale: 0.8, opacity: 0 }}
+        style={{ width: 40, height: 40 }}
+        initial={{ opacity: 0, left: targetX - 20, top: targetY - 20, scale: 0.5 }}
         animate={{
-          scale: [0.8, 1.2, 1.2],
-          opacity: [0, 1, 0],
+          opacity: [0, 0, 0, 0.8, 0],
+          scale: [0.5, 0.5, 0.5, 1.3, 1.5],
         }}
         transition={{
           duration: 3.5,
-          times: [0, 0.7, 1],
+          times: [0, 0.15, 0.55, 0.75, 1],
           ease: "easeOut",
+          delay: 1.5,
         }}
       />
     </motion.div>
@@ -441,7 +551,7 @@ function AnimatedCursorHint({
 export default function AgentOrgVisual() {
   const { language } = useLanguage();
   const isNL = language === "nl";
-  const [activeAgent, setActiveAgent] = useState<string | null>(null);
+  const [activeAgent, setActiveAgent] = useState<string | null>("order-agent");
   const containerRef = useRef<HTMLDivElement>(null);
   const [dims, setDims] = useState({ w: 900, h: 500 });
   const { ref: sectionRef, inView } = useInView({ triggerOnce: true, threshold: 0.15 });
@@ -496,60 +606,60 @@ export default function AgentOrgVisual() {
           </p>
         </motion.div>
 
-        {/* Grid: Network left, Detail panel right */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-4 lg:gap-6 items-start mx-auto max-w-4xl lg:max-w-6xl">
-          {/* Network visualization */}
-          <div
-            ref={containerRef}
-            className="relative w-full"
-            style={{ height: "clamp(380px, 50vw, 460px)" }}
-            onClick={(e) => {
-              if (e.target === e.currentTarget) setActiveAgent(null);
-            }}
-          >
+        {/* ── Desktop: Network visualization + detail below ── */}
+        <div className="hidden md:block">
+          <div className="relative mx-auto max-w-3xl">
             <div
-              className="absolute inset-0 opacity-[0.04]"
-              style={{
-                backgroundImage: `radial-gradient(circle, #4a2c2a 1px, transparent 1px)`,
-                backgroundSize: "32px 32px",
+              ref={containerRef}
+              className="relative w-full"
+              style={{ height: "clamp(380px, 45vw, 460px)" }}
+              onClick={(e) => {
+                if (e.target === e.currentTarget) setActiveAgent(null);
               }}
-            />
-
-            <ConnectionLines
-              agents={AGENT_NODES}
-              departments={DEPARTMENTS}
-              activeAgent={activeAgent}
-              containerWidth={dims.w}
-              containerHeight={dims.h}
-            />
-
-            {DEPARTMENTS.map((dept, i) => (
-              <DeptNode
-                key={dept.id}
-                dept={dept}
-                isHighlighted={highlightedDepts.includes(dept.id)}
-                language={language}
-                delay={0.1 * i}
+            >
+              <div
+                className="absolute inset-0 opacity-[0.04]"
+                style={{
+                  backgroundImage: `radial-gradient(circle, #4a2c2a 1px, transparent 1px)`,
+                  backgroundSize: "32px 32px",
+                }}
               />
-            ))}
 
-            {AGENT_NODES.map((agent, i) => (
-              <AgentNodeComponent
-                key={agent.id}
-                agent={agent}
-                isActive={activeAgent === agent.id}
-                onClick={() => handleAgentClick(agent.id)}
-                language={language}
-                delay={0.3 + 0.08 * i}
+              <ConnectionLines
+                agents={AGENT_NODES}
+                departments={DEPARTMENTS}
+                activeAgent={activeAgent}
+                containerWidth={dims.w}
+                containerHeight={dims.h}
               />
-            ))}
 
-            {/* Animated cursor hint */}
-            <AnimatedCursorHint containerWidth={dims.w} containerHeight={dims.h} />
+              {DEPARTMENTS.map((dept, i) => (
+                <DeptNode
+                  key={dept.id}
+                  dept={dept}
+                  isHighlighted={highlightedDepts.includes(dept.id)}
+                  language={language}
+                  delay={0.1 * i}
+                />
+              ))}
+
+              {AGENT_NODES.map((agent, i) => (
+                <AgentNodeDesktop
+                  key={agent.id}
+                  agent={agent}
+                  isActive={activeAgent === agent.id}
+                  onClick={() => handleAgentClick(agent.id)}
+                  language={language}
+                  delay={0.3 + 0.08 * i}
+                />
+              ))}
+
+              <AnimatedCursorHint containerWidth={dims.w} containerHeight={dims.h} inView={inView} />
+            </div>
           </div>
 
-          {/* Detail panel (right side, desktop only visible as panel, mobile below) */}
-          <div className="hidden lg:block sticky top-24">
+          {/* Detail panel below network, centered */}
+          <div className="mx-auto max-w-md mt-6">
             <DetailPanel
               agent={activeAgentData}
               language={language}
@@ -558,13 +668,17 @@ export default function AgentOrgVisual() {
           </div>
         </div>
 
-        {/* Mobile: detail panel as bottom sheet */}
-        <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-[#4a2c2a]/10 rounded-t-2xl shadow-2xl max-h-[60vh] overflow-y-auto p-4">
-          <DetailPanel
-            agent={activeAgentData}
-            language={language}
-            onClose={() => setActiveAgent(null)}
-          />
+        {/* ── Mobile: Accordion list of agents ── */}
+        <div className="md:hidden space-y-2">
+          {AGENT_NODES.map((agent) => (
+            <MobileAgentCard
+              key={agent.id}
+              agent={agent}
+              isActive={activeAgent === agent.id}
+              onClick={() => handleAgentClick(agent.id)}
+              language={language}
+            />
+          ))}
         </div>
       </div>
     </section>

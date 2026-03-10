@@ -18,7 +18,7 @@ const INITIAL_MESSAGES_NL: Message[] = [
     id: "welcome",
     role: "assistant",
     content:
-      "Hey! Robin hier. Vertel me waar je tegenaan loopt — welk proces kost te veel tijd of handjes? Dan kijk ik of een AI-agent dat kan overnemen.",
+      "Hey! Vertel me welk proces te veel tijd of handjes kost. Ik bekijk of een AI-agent dat kan overnemen.",
     timestamp: new Date(),
   },
 ];
@@ -28,7 +28,7 @@ const INITIAL_MESSAGES_EN: Message[] = [
     id: "welcome",
     role: "assistant",
     content:
-      "Hey! Robin here. Tell me what you're dealing with — which process is eating too much time? I'll see if an AI agent can take it over.",
+      "Hey! Tell me which process is eating too much time or resources. I'll check if an AI agent can take it over.",
     timestamp: new Date(),
   },
 ];
@@ -171,13 +171,16 @@ export default function AIChatWidget() {
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#4a2c2a] text-white shadow-2xl flex items-center justify-center"
+            className="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 bg-[#4a2c2a] text-white shadow-2xl rounded-full pl-5 pr-4 py-3"
             aria-label={language === "nl" ? "Chat met Robin" : "Chat with Robin"}
           >
-            <MessageCircle className="h-6 w-6" />
+            <span className="text-sm font-medium whitespace-nowrap">
+              {language === "nl" ? "Even sparren?" : "Let's talk?"}
+            </span>
+            <MessageCircle className="h-5 w-5 flex-shrink-0" />
           </motion.button>
         )}
       </AnimatePresence>
@@ -203,9 +206,8 @@ export default function AIChatWidget() {
                   <div className="font-bold text-sm text-[#4a2c2a]">
                     Robin Bril
                   </div>
-                  <div className="text-xs text-green-600 flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 inline-block" />
-                    {language === "nl" ? "Online" : "Online"}
+                  <div className="text-xs text-[#8e6d6b]">
+                    AI Engineer
                   </div>
                 </div>
               </div>

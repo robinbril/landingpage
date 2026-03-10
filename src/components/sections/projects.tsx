@@ -47,7 +47,7 @@ const EXPERIENCE: ExperienceEntry[] = [
     tags: ["Multi-agent AI", "RAG", "MCP"],
   },
   {
-    company: "Capgemini × Min. van Defensie",
+    company: "Capgemini / Ministerie van Defensie",
     role: {
       nl: "AI Consultant",
       en: "AI Consultant",
@@ -57,7 +57,7 @@ const EXPERIENCE: ExperienceEntry[] = [
     tags: ["Multi-agent AI", "MCP-servers", "On-premise"],
   },
   {
-    company: "ROAD (eFlux)",
+    company: "E-flux by Road",
     role: {
       nl: "Data & AI Analyst",
       en: "Data & AI Analyst",
@@ -106,7 +106,7 @@ const TESTIMONIALS = [
       en: "Robin is an exceptionally skilled professional. His analytical capabilities are top-notch, consistently delivering insights that drive informed business decisions.",
     },
     author: "Giulio Piccolo",
-    role: "Lead Data Engineer, Capgemini",
+    role: "Lead Data Engineer, E-flux by Road",
   },
 ];
 
@@ -305,8 +305,8 @@ export default function Projects() {
                 </div>
                 <div className="space-y-2">
                   <div>
-                    <p className="text-xs font-semibold text-[#4a2c2a]">BSc Bedrijfskunde (cum laude)</p>
-                    <p className="text-[10px] text-[#8e6d6b]">Hogeschool van Amsterdam</p>
+                    <p className="text-xs font-semibold text-[#4a2c2a]">Bachelor Business Administration (cum laude)</p>
+                    <p className="text-[10px] text-[#8e6d6b]">Hogeschool van Amsterdam · Data Analytics</p>
                   </div>
                   <div>
                     <p className="text-xs font-semibold text-[#4a2c2a]">Azure AI Engineer (AI-102)</p>

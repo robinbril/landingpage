@@ -19,6 +19,13 @@ export default function ParticleHeroBg() {
 
     const init = async () => {
       try {
+        // Skip loading Three.js if user prefers reduced motion
+        const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        if (prefersReduced) return;
+
+        // Only initialize Three.js if container is in viewport
+        if (!containerRef.current) return;
+
         const THREE = await import("three");
         const { OrbitControls } = await import("three/addons/controls/OrbitControls.js");
         const { PCDLoader } = await import("three/addons/loaders/PCDLoader.js");
@@ -35,7 +42,7 @@ export default function ParticleHeroBg() {
         );
         camera.position.set(0.0, 0.0, 0.7);
 
-        renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer = new THREE.WebGLRenderer({ antialias: !isMobile, alpha: true, powerPreference: "low-power" });
         renderer.setSize(
           containerRef.current!.clientWidth,
           containerRef.current!.clientHeight
@@ -132,6 +139,16 @@ export default function ParticleHeroBg() {
         return () => {
           window.removeEventListener("resize", handleResize);
           cancelAnimationFrame(animFrameId);
+
+          // Properly dispose geometries and materials
+          scene.traverse((obj: any) => {
+            if (obj.geometry) obj.geometry.dispose();
+            if (obj.material) {
+              if (Array.isArray(obj.material)) obj.material.forEach((m: any) => m.dispose());
+              else obj.material.dispose();
+            }
+          });
+
           controls.dispose();
           renderer.dispose();
           if (containerRef.current && renderer.domElement.parentNode === containerRef.current) {

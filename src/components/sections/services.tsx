@@ -24,6 +24,8 @@ interface Agent {
   priceRange: [number, number];
   avgTimeSavedHoursWeek: number;
   avgROIPercent: number;
+  toolsNL: string;
+  toolsEN: string;
 }
 
 interface Category {
@@ -45,11 +47,11 @@ const CATEGORIES: Category[] = [
     subtitleNL: "Tickets, onboarding, reviews, chat",
     subtitleEN: "Tickets, onboarding, reviews, chat",
     agents: [
-      { id: "klantenservice", titleNL: "Klantenservice Agent", titleEN: "Customer Service Agent", descNL: "Beantwoordt 80% van tickets zelfstandig, escaleert de rest", descEN: "Resolves 80% of tickets independently, escalates the rest", complexity: "medium", priceRange: [5000, 10000], avgTimeSavedHoursWeek: 30, avgROIPercent: 340 },
-      { id: "onboarding-klant", titleNL: "Onboarding Agent", titleEN: "Onboarding Agent", descNL: "Begeleidt nieuwe klanten stap-voor-stap door setup", descEN: "Guides new customers step-by-step through setup", complexity: "medium", priceRange: [5000, 10000], avgTimeSavedHoursWeek: 15, avgROIPercent: 280 },
-      { id: "whatsapp-chat", titleNL: "WhatsApp/Chat Agent", titleEN: "WhatsApp/Chat Agent", descNL: "24/7 beschikbaar op alle kanalen", descEN: "Available 24/7 on all channels", complexity: "medium", priceRange: [5000, 12000], avgTimeSavedHoursWeek: 25, avgROIPercent: 380 },
-      { id: "retentie", titleNL: "Retentie Agent", titleEN: "Retention Agent", descNL: "Detecteert churn-signalen en start win-back flows", descEN: "Detects churn signals and starts win-back flows", complexity: "high", priceRange: [10000, 20000], avgTimeSavedHoursWeek: 10, avgROIPercent: 420 },
-      { id: "review", titleNL: "Review Agent", titleEN: "Review Agent", descNL: "Verzamelt reviews, reageert op negatieve reviews", descEN: "Collects reviews, responds to negative reviews", complexity: "low", priceRange: [2500, 5000], avgTimeSavedHoursWeek: 8, avgROIPercent: 260 },
+      { id: "klantenservice", titleNL: "Klantenservice Agent", titleEN: "Customer Service Agent", descNL: "Beantwoordt 80% van tickets zelfstandig, escaleert de rest", descEN: "Resolves 80% of tickets independently, escalates the rest", complexity: "medium", priceRange: [5000, 10000], avgTimeSavedHoursWeek: 30, avgROIPercent: 340, toolsNL: "Zendesk, Intercom, WhatsApp Business API, Slack", toolsEN: "Zendesk, Intercom, WhatsApp Business API, Slack" },
+      { id: "onboarding-klant", titleNL: "Onboarding Agent", titleEN: "Onboarding Agent", descNL: "Begeleidt nieuwe klanten stap-voor-stap door setup", descEN: "Guides new customers step-by-step through setup", complexity: "medium", priceRange: [5000, 10000], avgTimeSavedHoursWeek: 15, avgROIPercent: 280, toolsNL: "HubSpot, Intercom, Calendly, Notion", toolsEN: "HubSpot, Intercom, Calendly, Notion" },
+      { id: "whatsapp-chat", titleNL: "WhatsApp/Chat Agent", titleEN: "WhatsApp/Chat Agent", descNL: "24/7 beschikbaar op alle kanalen", descEN: "Available 24/7 on all channels", complexity: "medium", priceRange: [5000, 12000], avgTimeSavedHoursWeek: 25, avgROIPercent: 380, toolsNL: "WhatsApp Business API, Twilio, Zendesk", toolsEN: "WhatsApp Business API, Twilio, Zendesk" },
+      { id: "retentie", titleNL: "Retentie Agent", titleEN: "Retention Agent", descNL: "Detecteert churn-signalen en start win-back flows", descEN: "Detects churn signals and starts win-back flows", complexity: "high", priceRange: [10000, 20000], avgTimeSavedHoursWeek: 10, avgROIPercent: 420, toolsNL: "HubSpot, ActiveCampaign, Mixpanel", toolsEN: "HubSpot, ActiveCampaign, Mixpanel" },
+      { id: "review", titleNL: "Review Agent", titleEN: "Review Agent", descNL: "Verzamelt reviews, reageert op negatieve reviews", descEN: "Collects reviews, responds to negative reviews", complexity: "low", priceRange: [2500, 5000], avgTimeSavedHoursWeek: 8, avgROIPercent: 260, toolsNL: "Google Business, Trustpilot, Slack", toolsEN: "Google Business, Trustpilot, Slack" },
     ],
   },
   {
@@ -59,11 +61,11 @@ const CATEGORIES: Category[] = [
     subtitleNL: "Leads, outreach, offertes, content",
     subtitleEN: "Leads, outreach, proposals, content",
     agents: [
-      { id: "lead-qualifying", titleNL: "Lead Qualifying Agent", titleEN: "Lead Qualifying Agent", descNL: "Scoort en kwalificeert inbound leads, plant meetings", descEN: "Scores and qualifies inbound leads, schedules meetings", complexity: "medium", priceRange: [5000, 10000], avgTimeSavedHoursWeek: 20, avgROIPercent: 450 },
-      { id: "outbound", titleNL: "Outbound Agent", titleEN: "Outbound Agent", descNL: "Gepersonaliseerde outreach op schaal", descEN: "Personalized outreach at scale", complexity: "medium", priceRange: [5000, 12000], avgTimeSavedHoursWeek: 15, avgROIPercent: 320 },
-      { id: "offerte", titleNL: "Offerte Agent", titleEN: "Proposal Agent", descNL: "Genereert offertes op basis van klantgesprek", descEN: "Generates proposals based on client conversations", complexity: "high", priceRange: [8000, 15000], avgTimeSavedHoursWeek: 12, avgROIPercent: 290 },
-      { id: "follow-up", titleNL: "Follow-up Agent", titleEN: "Follow-up Agent", descNL: "Volgt prospects op tot ze reageren", descEN: "Follows up with prospects until they respond", complexity: "low", priceRange: [2500, 5000], avgTimeSavedHoursWeek: 10, avgROIPercent: 380 },
-      { id: "content", titleNL: "Content Agent", titleEN: "Content Agent", descNL: "Blog posts, social, newsletters vanuit je kennisbank", descEN: "Blog posts, social, newsletters from your knowledge base", complexity: "medium", priceRange: [5000, 10000], avgTimeSavedHoursWeek: 12, avgROIPercent: 250 },
+      { id: "lead-qualifying", titleNL: "Lead Qualifying Agent", titleEN: "Lead Qualifying Agent", descNL: "Scoort en kwalificeert inbound leads, plant meetings", descEN: "Scores and qualifies inbound leads, schedules meetings", complexity: "medium", priceRange: [5000, 10000], avgTimeSavedHoursWeek: 20, avgROIPercent: 450, toolsNL: "HubSpot, Salesforce, LinkedIn API, Calendly", toolsEN: "HubSpot, Salesforce, LinkedIn API, Calendly" },
+      { id: "outbound", titleNL: "Outbound Agent", titleEN: "Outbound Agent", descNL: "Gepersonaliseerde outreach op schaal", descEN: "Personalized outreach at scale", complexity: "medium", priceRange: [5000, 12000], avgTimeSavedHoursWeek: 15, avgROIPercent: 320, toolsNL: "Apollo.io, LinkedIn API, Gmail API, HubSpot", toolsEN: "Apollo.io, LinkedIn API, Gmail API, HubSpot" },
+      { id: "offerte", titleNL: "Offerte Agent", titleEN: "Proposal Agent", descNL: "Genereert offertes op basis van klantgesprek", descEN: "Generates proposals based on client conversations", complexity: "high", priceRange: [8000, 15000], avgTimeSavedHoursWeek: 12, avgROIPercent: 290, toolsNL: "Google Docs API, HubSpot, PandaDoc", toolsEN: "Google Docs API, HubSpot, PandaDoc" },
+      { id: "follow-up", titleNL: "Follow-up Agent", titleEN: "Follow-up Agent", descNL: "Volgt prospects op tot ze reageren", descEN: "Follows up with prospects until they respond", complexity: "low", priceRange: [2500, 5000], avgTimeSavedHoursWeek: 10, avgROIPercent: 380, toolsNL: "HubSpot, Gmail API, Calendly", toolsEN: "HubSpot, Gmail API, Calendly" },
+      { id: "content", titleNL: "Content Agent", titleEN: "Content Agent", descNL: "Blog posts, social, newsletters vanuit je kennisbank", descEN: "Blog posts, social, newsletters from your knowledge base", complexity: "medium", priceRange: [5000, 10000], avgTimeSavedHoursWeek: 12, avgROIPercent: 250, toolsNL: "OpenAI API, WordPress, LinkedIn API, Mailchimp", toolsEN: "OpenAI API, WordPress, LinkedIn API, Mailchimp" },
     ],
   },
   {
@@ -73,11 +75,11 @@ const CATEGORIES: Category[] = [
     subtitleNL: "Orders, facturen, HR, meetings, data",
     subtitleEN: "Orders, invoices, HR, meetings, data",
     agents: [
-      { id: "order-processing", titleNL: "Order Processing Agent", titleEN: "Order Processing Agent", descNL: "Verwerkt orders, checkt voorraad, stuurt bevestigingen", descEN: "Processes orders, checks stock, sends confirmations", complexity: "high", priceRange: [10000, 20000], avgTimeSavedHoursWeek: 25, avgROIPercent: 360 },
-      { id: "facturatie", titleNL: "Facturatie Agent", titleEN: "Invoicing Agent", descNL: "Facturen, herinneringen, betalingen matchen", descEN: "Invoices, reminders, payment matching", complexity: "medium", priceRange: [5000, 10000], avgTimeSavedHoursWeek: 15, avgROIPercent: 310 },
-      { id: "hr-onboarding", titleNL: "HR Onboarding Agent", titleEN: "HR Onboarding Agent", descNL: "Begeleidt nieuwe medewerkers door documenten en accounts", descEN: "Guides new employees through documents and accounts", complexity: "medium", priceRange: [5000, 12000], avgTimeSavedHoursWeek: 10, avgROIPercent: 240 },
-      { id: "meeting-notes", titleNL: "Meeting Notes Agent", titleEN: "Meeting Notes Agent", descNL: "Samenvattingen, actiepunten, follow-ups", descEN: "Summaries, action items, follow-ups", complexity: "low", priceRange: [2500, 5000], avgTimeSavedHoursWeek: 8, avgROIPercent: 350 },
-      { id: "data-entry", titleNL: "Data Entry Agent", titleEN: "Data Entry Agent", descNL: "Vult systemen in vanuit emails, PDFs, formulieren", descEN: "Fills systems from emails, PDFs, forms", complexity: "medium", priceRange: [5000, 10000], avgTimeSavedHoursWeek: 20, avgROIPercent: 400 },
+      { id: "order-processing", titleNL: "Order Processing Agent", titleEN: "Order Processing Agent", descNL: "Verwerkt orders, checkt voorraad, stuurt bevestigingen", descEN: "Processes orders, checks stock, sends confirmations", complexity: "high", priceRange: [10000, 20000], avgTimeSavedHoursWeek: 25, avgROIPercent: 360, toolsNL: "Shopify API, Exact Online, Picqer, Sendcloud", toolsEN: "Shopify API, Exact Online, Picqer, Sendcloud" },
+      { id: "facturatie", titleNL: "Facturatie Agent", titleEN: "Invoicing Agent", descNL: "Facturen, herinneringen, betalingen matchen", descEN: "Invoices, reminders, payment matching", complexity: "medium", priceRange: [5000, 10000], avgTimeSavedHoursWeek: 15, avgROIPercent: 310, toolsNL: "Exact Online, Mollie, Twinfield, Moneybird", toolsEN: "Exact Online, Mollie, Twinfield, Moneybird" },
+      { id: "hr-onboarding", titleNL: "HR Onboarding Agent", titleEN: "HR Onboarding Agent", descNL: "Begeleidt nieuwe medewerkers door documenten en accounts", descEN: "Guides new employees through documents and accounts", complexity: "medium", priceRange: [5000, 12000], avgTimeSavedHoursWeek: 10, avgROIPercent: 240, toolsNL: "Personio, Notion, Slack, Google Workspace", toolsEN: "Personio, Notion, Slack, Google Workspace" },
+      { id: "meeting-notes", titleNL: "Meeting Notes Agent", titleEN: "Meeting Notes Agent", descNL: "Samenvattingen, actiepunten, follow-ups", descEN: "Summaries, action items, follow-ups", complexity: "low", priceRange: [2500, 5000], avgTimeSavedHoursWeek: 8, avgROIPercent: 350, toolsNL: "Microsoft Teams API, Google Meet, Notion, Slack", toolsEN: "Microsoft Teams API, Google Meet, Notion, Slack" },
+      { id: "data-entry", titleNL: "Data Entry Agent", titleEN: "Data Entry Agent", descNL: "Vult systemen in vanuit emails, PDFs, formulieren", descEN: "Fills systems from emails, PDFs, forms", complexity: "medium", priceRange: [5000, 10000], avgTimeSavedHoursWeek: 20, avgROIPercent: 400, toolsNL: "Google Sheets, Airtable, Make (Integromat), Zapier", toolsEN: "Google Sheets, Airtable, Make (Integromat), Zapier" },
     ],
   },
   {
@@ -87,11 +89,11 @@ const CATEGORIES: Category[] = [
     subtitleNL: "Zoeken, compliance, rapportage, research",
     subtitleEN: "Search, compliance, reporting, research",
     agents: [
-      { id: "kennisbank", titleNL: "Kennisbank Agent", titleEN: "Knowledge Base Agent", descNL: "Doorzoekt 10.000+ documenten, geeft antwoord met bronnen", descEN: "Searches 10,000+ documents, gives answers with sources", complexity: "medium", priceRange: [5000, 12000], avgTimeSavedHoursWeek: 15, avgROIPercent: 320 },
-      { id: "compliance", titleNL: "Compliance Agent", titleEN: "Compliance Agent", descNL: "Checkt documenten tegen regelgeving, signaleert risico's", descEN: "Checks documents against regulations, flags risks", complexity: "high", priceRange: [10000, 20000], avgTimeSavedHoursWeek: 12, avgROIPercent: 280 },
-      { id: "rapportage", titleNL: "Rapportage Agent", titleEN: "Reporting Agent", descNL: "Genereert wekelijkse en maandelijkse rapporten", descEN: "Generates weekly and monthly reports", complexity: "medium", priceRange: [5000, 10000], avgTimeSavedHoursWeek: 10, avgROIPercent: 290 },
-      { id: "marktonderzoek", titleNL: "Marktonderzoek Agent", titleEN: "Market Research Agent", descNL: "Monitort concurrenten, prijzen, trends", descEN: "Monitors competitors, prices, trends", complexity: "high", priceRange: [8000, 15000], avgTimeSavedHoursWeek: 8, avgROIPercent: 260 },
-      { id: "kwaliteitscontrole", titleNL: "Kwaliteitscontrole Agent", titleEN: "Quality Control Agent", descNL: "Reviewt output van andere agents en medewerkers", descEN: "Reviews output from other agents and employees", complexity: "high", priceRange: [10000, 18000], avgTimeSavedHoursWeek: 10, avgROIPercent: 300 },
+      { id: "kennisbank", titleNL: "Kennisbank Agent", titleEN: "Knowledge Base Agent", descNL: "Doorzoekt 10.000+ documenten, geeft antwoord met bronnen", descEN: "Searches 10,000+ documents, gives answers with sources", complexity: "medium", priceRange: [5000, 12000], avgTimeSavedHoursWeek: 15, avgROIPercent: 320, toolsNL: "Pinecone, OpenAI API, SharePoint, Notion", toolsEN: "Pinecone, OpenAI API, SharePoint, Notion" },
+      { id: "compliance", titleNL: "Compliance Agent", titleEN: "Compliance Agent", descNL: "Checkt documenten tegen regelgeving, signaleert risico's", descEN: "Checks documents against regulations, flags risks", complexity: "high", priceRange: [10000, 20000], avgTimeSavedHoursWeek: 12, avgROIPercent: 280, toolsNL: "SharePoint, OpenAI API, Power Automate", toolsEN: "SharePoint, OpenAI API, Power Automate" },
+      { id: "rapportage", titleNL: "Rapportage Agent", titleEN: "Reporting Agent", descNL: "Genereert wekelijkse en maandelijkse rapporten", descEN: "Generates weekly and monthly reports", complexity: "medium", priceRange: [5000, 10000], avgTimeSavedHoursWeek: 10, avgROIPercent: 290, toolsNL: "Power BI, Google Sheets, Slack, BigQuery", toolsEN: "Power BI, Google Sheets, Slack, BigQuery" },
+      { id: "marktonderzoek", titleNL: "Marktonderzoek Agent", titleEN: "Market Research Agent", descNL: "Monitort concurrenten, prijzen, trends", descEN: "Monitors competitors, prices, trends", complexity: "high", priceRange: [8000, 15000], avgTimeSavedHoursWeek: 8, avgROIPercent: 260, toolsNL: "Web Scraping API, OpenAI API, Google Sheets", toolsEN: "Web Scraping API, OpenAI API, Google Sheets" },
+      { id: "kwaliteitscontrole", titleNL: "Kwaliteitscontrole Agent", titleEN: "Quality Control Agent", descNL: "Reviewt output van andere agents en medewerkers", descEN: "Reviews output from other agents and employees", complexity: "high", priceRange: [10000, 18000], avgTimeSavedHoursWeek: 10, avgROIPercent: 300, toolsNL: "OpenAI API, Jira, Slack, GitHub API", toolsEN: "OpenAI API, Jira, Slack, GitHub API" },
     ],
   },
 ];
@@ -329,6 +331,9 @@ function CategoryCard({
                 </div>
                 <div className="text-xs text-[#8e6d6b] truncate">
                   {isNL ? agent.descNL : agent.descEN}
+                </div>
+                <div className="text-[10px] text-[#e67e22]/70 truncate mt-0.5">
+                  {isNL ? agent.toolsNL : agent.toolsEN}
                 </div>
               </div>
               <div className="flex-shrink-0 ml-3 flex items-center gap-2">

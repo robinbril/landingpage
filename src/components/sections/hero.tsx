@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
 import { motion, useAnimation } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { useInView } from "react-intersection-observer";
@@ -8,7 +9,8 @@ import { ChevronDown, Check, ArrowRight, Users, Trophy, Clock, Shield, MessageCi
 import { scrollToSection } from "@/lib/scroll-utils";
 import { Icon } from "@/components/ui/icon";
 import { useLanguage } from "@/lib/i18n/language-context";
-import AsciiHeroBg from "@/components/ascii-hero-bg";
+
+const AsciiHeroBg = dynamic(() => import("@/components/ascii-hero-bg"), { ssr: false });
 // import HeroParticles from "@/components/hero-particles";
 
 function HeroContent() {
@@ -49,7 +51,7 @@ function HeroContent() {
     <section
       id="hero"
       ref={ref}
-      className="relative min-h-[85vh] sm:min-h-screen flex items-center justify-center overflow-hidden py-8 sm:py-12 md:py-16 bg-[#fdf2e9]"
+      className="relative min-h-[50vh] sm:min-h-[60vh] flex items-center justify-center overflow-hidden py-6 sm:py-10 md:py-12 bg-[#fdf2e9]"
     >
       {/* Animated particle background */}
       <AsciiHeroBg />
@@ -59,7 +61,7 @@ function HeroContent() {
           variants={containerVariants}
           initial="hidden"
           animate={controls}
-          className="flex flex-col items-center space-y-4 sm:space-y-6 md:space-y-8 text-center py-10 sm:py-14 px-6 sm:px-10 max-w-4xl mx-auto"
+          className="flex flex-col items-center space-y-4 sm:space-y-6 md:space-y-8 text-center py-4 sm:py-8 px-6 sm:px-10 max-w-4xl mx-auto"
         >
           {/* Hero Content */}
           <motion.div
@@ -80,6 +82,7 @@ function HeroContent() {
                 </>
               )}
             </h1>
+
           </motion.div>
 
           {/* Single Primary CTA */}
@@ -134,7 +137,7 @@ function HeroContent() {
 function HeroLoading() {
   const { t } = useLanguage();
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-[#fdf2e9]">
+    <section className="relative min-h-[50vh] sm:min-h-[60vh] flex items-center justify-center bg-[#fdf2e9]">
       <div className="container px-4 sm:px-6 text-center w-full max-w-7xl mx-auto">
         <div className="space-y-8">
           <div className="space-y-4 md:space-y-6">
