@@ -355,21 +355,84 @@ function DetailPanel({ agent, language, onClose }: {
           </button>
         </motion.div>
       ) : (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="bg-white/50 border border-dashed border-[#4a2c2a]/10 rounded-2xl p-5 flex flex-col items-center justify-center text-center h-fit min-h-[200px]"
-        >
-          <Bot className="h-8 w-8 text-[#e67e22]/30 mb-3" />
-          <p className="text-sm text-[#8e6d6b] font-medium">
-            {isNL ? "Klik op een agent" : "Click an agent"}
-          </p>
-          <p className="text-xs text-[#8e6d6b]/60 mt-1">
-            {isNL ? "om details te bekijken" : "to view details"}
-          </p>
-        </motion.div>
+        <div className="h-fit min-h-[200px]" />
       )}
     </AnimatePresence>
+  );
+}
+
+// ─── Animated Cursor Hint ────────────────────────────────────────────────────
+
+function AnimatedCursorHint({
+  containerWidth,
+  containerHeight,
+}: {
+  containerWidth: number;
+  containerHeight: number;
+}) {
+  // Target position: order-agent node at x:42, y:38
+  const targetX = (42 / 100) * containerWidth;
+  const targetY = (38 / 100) * containerHeight;
+
+  return (
+    <motion.div
+      className="absolute pointer-events-none"
+      style={{ left: 0, top: 0, width: "100%", height: "100%" }}
+    >
+      <motion.svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="absolute"
+        style={{
+          left: targetX,
+          top: targetY,
+          transform: "translate(-6px, -6px)",
+        }}
+        initial={{ opacity: 0, x: -100, y: -100 }}
+        animate={{
+          opacity: [1, 1, 0],
+          x: [0, 0, 0],
+          y: [0, 0, 0],
+        }}
+        transition={{
+          duration: 3.5,
+          times: [0, 0.7, 1],
+          ease: "easeInOut",
+        }}
+      >
+        {/* Standard pointer cursor arrow */}
+        <path
+          d="M3 3L10.5 17.5L13 12.5L19 13.5L3 3Z"
+          fill="#e67e22"
+          stroke="#ff7f50"
+          strokeWidth="0.5"
+        />
+      </motion.svg>
+
+      {/* Click pulse animation at target */}
+      <motion.div
+        className="absolute rounded-full border-2 border-[#e67e22]"
+        style={{
+          width: 40,
+          height: 40,
+          left: targetX - 20,
+          top: targetY - 20,
+        }}
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{
+          scale: [0.8, 1.2, 1.2],
+          opacity: [0, 1, 0],
+        }}
+        transition={{
+          duration: 3.5,
+          times: [0, 0.7, 1],
+          ease: "easeOut",
+        }}
+      />
+    </motion.div>
   );
 }
 
@@ -434,7 +497,7 @@ export default function AgentOrgVisual() {
         </motion.div>
 
         {/* Grid: Network left, Detail panel right */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-6 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 items-start mx-auto max-w-6xl">
           {/* Network visualization */}
           <div
             ref={containerRef}
@@ -481,17 +544,8 @@ export default function AgentOrgVisual() {
               />
             ))}
 
-            {/* Legend */}
-            <div className="absolute bottom-2 left-2 flex items-center gap-4 text-[10px] text-[#8e6d6b]">
-              <div className="flex items-center gap-1.5">
-                <div className="w-5 h-5 rounded-lg bg-white/80 border-2 border-[#4a2c2a]/20" />
-                <span>{isNL ? "Afdeling" : "Department"}</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#e67e22] to-[#ff7f50]" />
-                <span>{isNL ? "Digitale medewerker" : "Digital employee"}</span>
-              </div>
-            </div>
+            {/* Animated cursor hint */}
+            <AnimatedCursorHint containerWidth={dims.w} containerHeight={dims.h} />
           </div>
 
           {/* Detail panel (right side, desktop only visible as panel, mobile below) */}

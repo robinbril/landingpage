@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Send } from "lucide-react";
+import { X, Send, MessageCircle } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/language-context";
 import Image from "next/image";
 
@@ -164,7 +164,7 @@ export default function AIChatWidget() {
 
   return (
     <>
-      {/* Chat Toggle Button - Robin's photo */}
+      {/* Chat Toggle Button - AI icon (Robin's face only inside chat) */}
       <AnimatePresence>
         {!isOpen && (
           <motion.button
@@ -174,18 +174,10 @@ export default function AIChatWidget() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full shadow-2xl flex items-center justify-center overflow-hidden border-2 border-white"
+            className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#4a2c2a] text-white shadow-2xl flex items-center justify-center"
             aria-label={language === "nl" ? "Chat met Robin" : "Chat with Robin"}
           >
-            <Image
-              src="/images/contact/robin.jpeg"
-              alt="Robin Bril"
-              width={56}
-              height={56}
-              className="object-cover w-full h-full"
-            />
-            {/* Online indicator */}
-            <div className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 rounded-full border-2 border-white" />
+            <MessageCircle className="h-6 w-6" />
           </motion.button>
         )}
       </AnimatePresence>

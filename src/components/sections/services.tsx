@@ -110,9 +110,9 @@ function ROIScanner({
   language: string;
 }) {
   const isNL = language === "nl";
-  const [ftes, setFtes] = useState(1);
+  const [ftes, setFtes] = useState(2);
   const [hoursPerWeek, setHoursPerWeek] = useState(agent.avgTimeSavedHoursWeek);
-  const [hourlyRate, setHourlyRate] = useState(35);
+  const [hourlyRate, setHourlyRate] = useState(45);
 
   // Investment is deliberately low so gauge jumps to lucrative fast
   const basePrice = (agent.priceRange[0] + agent.priceRange[1]) / 2;

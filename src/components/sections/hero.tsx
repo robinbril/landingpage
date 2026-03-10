@@ -82,23 +82,6 @@ function HeroContent() {
             </h1>
           </motion.div>
 
-          <motion.p
-            variants={itemVariants}
-            className="max-w-2xl text-base sm:text-lg md:text-xl text-[#8e6d6b] font-normal leading-relaxed px-6 sm:px-0"
-          >
-            {language === 'nl' ? (
-              <>
-                <span className="font-bold text-[#4a2c2a]">Klantenservice. Order processing. Sales. Kennisbanken.</span><br />
-                AI agents die zelfstandig werk overnemen. Live in 2 weken.
-              </>
-            ) : (
-              <>
-                <span className="font-bold text-[#4a2c2a]">Customer service. Order processing. Sales. Knowledge bases.</span><br />
-                AI agents that independently take over work. Live in 2 weeks.
-              </>
-            )}
-          </motion.p>
-
           {/* Single Primary CTA */}
           <motion.div
             variants={itemVariants}
@@ -106,7 +89,7 @@ function HeroContent() {
           >
             <Button
               size="lg"
-              className="bg-[#4a2c2a] hover:bg-[#3a1c1a] text-white rounded-full px-8 sm:px-10 py-5 sm:py-6 text-base sm:text-lg font-medium shadow-lg shadow-[#4a2c2a]/20 hover:shadow-xl transition-all duration-300 group"
+              className="bg-[#4a2c2a] hover:bg-[#3a1c1a] text-white rounded-full px-6 sm:px-8 py-4 sm:py-5 text-sm sm:text-base font-medium shadow-lg shadow-[#4a2c2a]/20 hover:shadow-xl transition-all duration-300 group"
               asChild
             >
               <a
@@ -125,7 +108,7 @@ function HeroContent() {
             <Button
               size="lg"
               variant="outline"
-              className="bg-white/80 hover:bg-white border border-[#4a2c2a]/15 text-[#4a2c2a] rounded-full px-8 sm:px-10 py-5 sm:py-6 text-base sm:text-lg font-medium backdrop-blur-sm hover:shadow-md transition-all duration-300 group"
+              className="bg-white/80 hover:bg-white border border-[#4a2c2a]/15 text-[#4a2c2a] rounded-full px-6 sm:px-8 py-4 sm:py-5 text-sm sm:text-base font-medium backdrop-blur-sm hover:shadow-md transition-all duration-300 group"
               asChild
             >
               <a

@@ -48,12 +48,13 @@ export default function ParticleHeroBg() {
         scene.add(directionalLight);
 
         controls = new OrbitControls(camera, renderer.domElement);
-        controls.minDistance = 0.3;
-        controls.maxDistance = 10;
+        controls.enabled = false;
         controls.enableDamping = true;
         controls.autoRotate = true;
         controls.autoRotateSpeed = 0.6;
         controls.enableZoom = false;
+        controls.enablePan = false;
+        controls.enableRotate = false;
 
         const createFallback = () => {
           const particleCount = 12000;
@@ -150,8 +151,8 @@ export default function ParticleHeroBg() {
   return (
     <div
       ref={containerRef}
-      className="absolute inset-0 w-full h-full"
-      style={{ background: "transparent" }}
+      className="absolute inset-0 w-full h-full pointer-events-none"
+      style={{ background: "transparent", touchAction: "none" }}
     />
   );
 }

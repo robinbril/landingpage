@@ -123,7 +123,7 @@ export default function Projects() {
       ref={ref}
       className="py-14 sm:py-20 bg-[#fdf2e9] overflow-hidden"
     >
-      <div className="max-w-4xl mx-auto px-4 sm:px-6">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -204,7 +204,7 @@ export default function Projects() {
                 {/* Stats as pills */}
                 <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 mt-3">
                   {STATS.map((stat, i) => (
-                    <span key={i} className="inline-flex items-center gap-1 px-3 py-1 rounded-full border border-[#4a2c2a]/8 text-xs text-[#4a2c2a]/70 bg-white/60">
+                    <span key={i} className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full border border-[#4a2c2a]/8 text-[10px] text-[#4a2c2a]/70 bg-white/60">
                       <span className="font-bold text-[#4a2c2a]">{stat.value}</span>
                       {isNL ? stat.label.nl : stat.label.en}
                     </span>
@@ -223,31 +223,16 @@ export default function Projects() {
               </h4>
             </div>
 
-            <div className="space-y-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {EXPERIENCE.map((exp, index) => (
                 <motion.div
                   key={exp.company + exp.role.en}
                   initial={{ opacity: 0, x: -12 }}
                   animate={inView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.4, delay: 0.3 + index * 0.08 }}
-                  className="flex gap-3"
                 >
-                  {/* Timeline dot */}
-                  <div className="flex flex-col items-center pt-1.5">
-                    <div
-                      className={`w-2.5 h-2.5 rounded-full flex-shrink-0 ${
-                        exp.current
-                          ? "bg-[#e67e22] shadow-sm shadow-[#e67e22]/30"
-                          : "bg-[#8e6d6b]/25"
-                      }`}
-                    />
-                    {index < EXPERIENCE.length - 1 && (
-                      <div className="w-px flex-1 bg-[#4a2c2a]/6 mt-1.5" />
-                    )}
-                  </div>
-
                   {/* Content */}
-                  <div className="pb-1 flex-1 min-w-0">
+                  <div className="p-3 rounded-xl bg-[#fdf2e9]/50 border border-[#4a2c2a]/5">
                     <div className="flex flex-wrap items-center gap-1.5 mb-0.5">
                       <span className="font-bold text-[#4a2c2a] text-sm">
                         {exp.company}
@@ -289,7 +274,7 @@ export default function Projects() {
 
           {/* Skills & Education row - compact */}
           <div className="px-6 sm:px-8 pb-6 sm:pb-8">
-            <div className="flex flex-col sm:flex-row gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-[1fr_auto] gap-6">
               {/* Skills */}
               <div className="flex-1">
                 <div className="flex items-center gap-2 mb-3">
