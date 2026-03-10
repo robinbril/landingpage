@@ -64,10 +64,10 @@ const AGENT_NODES: AgentNode[] = [
     id: "lead-agent",
     labelNL: "Lead Qualifying",
     labelEN: "Lead Qualifying",
-    descNL: "Kwalificeert leads uit marketing en plant meetings voor sales",
-    descEN: "Qualifies leads from marketing and schedules meetings for sales",
-    detailNL: ["Scoort leads op 40+ signalen", "Verrijkt bedrijfsdata automatisch", "Plant meetings direct in agenda"],
-    detailEN: ["Scores leads on 40+ signals", "Enriches company data automatically", "Schedules meetings directly"],
+    descNL: "Scoort en verrijkt inkomende leads automatisch en plant gekwalificeerde meetings in voor sales.",
+    descEN: "Automatically scores and enriches inbound leads, then schedules qualified meetings for sales.",
+    detailNL: ["Scoort op 40+ signalen via je CRM", "Verrijkt bedrijfsdata vanuit KvK & LinkedIn", "Koppelt met HubSpot, Salesforce, Pipedrive"],
+    detailEN: ["Scores on 40+ signals via your CRM", "Enriches company data from registries & LinkedIn", "Integrates with HubSpot, Salesforce, Pipedrive"],
     icon: TrendingUp,
     x: 25,
     y: 12,
@@ -77,10 +77,10 @@ const AGENT_NODES: AgentNode[] = [
     id: "klantenservice-agent",
     labelNL: "Klantenservice",
     labelEN: "Customer Service",
-    descNL: "Beantwoordt tickets, escaleert naar operations bij complexe issues",
-    descEN: "Answers tickets, escalates to operations for complex issues",
-    detailNL: ["Multichannel: chat, e-mail, WhatsApp", "Leert van eerdere tickets", "Escaleert automatisch"],
-    detailEN: ["Multichannel: chat, email, WhatsApp", "Learns from past tickets", "Escalates automatically"],
+    descNL: "Beantwoordt klantvragen over alle kanalen en escaleert automatisch bij complexe cases.",
+    descEN: "Resolves customer queries across all channels and auto-escalates complex cases.",
+    detailNL: ["Multichannel: chat, e-mail, WhatsApp", "Leert van historische tickets", "Koppelt met Zendesk, Freshdesk, Intercom"],
+    detailEN: ["Multichannel: chat, email, WhatsApp", "Learns from historical tickets", "Integrates with Zendesk, Freshdesk, Intercom"],
     icon: HeadphonesIcon,
     x: 58,
     y: 10,
@@ -90,10 +90,10 @@ const AGENT_NODES: AgentNode[] = [
     id: "content-agent",
     labelNL: "Content",
     labelEN: "Content",
-    descNL: "Schrijft content vanuit sales insights en deelt via marketing kanalen",
-    descEN: "Writes content from sales insights and shares via marketing channels",
-    detailNL: ["Genereert blogs en social posts", "Gebaseerd op sales feedback", "Publiceert via je kanalen"],
-    detailEN: ["Generates blogs and social posts", "Based on sales feedback", "Publishes via your channels"],
+    descNL: "Genereert on-brand content op basis van sales insights en publiceert via je bestaande kanalen.",
+    descEN: "Generates on-brand content from sales insights and publishes through your existing channels.",
+    detailNL: ["Schrijft blogs, social posts & e-mails", "Tone-of-voice consistent met je merk", "Koppelt met WordPress, Mailchimp, LinkedIn"],
+    detailEN: ["Writes blogs, social posts & emails", "Tone-of-voice consistent with your brand", "Integrates with WordPress, Mailchimp, LinkedIn"],
     icon: Mail,
     x: 25,
     y: 35,
@@ -103,10 +103,10 @@ const AGENT_NODES: AgentNode[] = [
     id: "order-agent",
     labelNL: "Order Processing",
     labelEN: "Order Processing",
-    descNL: "Verwerkt orders tussen sales en operations, informeert klantenservice",
-    descEN: "Processes orders between sales and operations, informs customer service",
-    detailNL: ["Verwerkt orders automatisch", "Checkt voorraad en beschikbaarheid", "Stuurt bevestigingen"],
-    detailEN: ["Processes orders automatically", "Checks stock and availability", "Sends confirmations"],
+    descNL: "Verwerkt bestellingen end-to-end: van intake tot bevestiging, met real-time voorraadcheck.",
+    descEN: "Processes orders end-to-end: from intake to confirmation, with real-time stock checks.",
+    detailNL: ["Automatische ordervalidatie & invoer", "Real-time voorraad & levertijdcheck", "Koppelt met Exact, WooCommerce, Shopify"],
+    detailEN: ["Automatic order validation & entry", "Real-time stock & delivery time checks", "Integrates with Exact, WooCommerce, Shopify"],
     icon: ShoppingCart,
     x: 42,
     y: 38,
@@ -116,10 +116,10 @@ const AGENT_NODES: AgentNode[] = [
     id: "rapportage-agent",
     labelNL: "Rapportage",
     labelEN: "Reporting",
-    descNL: "Genereert rapporten vanuit alle afdelingen voor management",
-    descEN: "Generates reports from all departments for management",
-    detailNL: ["Real-time dashboards", "Automatische weekrapporten", "KPI tracking per afdeling"],
-    detailEN: ["Real-time dashboards", "Automatic weekly reports", "KPI tracking per department"],
+    descNL: "Verzamelt data uit alle afdelingen en genereert actionable rapporten voor management.",
+    descEN: "Collects data from all departments and generates actionable reports for management.",
+    detailNL: ["Automatische week- en maandrapporten", "KPI dashboards per afdeling", "Koppelt met Power BI, Google Sheets, Notion"],
+    detailEN: ["Automatic weekly & monthly reports", "KPI dashboards per department", "Integrates with Power BI, Google Sheets, Notion"],
     icon: BarChart3,
     x: 60,
     y: 42,
@@ -129,10 +129,10 @@ const AGENT_NODES: AgentNode[] = [
     id: "hr-onboarding-agent",
     labelNL: "HR Onboarding",
     labelEN: "HR Onboarding",
-    descNL: "Begeleidt nieuwe medewerkers, coördineert met alle afdelingen",
-    descEN: "Guides new employees, coordinates with all departments",
-    detailNL: ["Stap-voor-stap onboarding", "Documenten automatisch verzameld", "Check-ins met manager"],
-    detailEN: ["Step-by-step onboarding", "Documents collected automatically", "Check-ins with manager"],
+    descNL: "Begeleidt nieuwe medewerkers stap-voor-stap en coördineert automatisch met alle betrokken afdelingen.",
+    descEN: "Guides new employees step-by-step and automatically coordinates with all involved departments.",
+    detailNL: ["Gepersonaliseerd onboardingtraject", "Documenten automatisch verzameld & verstuurd", "Koppelt met BambooHR, Personio, Slack"],
+    detailEN: ["Personalized onboarding journey", "Documents automatically collected & sent", "Integrates with BambooHR, Personio, Slack"],
     icon: Users,
     x: 25,
     y: 62,
@@ -142,10 +142,10 @@ const AGENT_NODES: AgentNode[] = [
     id: "kennisbank-agent",
     labelNL: "Kennisbank",
     labelEN: "Knowledge Base",
-    descNL: "Maakt kennis uit alle afdelingen doorzoekbaar voor iedereen",
-    descEN: "Makes knowledge from all departments searchable for everyone",
-    detailNL: ["Doorzoekt 10.000+ documenten", "Geeft direct antwoord", "Leert bij elke interactie"],
-    detailEN: ["Searches 10,000+ documents", "Gives instant answers", "Learns from every interaction"],
+    descNL: "Maakt al je bedrijfskennis direct doorzoekbaar — van documenten tot Slack-berichten.",
+    descEN: "Makes all your company knowledge instantly searchable — from documents to Slack messages.",
+    detailNL: ["Doorzoekt 10.000+ documenten in seconden", "Geeft direct onderbouwde antwoorden", "Koppelt met SharePoint, Confluence, Google Drive"],
+    detailEN: ["Searches 10,000+ documents in seconds", "Gives instantly sourced answers", "Integrates with SharePoint, Confluence, Google Drive"],
     icon: Brain,
     x: 58,
     y: 65,
@@ -471,7 +471,16 @@ function MobileAgentCard({ agent, isActive, onClick, language }: {
 export default function AgentOrgVisual() {
   const { language } = useLanguage();
   const isNL = language === "nl";
-  const [activeAgent, setActiveAgent] = useState<string | null>("order-agent");
+  // Desktop: default open, Mobile: all collapsed
+  const [activeAgent, setActiveAgent] = useState<string | null>(null);
+  const [hasSetDesktopDefault, setHasSetDesktopDefault] = useState(false);
+
+  useEffect(() => {
+    if (!hasSetDesktopDefault && typeof window !== "undefined" && window.innerWidth >= 768) {
+      setActiveAgent("order-agent");
+      setHasSetDesktopDefault(true);
+    }
+  }, [hasSetDesktopDefault]);
   const containerRef = useRef<HTMLDivElement>(null);
   const [dims, setDims] = useState({ w: 900, h: 500 });
   const { ref: sectionRef, inView } = useInView({ triggerOnce: true, threshold: 0.15 });
@@ -527,7 +536,7 @@ export default function AgentOrgVisual() {
         </motion.div>
 
         {/* ── Desktop: Network left + Detail panel right ── */}
-        <div className="hidden md:flex items-start gap-6 lg:gap-8">
+        <div className="hidden md:flex items-start gap-6 lg:gap-8 max-w-6xl mx-auto">
           {/* Network visualization — takes remaining space */}
           <div className="flex-1 min-w-0">
             <div

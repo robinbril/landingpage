@@ -3,7 +3,6 @@
 import { motion } from "framer-motion";
 import { Calendar, FileText, Rocket, ArrowRight, Check } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/language-context";
-import { Button } from "@/components/ui/button";
 
 export default function IntakeExplanationSection() {
     const { language } = useLanguage();
@@ -34,8 +33,8 @@ export default function IntakeExplanationSection() {
             icon: Rocket,
             title: language === 'nl' ? 'Bouwen & overdragen' : 'Build & handover',
             description: language === 'nl'
-                ? 'Binnen 2-4 weken heb je werkende agents. Ik draag ze aan jullie over. Geen terugkerende kosten.'
-                : 'Within 2-4 weeks you have working agents. I hand them over to you. No recurring costs.'
+                ? 'Zodra de agent in jouw roadmap staat, heb ik hem binnen 2-4 weken opgeleverd en overgedragen.'
+                : 'Once the agent is on your roadmap, I deliver and hand it over within 2-4 weeks.'
         }
     ];
 
@@ -74,21 +73,15 @@ export default function IntakeExplanationSection() {
                             viewport={{ once: true }}
                             transition={{ delay: 0.2 }}
                         >
-                            <Button
-                                size="lg"
-                                asChild
-                                className="bg-[#4a2c2a] hover:bg-[#3a1c1a] text-white px-10 sm:px-14 py-5 sm:py-6 text-base sm:text-lg rounded-full shadow-lg shadow-[#4a2c2a]/25 hover:shadow-xl hover:shadow-[#4a2c2a]/30 transition-all duration-500 ease-out hover:scale-[1.02] active:scale-[0.98]"
+                            <a
+                                href="https://calendly.com/quotum-consulting/30min"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center justify-center gap-2.5 bg-[#4a2c2a] hover:bg-[#3a1c1a] text-white px-10 sm:px-14 py-4 sm:py-5 text-base sm:text-lg font-semibold rounded-full shadow-lg shadow-[#4a2c2a]/25 hover:shadow-xl hover:shadow-[#4a2c2a]/30 transition-all duration-500 ease-out hover:scale-[1.02] active:scale-[0.98]"
                             >
-                                <a
-                                    href="https://calendly.com/quotum-consulting/30min"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center justify-center gap-2.5"
-                                >
-                                    {language === 'nl' ? 'Plan een gesprek' : 'Schedule a call'}
-                                    <ArrowRight className="h-5 w-5" />
-                                </a>
-                            </Button>
+                                {language === 'nl' ? 'Plan een gesprek' : 'Schedule a call'}
+                                <ArrowRight className="h-5 w-5" />
+                            </a>
                         </motion.div>
                     </div>
 
