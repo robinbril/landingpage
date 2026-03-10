@@ -24,8 +24,8 @@ export default function GuaranteeSection() {
         {
             icon: FileText,
             text: isNL
-                ? 'Gratis voorstel wat er moet gebeuren — je betaalt pas bij de verdiepingssessie'
-                : 'Free proposal of what needs to happen — you only pay at the deep-dive session',
+                ? 'Gratis voorstel wat er moet gebeuren. Je betaalt pas bij de verdiepingssessie'
+                : 'Free proposal of what needs to happen. You only pay at the deep-dive session',
         },
         {
             icon: Clock,

@@ -26,7 +26,7 @@ const faqData = {
     {
       question: "Hoe snel kan ik resultaat verwachten?",
       answer:
-        "Na een gratis intake en quick scan lever ik binnen 2 weken een werkend prototype op jullie eigen data. Geen maandenlange trajecten — je ziet direct wat het oplevert.",
+        "Na een gratis intake en quick scan lever ik binnen 2 weken een werkend prototype op jullie eigen data. Geen maandenlange trajecten. Je ziet direct wat het oplevert.",
     },
     {
       question: "Waar is Virelio gevestigd?",

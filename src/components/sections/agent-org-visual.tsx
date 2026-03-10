@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useLanguage } from "@/lib/i18n/language-context";
@@ -13,237 +13,324 @@ import {
   BarChart3,
   Users,
   Briefcase,
+  Building2,
   Megaphone,
   Cog,
-  Zap,
+  BookOpen,
+  Bot,
 } from "lucide-react";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
-interface AgentConnection {
+interface Department {
+  id: string;
+  labelNL: string;
+  labelEN: string;
+  icon: React.ElementType;
+  x: number;
+  y: number;
+}
+
+interface AgentNode {
   id: string;
   labelNL: string;
   labelEN: string;
   descNL: string;
   descEN: string;
   icon: React.ElementType;
-  fromNL: string;
-  fromEN: string;
-  toNL: string;
-  toEN: string;
+  x: number;
+  y: number;
+  connects: string[]; // department ids
 }
 
-// ─── Data ────────────────────────────────────────────────────────────────────
+// ─── Layout data ─────────────────────────────────────────────────────────────
+// Positions are percentages (0-100) of the container
 
-const AGENTS: AgentConnection[] = [
+const DEPARTMENTS: Department[] = [
+  { id: "sales", labelNL: "Sales", labelEN: "Sales", icon: TrendingUp, x: 10, y: 15 },
+  { id: "marketing", labelNL: "Marketing", labelEN: "Marketing", icon: Megaphone, x: 42, y: 5 },
+  { id: "customer-service", labelNL: "Klantenservice", labelEN: "Customer Service", icon: HeadphonesIcon, x: 78, y: 15 },
+  { id: "operations", labelNL: "Operations", labelEN: "Operations", icon: Cog, x: 8, y: 60 },
+  { id: "hr", labelNL: "HR", labelEN: "HR", icon: Users, x: 42, y: 72 },
+  { id: "management", labelNL: "Management", labelEN: "Management", icon: Briefcase, x: 78, y: 60 },
+];
+
+const AGENT_NODES: AgentNode[] = [
   {
     id: "lead-agent",
-    labelNL: "Lead Qualifying",
-    labelEN: "Lead Qualifying",
-    descNL: "Kwalificeert leads en plant meetings voor sales",
-    descEN: "Qualifies leads and schedules meetings for sales",
+    labelNL: "Lead Qualifying Agent",
+    labelEN: "Lead Qualifying Agent",
+    descNL: "Kwalificeert leads uit marketing en plant meetings voor sales",
+    descEN: "Qualifies leads from marketing and schedules meetings for sales",
     icon: TrendingUp,
-    fromNL: "Marketing",
-    fromEN: "Marketing",
-    toNL: "Sales",
-    toEN: "Sales",
+    x: 25,
+    y: 12,
+    connects: ["sales", "marketing"],
   },
   {
     id: "klantenservice-agent",
-    labelNL: "Klantenservice",
-    labelEN: "Customer Service",
-    descNL: "Beantwoordt tickets, escaleert bij complexe vragen",
-    descEN: "Answers tickets, escalates complex questions",
+    labelNL: "Klantenservice Agent",
+    labelEN: "Customer Service Agent",
+    descNL: "Beantwoordt tickets, escaleert naar operations bij complexe issues",
+    descEN: "Answers tickets, escalates to operations for complex issues",
     icon: HeadphonesIcon,
-    fromNL: "Klanten",
-    fromEN: "Customers",
-    toNL: "Support team",
-    toEN: "Support team",
-  },
-  {
-    id: "order-agent",
-    labelNL: "Order Processing",
-    labelEN: "Order Processing",
-    descNL: "Verwerkt orders en stuurt bevestigingen",
-    descEN: "Processes orders and sends confirmations",
-    icon: ShoppingCart,
-    fromNL: "Sales",
-    fromEN: "Sales",
-    toNL: "Operations",
-    toEN: "Operations",
+    x: 60,
+    y: 10,
+    connects: ["customer-service", "marketing"],
   },
   {
     id: "content-agent",
-    labelNL: "Content",
-    labelEN: "Content",
-    descNL: "Schrijft content vanuit sales insights",
-    descEN: "Writes content from sales insights",
+    labelNL: "Content Agent",
+    labelEN: "Content Agent",
+    descNL: "Schrijft content vanuit sales insights en deelt via marketing kanalen",
+    descEN: "Writes content from sales insights and shares via marketing channels",
     icon: Mail,
-    fromNL: "Sales data",
-    fromEN: "Sales data",
-    toNL: "Marketing",
-    toEN: "Marketing",
+    x: 25,
+    y: 35,
+    connects: ["sales", "marketing", "management"],
+  },
+  {
+    id: "order-agent",
+    labelNL: "Order Processing Agent",
+    labelEN: "Order Processing Agent",
+    descNL: "Verwerkt orders tussen sales en operations, informeert klantenservice",
+    descEN: "Processes orders between sales and operations, informs customer service",
+    icon: ShoppingCart,
+    x: 42,
+    y: 38,
+    connects: ["sales", "operations", "customer-service"],
   },
   {
     id: "rapportage-agent",
-    labelNL: "Rapportage",
-    labelEN: "Reporting",
-    descNL: "Genereert rapporten uit alle afdelingen",
-    descEN: "Generates reports from all departments",
+    labelNL: "Rapportage Agent",
+    labelEN: "Reporting Agent",
+    descNL: "Genereert rapporten vanuit alle afdelingen voor management",
+    descEN: "Generates reports from all departments for management",
     icon: BarChart3,
-    fromNL: "Alle data",
-    fromEN: "All data",
-    toNL: "Management",
-    toEN: "Management",
+    x: 62,
+    y: 42,
+    connects: ["management", "operations", "customer-service"],
+  },
+  {
+    id: "hr-onboarding-agent",
+    labelNL: "HR Onboarding Agent",
+    labelEN: "HR Onboarding Agent",
+    descNL: "Begeleidt nieuwe medewerkers, coördineert met alle afdelingen",
+    descEN: "Guides new employees, coordinates with all departments",
+    icon: Users,
+    x: 25,
+    y: 62,
+    connects: ["hr", "operations", "management"],
   },
   {
     id: "kennisbank-agent",
-    labelNL: "Kennisbank",
-    labelEN: "Knowledge Base",
-    descNL: "Maakt alle kennis doorzoekbaar voor iedereen",
-    descEN: "Makes all knowledge searchable for everyone",
+    labelNL: "Kennisbank Agent",
+    labelEN: "Knowledge Base Agent",
+    descNL: "Maakt kennis uit alle afdelingen doorzoekbaar voor iedereen",
+    descEN: "Makes knowledge from all departments searchable for everyone",
     icon: Brain,
-    fromNL: "Documenten",
-    fromEN: "Documents",
-    toNL: "Iedereen",
-    toEN: "Everyone",
+    x: 60,
+    y: 65,
+    connects: ["hr", "management", "operations", "customer-service"],
   },
 ];
 
-// ─── Single Agent Row ────────────────────────────────────────────────────────
+// ─── SVG Connection Lines ────────────────────────────────────────────────────
 
-function AgentRow({
-  agent,
-  language,
-  index,
-  isExpanded,
-  onToggle,
+function ConnectionLines({
+  agents,
+  departments,
+  activeAgent,
+  containerWidth,
+  containerHeight,
 }: {
-  agent: AgentConnection;
-  language: string;
-  index: number;
-  isExpanded: boolean;
-  onToggle: () => void;
+  agents: AgentNode[];
+  departments: Department[];
+  activeAgent: string | null;
+  containerWidth: number;
+  containerHeight: number;
 }) {
-  const isNL = language === "nl";
+  const deptMap = Object.fromEntries(departments.map((d) => [d.id, d]));
+
+  // Center offsets for nodes (dept nodes are ~56px, agent nodes are ~48px)
+  const deptOffset = 28;
+  const agentOffset = 24;
+
+  return (
+    <svg
+      className="absolute inset-0 w-full h-full pointer-events-none"
+      style={{ zIndex: 1 }}
+    >
+      <defs>
+        <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#e67e22" stopOpacity="0.6" />
+          <stop offset="100%" stopColor="#ff7f50" stopOpacity="0.6" />
+        </linearGradient>
+        <linearGradient id="line-active" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor="#e67e22" stopOpacity="1" />
+          <stop offset="100%" stopColor="#ff7f50" stopOpacity="1" />
+        </linearGradient>
+      </defs>
+      {agents.map((agent) =>
+        agent.connects.map((deptId) => {
+          const dept = deptMap[deptId];
+          if (!dept) return null;
+
+          const ax = (agent.x / 100) * containerWidth + agentOffset;
+          const ay = (agent.y / 100) * containerHeight + agentOffset;
+          const dx = (dept.x / 100) * containerWidth + deptOffset;
+          const dy = (dept.y / 100) * containerHeight + deptOffset;
+
+          const isActive = activeAgent === agent.id;
+          const isVisible = !activeAgent || activeAgent === agent.id;
+
+          // Curved path
+          const midX = (ax + dx) / 2;
+          const midY = (ay + dy) / 2;
+          const ctrlOffsetX = (dy - ay) * 0.15;
+          const ctrlOffsetY = (ax - dx) * 0.15;
+
+          return (
+            <motion.path
+              key={`${agent.id}-${deptId}`}
+              d={`M ${ax} ${ay} Q ${midX + ctrlOffsetX} ${midY + ctrlOffsetY} ${dx} ${dy}`}
+              fill="none"
+              stroke={isActive ? "url(#line-active)" : "url(#line-gradient)"}
+              strokeWidth={isActive ? 2.5 : 1.5}
+              strokeDasharray={isActive ? "none" : "6 4"}
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{
+                pathLength: 1,
+                opacity: isVisible ? (isActive ? 1 : 0.4) : 0.08,
+              }}
+              transition={{ duration: 1.2, delay: 0.3 }}
+            />
+          );
+        })
+      )}
+    </svg>
+  );
+}
+
+// ─── Department Node ─────────────────────────────────────────────────────────
+
+function DeptNode({
+  dept,
+  isHighlighted,
+  language,
+  delay,
+}: {
+  dept: Department;
+  isHighlighted: boolean;
+  language: string;
+  delay: number;
+}) {
+  const Icon = dept.icon;
+  return (
+    <motion.div
+      initial={{ opacity: 0, scale: 0.5 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay }}
+      className="absolute flex flex-col items-center gap-1.5"
+      style={{ left: `${dept.x}%`, top: `${dept.y}%`, zIndex: 2 }}
+    >
+      <div
+        className={`w-14 h-14 rounded-2xl border-2 flex items-center justify-center transition-all duration-300 ${
+          isHighlighted
+            ? "bg-[#4a2c2a] border-[#4a2c2a] shadow-lg shadow-[#4a2c2a]/30 scale-110"
+            : "bg-white/80 border-[#4a2c2a]/20"
+        }`}
+      >
+        <Icon className={`h-6 w-6 transition-colors ${isHighlighted ? "text-[#fdf2e9]" : "text-[#4a2c2a]"}`} />
+      </div>
+      <span
+        className={`text-[11px] font-bold whitespace-nowrap transition-colors ${
+          isHighlighted ? "text-[#4a2c2a]" : "text-[#8e6d6b]"
+        }`}
+      >
+        {language === "nl" ? dept.labelNL : dept.labelEN}
+      </span>
+    </motion.div>
+  );
+}
+
+// ─── Agent Node (floating) ───────────────────────────────────────────────────
+
+function AgentNodeComponent({
+  agent,
+  isActive,
+  onClick,
+  language,
+  delay,
+}: {
+  agent: AgentNode;
+  isActive: boolean;
+  onClick: () => void;
+  language: string;
+  delay: number;
+}) {
   const Icon = agent.icon;
+  const isNL = language === "nl";
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, scale: 0, y: 10 }}
+      whileInView={{ opacity: 1, scale: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: index * 0.08 }}
+      transition={{ duration: 0.5, delay, type: "spring", stiffness: 200 }}
+      onClick={onClick}
+      className="absolute cursor-pointer group"
+      style={{ left: `${agent.x}%`, top: `${agent.y}%`, zIndex: 10 }}
     >
-      <div
-        onClick={onToggle}
-        className={`group cursor-pointer rounded-2xl border transition-all duration-300 ${
-          isExpanded
-            ? "bg-white shadow-lg shadow-[#e67e22]/8 border-[#e67e22]/20"
-            : "bg-white/60 hover:bg-white border-[#4a2c2a]/5 hover:border-[#e67e22]/15 hover:shadow-md"
-        }`}
+      {/* Floating animation wrapper */}
+      <motion.div
+        animate={{ y: [0, -6, 0] }}
+        transition={{ duration: 3 + Math.random() * 2, repeat: Infinity, ease: "easeInOut" }}
+        className="flex flex-col items-center gap-1"
       >
-        {/* Main row: from → agent → to */}
-        <div className="flex items-center gap-3 sm:gap-4 px-4 sm:px-6 py-4 sm:py-5">
-          {/* From label */}
-          <div className="hidden sm:block w-24 text-right">
-            <span className="text-xs font-medium text-[#8e6d6b]">
-              {isNL ? agent.fromNL : agent.fromEN}
-            </span>
-          </div>
-
-          {/* Arrow in */}
-          <div className="hidden sm:block">
-            <svg width="32" height="12" viewBox="0 0 32 12" fill="none">
-              <path
-                d="M0 6h28m0 0l-4-4m4 4l-4 4"
-                stroke={isExpanded ? "#e67e22" : "#d4a574"}
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="transition-colors"
-              />
-            </svg>
-          </div>
-
-          {/* Agent circle */}
-          <div className="flex items-center gap-3 flex-1 min-w-0">
-            <div
-              className={`flex-shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-full flex items-center justify-center transition-all duration-300 ${
-                isExpanded
-                  ? "bg-gradient-to-br from-[#e67e22] to-[#d35400] shadow-md shadow-[#e67e22]/25 scale-105"
-                  : "bg-gradient-to-br from-[#e67e22] to-[#f39c12] shadow-sm group-hover:shadow-md group-hover:shadow-[#e67e22]/15"
-              }`}
-            >
-              <Icon className="h-5 w-5 text-white" />
-            </div>
-
-            <div className="min-w-0">
-              <h3 className="text-sm sm:text-[15px] font-bold text-[#4a2c2a] truncate">
-                {isNL ? agent.labelNL : agent.labelEN}
-              </h3>
-              <p className="text-[11px] sm:text-xs text-[#8e6d6b] truncate sm:hidden">
-                {isNL ? agent.fromNL : agent.fromEN} → {isNL ? agent.toNL : agent.toEN}
-              </p>
-            </div>
-          </div>
-
-          {/* Arrow out */}
-          <div className="hidden sm:block">
-            <svg width="32" height="12" viewBox="0 0 32 12" fill="none">
-              <path
-                d="M0 6h28m0 0l-4-4m4 4l-4 4"
-                stroke={isExpanded ? "#e67e22" : "#d4a574"}
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                className="transition-colors"
-              />
-            </svg>
-          </div>
-
-          {/* To label */}
-          <div className="hidden sm:block w-24">
-            <span className="text-xs font-medium text-[#8e6d6b]">
-              {isNL ? agent.toNL : agent.toEN}
-            </span>
-          </div>
-
-          {/* Expand indicator */}
-          <div className={`flex-shrink-0 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`}>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path
-                d="M4 6l4 4 4-4"
-                stroke="#8e6d6b"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+        {/* Glow ring */}
+        <div className={`relative ${isActive ? "scale-110" : ""} transition-transform`}>
+          <div
+            className={`absolute -inset-1.5 rounded-full bg-gradient-to-br from-[#e67e22] to-[#ff7f50] transition-opacity ${
+              isActive ? "opacity-40 animate-pulse" : "opacity-0 group-hover:opacity-25"
+            }`}
+          />
+          <div
+            className={`relative w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 ${
+              isActive
+                ? "bg-gradient-to-br from-[#e67e22] to-[#ff7f50] shadow-xl shadow-[#e67e22]/40"
+                : "bg-gradient-to-br from-[#e67e22] to-[#ff7f50] shadow-md shadow-[#e67e22]/20 group-hover:shadow-lg group-hover:shadow-[#e67e22]/30"
+            }`}
+          >
+            <Bot className="h-5 w-5 text-white" />
           </div>
         </div>
+        <span className="text-[10px] font-bold text-[#e67e22] whitespace-nowrap max-w-[100px] text-center leading-tight">
+          {isNL ? agent.labelNL.replace(" Agent", "") : agent.labelEN.replace(" Agent", "")}
+        </span>
+      </motion.div>
 
-        {/* Expanded description */}
-        <AnimatePresence>
-          {isExpanded && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="overflow-hidden"
-            >
-              <div className="px-4 sm:px-6 pb-4 sm:pb-5 pt-0">
-                <div className="pl-14 sm:pl-0 sm:text-center">
-                  <p className="text-sm text-[#8e6d6b] leading-relaxed">
-                    {isNL ? agent.descNL : agent.descEN}
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+      {/* Tooltip on hover/active */}
+      <AnimatePresence>
+        {isActive && (
+          <motion.div
+            initial={{ opacity: 0, y: 5, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 5, scale: 0.9 }}
+            className="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-[#4a2c2a] text-[#fdf2e9] rounded-xl px-4 py-3 shadow-2xl min-w-[200px] max-w-[240px] z-50"
+          >
+            <div className="text-xs font-bold mb-1 flex items-center gap-1.5">
+              <Icon className="h-3.5 w-3.5 text-[#e67e22]" />
+              {isNL ? agent.labelNL : agent.labelEN}
+            </div>
+            <div className="text-[11px] text-[#fdf2e9]/70 leading-relaxed">
+              {isNL ? agent.descNL : agent.descEN}
+            </div>
+            <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#4a2c2a] rotate-45" />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 }
@@ -253,85 +340,135 @@ function AgentRow({
 export default function AgentOrgVisual() {
   const { language } = useLanguage();
   const isNL = language === "nl";
-  const [expandedAgent, setExpandedAgent] = useState<string | null>(null);
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [activeAgent, setActiveAgent] = useState<string | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [dims, setDims] = useState({ w: 900, h: 500 });
+  const { ref: sectionRef, inView } = useInView({ triggerOnce: true, threshold: 0.15 });
+
+  useEffect(() => {
+    const measure = () => {
+      if (containerRef.current) {
+        setDims({
+          w: containerRef.current.offsetWidth,
+          h: containerRef.current.offsetHeight,
+        });
+      }
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, []);
+
+  const handleAgentClick = (id: string) => {
+    setActiveAgent((prev) => (prev === id ? null : id));
+  };
+
+  const highlightedDepts = activeAgent
+    ? AGENT_NODES.find((a) => a.id === activeAgent)?.connects ?? []
+    : [];
 
   return (
-    <section ref={ref} className="py-20 sm:py-28 bg-[#fdf2e9] overflow-hidden">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6">
+    <section ref={sectionRef} className="py-16 sm:py-24 bg-[#fdf2e9] overflow-hidden">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
           className="text-center mb-6"
         >
-          <span className="inline-block text-[11px] font-bold tracking-[0.2em] uppercase text-[#e67e22] mb-4">
+          <span className="inline-block text-xs font-bold tracking-widest uppercase text-[#e67e22] mb-3">
             {isNL ? "Hoe het werkt" : "How it works"}
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#4a2c2a] mb-5 leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#4a2c2a] mb-4">
             {isNL ? (
               <>
-                Agents die je team{" "}
-                <span className="text-[#e67e22]">aanvullen</span>
+                Agents die <span className="text-[#e67e22]">tussen</span> je team werken
               </>
             ) : (
               <>
-                Agents that{" "}
-                <span className="text-[#e67e22]">complement</span>{" "}
-                your team
+                Agents that work <span className="text-[#e67e22]">between</span> your team
               </>
             )}
           </h2>
-        </motion.div>
-
-        {/* Subtitle */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          className="text-center mb-12 space-y-2"
-        >
-          <p className="text-base sm:text-lg text-[#8e6d6b]">
+          <p className="text-base sm:text-lg text-[#8e6d6b] max-w-2xl mx-auto">
             {isNL
-              ? "Ze pakken tijdsrovende, repetitieve taken over en lossen bottlenecks op."
-              : "They take over time-consuming, repetitive tasks and solve bottlenecks."}
-          </p>
-          <p className="text-base sm:text-lg text-[#4a2c2a] font-semibold">
-            {isNL
-              ? "Daarna heb je agents die razendsnel kansen benutten."
-              : "Then you have agents that seize opportunities at lightning speed."}
+              ? "Digitale medewerkers zweven tussen afdelingen. Ze pakken werk op waar het ontstaat , niet waar het toevallig belandt."
+              : "Digital employees float between departments. They pick up work where it originates , not where it happens to land."}
           </p>
         </motion.div>
 
-        {/* Agent rows */}
-        <div className="space-y-3">
-          {AGENTS.map((agent, i) => (
-            <AgentRow
-              key={agent.id}
-              agent={agent}
-              language={language}
-              index={i}
-              isExpanded={expandedAgent === agent.id}
-              onToggle={() =>
-                setExpandedAgent((prev) => (prev === agent.id ? null : agent.id))
-              }
-            />
-          ))}
-        </div>
-
-        {/* Bottom summary */}
+        {/* Instruction */}
         <motion.p
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.6 }}
-          className="text-center text-xs text-[#8e6d6b] mt-8"
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ delay: 0.5 }}
+          className="text-center text-xs text-[#8e6d6b] mb-8"
         >
-          {isNL
-            ? "Elke agent werkt zelfstandig tussen afdelingen. Klik om meer te lezen."
-            : "Each agent works independently between departments. Click to learn more."}
+          {isNL ? "Klik op een agent om connecties te zien" : "Click an agent to see connections"}
         </motion.p>
+
+        {/* Visual container */}
+        <div
+          ref={containerRef}
+          className="relative w-full mx-auto"
+          style={{ height: "clamp(340px, 42vw, 460px)" }}
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setActiveAgent(null);
+          }}
+        >
+          {/* Background grid dots */}
+          <div
+            className="absolute inset-0 opacity-[0.04]"
+            style={{
+              backgroundImage: `radial-gradient(circle, #4a2c2a 1px, transparent 1px)`,
+              backgroundSize: "32px 32px",
+            }}
+          />
+
+          {/* Connection lines SVG */}
+          <ConnectionLines
+            agents={AGENT_NODES}
+            departments={DEPARTMENTS}
+            activeAgent={activeAgent}
+            containerWidth={dims.w}
+            containerHeight={dims.h}
+          />
+
+          {/* Department nodes */}
+          {DEPARTMENTS.map((dept, i) => (
+            <DeptNode
+              key={dept.id}
+              dept={dept}
+              isHighlighted={highlightedDepts.includes(dept.id)}
+              language={language}
+              delay={0.1 * i}
+            />
+          ))}
+
+          {/* Agent nodes (floating) */}
+          {AGENT_NODES.map((agent, i) => (
+            <AgentNodeComponent
+              key={agent.id}
+              agent={agent}
+              isActive={activeAgent === agent.id}
+              onClick={() => handleAgentClick(agent.id)}
+              language={language}
+              delay={0.3 + 0.08 * i}
+            />
+          ))}
+
+          {/* Legend */}
+          <div className="absolute bottom-2 left-2 flex items-center gap-4 text-[10px] text-[#8e6d6b]">
+            <div className="flex items-center gap-1.5">
+              <div className="w-5 h-5 rounded-lg bg-white/80 border-2 border-[#4a2c2a]/20" />
+              <span>{isNL ? "Afdeling" : "Department"}</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#e67e22] to-[#ff7f50]" />
+              <span>{isNL ? "Digitale medewerker" : "Digital employee"}</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

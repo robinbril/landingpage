@@ -9,6 +9,7 @@ import { scrollToSection } from "@/lib/scroll-utils";
 import { Icon } from "@/components/ui/icon";
 import { useLanguage } from "@/lib/i18n/language-context";
 import AsciiHeroBg from "@/components/ascii-hero-bg";
+import HeroParticles from "@/components/hero-particles";
 
 function HeroContent() {
   const { t, language } = useLanguage();
@@ -52,13 +53,14 @@ function HeroContent() {
     >
       {/* Animated particle background */}
       <AsciiHeroBg />
+      <HeroParticles />
 
       <div className="container relative z-10 px-4 sm:px-6 w-full max-w-7xl mx-auto">
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={controls}
-          className="flex flex-col items-center space-y-4 sm:space-y-6 md:space-y-8 text-center py-10 sm:py-14 px-6 sm:px-10"
+          className="flex flex-col items-center md:items-start space-y-4 sm:space-y-6 md:space-y-8 text-center md:text-left py-10 sm:py-14 px-6 sm:px-10 md:max-w-[55%]"
         >
           {/* Eyebrow text for context */}
           <motion.div
@@ -94,7 +96,7 @@ function HeroContent() {
 
           <motion.p
             variants={itemVariants}
-            className="max-w-2xl text-base sm:text-lg md:text-xl text-[#8e6d6b] font-normal leading-relaxed px-6 sm:px-0 text-center"
+            className="max-w-2xl text-base sm:text-lg md:text-xl text-[#8e6d6b] font-normal leading-relaxed px-6 sm:px-0 md:text-left"
           >
             {language === 'nl' ? (
               <>
@@ -112,7 +114,7 @@ function HeroContent() {
           {/* Single Primary CTA */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col items-center justify-center gap-4"
+            className="flex flex-col items-center md:items-start justify-center gap-4"
           >
             <Button
               size="lg"
@@ -137,7 +139,7 @@ function HeroContent() {
           {/* Trust Indicators - Single Row */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-wrap items-center justify-center gap-6 sm:gap-12 pt-8 border-t border-[#4a2c2a]/10 max-w-4xl"
+            className="flex flex-wrap items-center justify-center md:justify-start gap-6 sm:gap-12 pt-8 border-t border-[#4a2c2a]/10 max-w-4xl"
           >
             {[
               { label: language === 'nl' ? 'Binnen 4u reactie' : 'Within 4h response', icon: Clock },

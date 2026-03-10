@@ -1219,7 +1219,7 @@ export const translations = {
       subtitle: "Learn more about our team and mission.",
       theTeam: "The Virelio team",
       description:
-        "We are Robin and Omar. Two down-to-earth, certified IT professionals with over 5 years of experience and a diverse portfolio of projects at major companies. Rather than passive consumption, we build. Read about something new? We test it. New AI tool? We have a working prototype the same day.\nWe make complex technology understandable and immediately applicable. No lengthy theories, just smart solutions that deliver immediate value — for both local entrepreneurs and large corporations.\nFrom rapid experiments to stable production systems. From clever automation to powerful AI applications. We keep building. Focused. Efficient. Practical.",
+        "We are Robin and Omar. Two down-to-earth, certified IT professionals with over 5 years of experience and a diverse portfolio of projects at major companies. Rather than passive consumption, we build. Read about something new? We test it. New AI tool? We have a working prototype the same day.\nWe make complex technology understandable and immediately applicable. No lengthy theories, just smart solutions that deliver immediate value for both local entrepreneurs and large corporations.\nFrom rapid experiments to stable production systems. From clever automation to powerful AI applications. We keep building. Focused. Efficient. Practical.",
       missionTitle: "Our Mission",
       teamTitle: "About Robin & Omar",
       missionDescription:
@@ -1575,7 +1575,7 @@ export const translations = {
     services: {
       title: "What We Build",
       subtitle:
-        "Smart solutions that speed up processes, improve collaboration, and save time—starting day one.",
+        "Smart solutions that speed up processes, improve collaboration, and save time. Starting day one.",
       ctaButton: "Let's talk",
       aiDevelopment: {
         title: "AI Integration",
@@ -1588,7 +1588,7 @@ export const translations = {
       saasDevelopment: {
         title: "Custom Software",
         description:
-          "Solutions built around how you actually work—not the other way around.",
+          "Solutions built around how you actually work, not the other way around.",
         feature1: "Dashboards, portals, and tools designed for your team",
         feature2: "Integrates with your existing systems and accounts",
         feature3: "Scales with your business as you grow",
@@ -1619,7 +1619,7 @@ export const translations = {
       dataAnalytics: {
         title: "Data & Insights",
         description:
-          "Get instant answers to your questions—no searching required.",
+          "Get instant answers to your questions, no searching required.",
         feature1: "Connected directly to your database or backend",
         feature2: "Ask for revenue, trends, or team data via Slack or Teams",
         feature3: "Answers in plain English within 3 seconds",

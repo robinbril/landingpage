@@ -24,7 +24,6 @@ export default function ParticleHeroBg() {
         const { PCDLoader } = await import("three/addons/loaders/PCDLoader.js");
 
         const scene = new THREE.Scene();
-        scene.background = new THREE.Color(0xfdf2e9);
 
         const camera = new THREE.PerspectiveCamera(
           45,
@@ -32,9 +31,9 @@ export default function ParticleHeroBg() {
           0.1,
           1000
         );
-        camera.position.set(0.2, 0.0, 0.7);
+        camera.position.set(0.15, 0.0, 0.7);
 
-        renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+        renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
         renderer.setSize(
           containerRef.current!.clientWidth,
           containerRef.current!.clientHeight
@@ -67,7 +66,7 @@ export default function ParticleHeroBg() {
             const theta = Math.random() * Math.PI * 2;
             const phi = Math.acos(Math.random() * 2 - 1);
             const radius = 0.35 + Math.random() * 0.08;
-            positions[i3] = radius * Math.sin(phi) * Math.cos(theta);
+            positions[i3] = radius * Math.sin(phi) * Math.cos(theta) + 0.15;
             positions[i3 + 1] = radius * Math.sin(phi) * Math.sin(theta);
             positions[i3 + 2] = radius * Math.cos(phi);
             colors[i3] = orangeColor.r;
@@ -97,6 +96,7 @@ export default function ParticleHeroBg() {
           (points: any) => {
             points.geometry.center();
             points.geometry.rotateX(Math.PI);
+            points.geometry.translate(0.25, 0, 0);
             points.material.size = 0.004;
             points.material.color.setHex(0xe67e22);
             points.material.transparent = true;
@@ -151,8 +151,8 @@ export default function ParticleHeroBg() {
   return (
     <div
       ref={containerRef}
-      className="absolute inset-0 w-full h-full"
-      style={{ background: "#fdf2e9" }}
+      className="absolute inset-0 w-full h-full md:left-[40%] md:w-[60%]"
+      style={{ background: "transparent" }}
     />
   );
 }

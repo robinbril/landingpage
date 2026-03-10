@@ -53,8 +53,8 @@ export default function AgentPortfolio() {
             name: { nl: "Factuurverwerking Agent", en: "Invoice Processing Agent" },
             tagline: { nl: "Verwerkt facturen sneller dan je ze kunt openen", en: "Processes invoices faster than you can open them" },
             description: {
-                nl: "Herkent, classificeert en boekt inkomende facturen automatisch. Van PDF-extractie tot ERP-boeking — geen menselijke tussenkomst nodig.",
-                en: "Automatically recognizes, classifies and books incoming invoices. From PDF extraction to ERP booking — no human intervention needed."
+                nl: "Herkent, classificeert en boekt inkomende facturen automatisch. Van PDF-extractie tot ERP-boeking, geen menselijke tussenkomst nodig.",
+                en: "Automatically recognizes, classifies and books incoming invoices. From PDF extraction to ERP booking, no human intervention needed."
             },
             fte: "1-2",
             saving: "€50K-€120K",

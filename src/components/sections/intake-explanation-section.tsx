@@ -164,21 +164,12 @@ export default function IntakeExplanationSection() {
                             </Button>
                         </div>
 
-                        {/* Trust Signals */}
-                        <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-sm text-muted-foreground">
-                            <div className="flex items-center gap-2">
-                                <Check className="h-4 w-4 text-[#e67e22]" strokeWidth={2.5} />
-                                <span>{language === 'nl' ? 'Binnen 4u reactie' : 'Response within 4h'}</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <Check className="h-4 w-4 text-[#e67e22]" strokeWidth={2.5} />
-                                <span>{language === 'nl' ? '18 bedrijven geholpen' : '18 companies helped'}</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                                <Check className="h-4 w-4 text-[#e67e22]" strokeWidth={2.5} />
-                                <span>{language === 'nl' ? 'Geen terugkerende kosten' : 'No recurring costs'}</span>
-                            </div>
-                        </div>
+                        {/* Simple reassurance */}
+                        <p className="text-sm text-muted-foreground">
+                            {language === 'nl'
+                                ? 'Geen verplichtingen. Geen verborgen kosten.'
+                                : 'No obligations. No hidden costs.'}
+                        </p>
 
                         {/* Contact Accordion */}
                         <div className="max-w-sm mx-auto">
