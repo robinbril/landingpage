@@ -58,7 +58,7 @@ function HeroContent() {
           variants={containerVariants}
           initial="hidden"
           animate={controls}
-          className="flex flex-col items-center space-y-4 sm:space-y-6 md:space-y-8 text-center bg-[#fdf2e9]/70 backdrop-blur-md rounded-3xl py-10 sm:py-14 px-6 sm:px-10"
+          className="flex flex-col items-center space-y-4 sm:space-y-6 md:space-y-8 text-center py-10 sm:py-14 px-6 sm:px-10"
         >
           {/* Eyebrow text for context */}
           <motion.div
