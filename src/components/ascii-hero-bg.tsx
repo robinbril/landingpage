@@ -82,7 +82,7 @@ export default function ParticleHeroBg() {
             size: 0.005,
             vertexColors: true,
             transparent: true,
-            opacity: 0.18,
+            opacity: 0.25,
             sizeAttenuation: true,
           });
 
@@ -99,7 +99,7 @@ export default function ParticleHeroBg() {
             points.material.size = 0.004;
             points.material.color.setHex(0xe67e22);
             points.material.transparent = true;
-            points.material.opacity = 0.18;
+            points.material.opacity = 0.25;
             scene.add(points);
           },
           undefined,

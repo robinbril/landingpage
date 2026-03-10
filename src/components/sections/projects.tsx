@@ -27,90 +27,54 @@ interface ExperienceEntry {
 
 const EXPERIENCE: ExperienceEntry[] = [
   {
-    company: "Virelio",
+    company: "Fellowmind",
     role: {
-      nl: "AI Developer & Oprichter",
-      en: "AI Developer & Founder",
+      nl: "Senior AI Engineer",
+      en: "Senior AI Engineer",
     },
-    period: "2024 – heden",
-    highlights: [
-      {
-        nl: "AI-tools en honderden productieklare automatiseringen voor scale-ups en corporates",
-        en: "AI tools and hundreds of production-ready automations for scale-ups and corporates",
-      },
-      {
-        nl: "Privacy-first AI-assistent voor grote interne documentcollecties via Slack, Teams en WebRTC",
-        en: "Privacy-first AI assistant for large internal document collections via Slack, Teams and WebRTC",
-      },
-      {
-        nl: "On-premise multi-agent systemen met RAG-knowledge bases, wekelijks uren handmatig werk bespaard per klant",
-        en: "On-premise multi-agent systems with RAG knowledge bases, saving hours of manual work weekly per client",
-      },
-    ],
-    tags: ["Python", "Multi-agent AI", "RAG", "WebRTC"],
-    current: true,
+    period: "2026 – heden",
+    highlights: [],
+    tags: ["AI Engineering", "Enterprise AI"],
   },
   {
-    company: "Capgemini",
+    company: "Virelio",
     role: {
-      nl: "Dataconsultant & AI Developer",
-      en: "Data Consultant & AI Developer",
+      nl: "AI Engineer & Oprichter",
+      en: "AI Engineer & Founder",
     },
     period: "2024 – heden",
-    highlights: [
-      {
-        nl: "Lead developer van DefGPT Pro voor het Ministerie van Defensie: eerste volledig private on-premise AI-platform voor een enterprise-organisatie",
-        en: "Lead developer of DefGPT Pro for the Ministry of Defence: first fully private on-premise AI platform for an enterprise organisation",
-      },
-      {
-        nl: "Multi-agent LLM-architectuur met MCP-servers en enterprise knowledge base integratie",
-        en: "Multi-agent LLM architecture with MCP servers and enterprise knowledge base integration",
-      },
-      {
-        nl: "Power BI en SAP-dashboards voor militair-strategisch inzicht, inclusief datacleansing en validatie",
-        en: "Power BI and SAP dashboards for military-strategic insights, including data cleansing and validation",
-      },
-    ],
-    tags: ["Multi-agent AI", "MCP-servers", "Power BI", "SAP"],
-    current: true,
+    highlights: [],
+    tags: ["Multi-agent AI", "RAG", "MCP"],
+  },
+  {
+    company: "Capgemini × Min. van Defensie",
+    role: {
+      nl: "AI Consultant",
+      en: "AI Consultant",
+    },
+    period: "2024 – 2026",
+    highlights: [],
+    tags: ["Multi-agent AI", "MCP-servers", "On-premise"],
   },
   {
     company: "ROAD (eFlux)",
     role: {
-      nl: "Data-analist",
-      en: "Data Analyst",
+      nl: "Data & AI Analyst",
+      en: "Data & AI Analyst",
     },
     period: "2022 – 2024",
-    highlights: [
-      {
-        nl: "Looker- en BigQuery-dashboards voor meerdere afdelingen binnen het Google-ecosysteem",
-        en: "Looker and BigQuery dashboards for multiple departments across the Google ecosystem",
-      },
-      {
-        nl: "Markttrend-, KPI- en concurrentieanalyses op bestuursniveau",
-        en: "Market trend, KPI and competitive analyses at board level",
-      },
-    ],
-    tags: ["Looker", "BigQuery", "Google Cloud"],
+    highlights: [],
+    tags: ["BigQuery", "Google Cloud"],
   },
   {
-    company: "Quotum Consultancy",
+    company: "Quotum",
     role: {
-      nl: "Oprichter",
-      en: "Founder",
+      nl: "Oprichter & Full-stack AI Developer",
+      en: "Founder & Full-stack AI Developer",
     },
-    period: "2021 – 2024",
-    highlights: [
-      {
-        nl: "Full-stack financieel dataplatform met on-chain, derivaten- en macrodata",
-        en: "Full-stack financial data platform combining on-chain, derivatives and macro data",
-      },
-      {
-        nl: "Gegroeid naar internationale betalende abonnees door continue doorontwikkeling",
-        en: "Grew to international paying subscribers through continuous development",
-      },
-    ],
-    tags: ["Full-stack Dev", "CI/CD"],
+    period: "2020 – 2024",
+    highlights: [],
+    tags: ["Full-stack Dev", "Data Engineering"],
   },
 ];
 
@@ -219,7 +183,7 @@ export default function Projects() {
                       Robin Bril
                     </h3>
                     <p className="text-base text-[#8e6d6b] font-medium">
-                      AI-engineer & dataconsultant
+                      Senior AI Engineer
                     </p>
                   </div>
                   <a
@@ -288,26 +252,23 @@ export default function Projects() {
                       <span className="font-bold text-[#4a2c2a] text-sm">
                         {exp.company}
                       </span>
-                      {exp.current && (
-                        <span className="text-[9px] font-bold uppercase tracking-wider text-green-600 bg-green-50 px-1.5 py-0.5 rounded-full">
-                          {isNL ? "Actief" : "Active"}
-                        </span>
-                      )}
                     </div>
                     <p className="text-xs text-[#8e6d6b] mb-1.5">
                       {isNL ? exp.role.nl : exp.role.en} · {exp.period}
                     </p>
-                    <ul className="space-y-0.5">
-                      {exp.highlights.map((h, hi) => (
-                        <li
-                          key={hi}
-                          className="text-xs text-[#4a2c2a]/75 leading-relaxed flex gap-1.5"
-                        >
-                          <span className="text-[#e67e22] mt-1 flex-shrink-0 text-[8px]">●</span>
-                          <span>{isNL ? h.nl : h.en}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    {exp.highlights.length > 0 && (
+                      <ul className="space-y-0.5">
+                        {exp.highlights.map((h, hi) => (
+                          <li
+                            key={hi}
+                            className="text-xs text-[#4a2c2a]/75 leading-relaxed flex gap-1.5"
+                          >
+                            <span className="text-[#e67e22] mt-1 flex-shrink-0 text-[8px]">●</span>
+                            <span>{isNL ? h.nl : h.en}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                     {exp.tags && (
                       <div className="flex flex-wrap gap-1 mt-1.5">
                         {exp.tags.map((tag) => (

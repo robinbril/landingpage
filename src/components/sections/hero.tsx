@@ -102,11 +102,11 @@ function HeroContent() {
           {/* Single Primary CTA */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
           >
             <Button
               size="lg"
-              className="bg-orange-500 hover:bg-orange-400 text-white shadow-lg shadow-orange-500/25 hover:shadow-orange-400/30 hover:shadow-xl transition-all duration-300 px-8 sm:px-12 py-5 sm:py-6 text-base sm:text-lg group w-full sm:w-auto"
+              className="bg-[#4a2c2a] hover:bg-[#3a1c1a] text-white rounded-full px-8 sm:px-10 py-5 sm:py-6 text-base sm:text-lg font-medium shadow-lg shadow-[#4a2c2a]/20 hover:shadow-xl transition-all duration-300 group"
               asChild
             >
               <a
@@ -116,36 +116,30 @@ function HeroContent() {
                   scrollToSection("ready-to-start");
                 }}
                 className="flex items-center justify-center gap-2"
-                aria-label={language === 'nl' ? "Plan gratis intake" : "Book free intake"}
+                aria-label={language === 'nl' ? "Plan intake" : "Book intake"}
               >
-                {language === 'nl' ? 'Plan gratis intake' : 'Book free intake'}
+                {language === 'nl' ? 'Plan intake' : 'Book intake'}
                 <Icon icon={ArrowRight} className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </Button>
-          </motion.div>
-
-          {/* Trust Indicators - Single Row */}
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-wrap items-center justify-center gap-6 sm:gap-12 pt-8 border-t border-[#4a2c2a]/10 max-w-4xl"
-          >
-            {[
-              { label: language === 'nl' ? 'Binnen 4u reactie' : 'Within 4h response', icon: Clock },
-              { label: language === 'nl' ? '18 bedrijven geholpen' : '18 companies helped', icon: Users },
-              { label: language === 'nl' ? 'Geen terugkerende kosten' : 'No recurring costs', icon: Trophy }
-            ].map((stat, idx) => {
-              const StatIcon = stat.icon;
-              return (
-                <div key={idx} className="flex items-center gap-2">
-                  <div className="p-1.5 rounded-full bg-orange-500/10">
-                    <StatIcon className="h-4 w-4 text-orange-400" />
-                  </div>
-                  <span className="text-sm font-medium text-[#8e6d6b]">
-                    {stat.label}
-                  </span>
-                </div>
-              );
-            })}
+            <Button
+              size="lg"
+              variant="outline"
+              className="bg-white/80 hover:bg-white border border-[#4a2c2a]/15 text-[#4a2c2a] rounded-full px-8 sm:px-10 py-5 sm:py-6 text-base sm:text-lg font-medium backdrop-blur-sm hover:shadow-md transition-all duration-300 group"
+              asChild
+            >
+              <a
+                href="#services"
+                onClick={(e) => {
+                  e.preventDefault();
+                  scrollToSection("services");
+                }}
+                className="flex items-center justify-center gap-2"
+              >
+                {language === 'nl' ? 'Meer informatie' : 'Learn more'}
+                <Icon icon={ChevronDown} className="h-5 w-5 group-hover:translate-y-0.5 transition-transform" />
+              </a>
+            </Button>
           </motion.div>
         </motion.div>
       </div>

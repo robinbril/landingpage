@@ -13,12 +13,14 @@ import {
   BarChart3,
   Users,
   Briefcase,
-  Building2,
   Megaphone,
   Cog,
-  BookOpen,
   Bot,
+  X,
+  ArrowRight,
+  Zap,
 } from "lucide-react";
+import { scrollToSection } from "@/lib/scroll-utils";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
 
@@ -37,31 +39,34 @@ interface AgentNode {
   labelEN: string;
   descNL: string;
   descEN: string;
+  detailNL: string[];
+  detailEN: string[];
   icon: React.ElementType;
   x: number;
   y: number;
-  connects: string[]; // department ids
+  connects: string[];
 }
 
 // ─── Layout data ─────────────────────────────────────────────────────────────
-// Positions are percentages (0-100) of the container
 
 const DEPARTMENTS: Department[] = [
   { id: "sales", labelNL: "Sales", labelEN: "Sales", icon: TrendingUp, x: 10, y: 15 },
   { id: "marketing", labelNL: "Marketing", labelEN: "Marketing", icon: Megaphone, x: 42, y: 5 },
-  { id: "customer-service", labelNL: "Klantenservice", labelEN: "Customer Service", icon: HeadphonesIcon, x: 78, y: 15 },
+  { id: "customer-service", labelNL: "Klantenservice", labelEN: "Customer Service", icon: HeadphonesIcon, x: 75, y: 15 },
   { id: "operations", labelNL: "Operations", labelEN: "Operations", icon: Cog, x: 8, y: 60 },
   { id: "hr", labelNL: "HR", labelEN: "HR", icon: Users, x: 42, y: 72 },
-  { id: "management", labelNL: "Management", labelEN: "Management", icon: Briefcase, x: 78, y: 60 },
+  { id: "management", labelNL: "Management", labelEN: "Management", icon: Briefcase, x: 75, y: 60 },
 ];
 
 const AGENT_NODES: AgentNode[] = [
   {
     id: "lead-agent",
-    labelNL: "Lead Qualifying Agent",
-    labelEN: "Lead Qualifying Agent",
+    labelNL: "Lead Qualifying",
+    labelEN: "Lead Qualifying",
     descNL: "Kwalificeert leads uit marketing en plant meetings voor sales",
     descEN: "Qualifies leads from marketing and schedules meetings for sales",
+    detailNL: ["Scoort leads op 40+ signalen", "Verrijkt bedrijfsdata automatisch", "Plant meetings direct in agenda"],
+    detailEN: ["Scores leads on 40+ signals", "Enriches company data automatically", "Schedules meetings directly"],
     icon: TrendingUp,
     x: 25,
     y: 12,
@@ -69,21 +74,25 @@ const AGENT_NODES: AgentNode[] = [
   },
   {
     id: "klantenservice-agent",
-    labelNL: "Klantenservice Agent",
-    labelEN: "Customer Service Agent",
+    labelNL: "Klantenservice",
+    labelEN: "Customer Service",
     descNL: "Beantwoordt tickets, escaleert naar operations bij complexe issues",
     descEN: "Answers tickets, escalates to operations for complex issues",
+    detailNL: ["Multichannel: chat, e-mail, WhatsApp", "Leert van eerdere tickets", "Escaleert automatisch"],
+    detailEN: ["Multichannel: chat, email, WhatsApp", "Learns from past tickets", "Escalates automatically"],
     icon: HeadphonesIcon,
-    x: 60,
+    x: 58,
     y: 10,
     connects: ["customer-service", "marketing"],
   },
   {
     id: "content-agent",
-    labelNL: "Content Agent",
-    labelEN: "Content Agent",
+    labelNL: "Content",
+    labelEN: "Content",
     descNL: "Schrijft content vanuit sales insights en deelt via marketing kanalen",
     descEN: "Writes content from sales insights and shares via marketing channels",
+    detailNL: ["Genereert blogs en social posts", "Gebaseerd op sales feedback", "Publiceert via je kanalen"],
+    detailEN: ["Generates blogs and social posts", "Based on sales feedback", "Publishes via your channels"],
     icon: Mail,
     x: 25,
     y: 35,
@@ -91,10 +100,12 @@ const AGENT_NODES: AgentNode[] = [
   },
   {
     id: "order-agent",
-    labelNL: "Order Processing Agent",
-    labelEN: "Order Processing Agent",
+    labelNL: "Order Processing",
+    labelEN: "Order Processing",
     descNL: "Verwerkt orders tussen sales en operations, informeert klantenservice",
     descEN: "Processes orders between sales and operations, informs customer service",
+    detailNL: ["Verwerkt orders automatisch", "Checkt voorraad en beschikbaarheid", "Stuurt bevestigingen"],
+    detailEN: ["Processes orders automatically", "Checks stock and availability", "Sends confirmations"],
     icon: ShoppingCart,
     x: 42,
     y: 38,
@@ -102,21 +113,25 @@ const AGENT_NODES: AgentNode[] = [
   },
   {
     id: "rapportage-agent",
-    labelNL: "Rapportage Agent",
-    labelEN: "Reporting Agent",
+    labelNL: "Rapportage",
+    labelEN: "Reporting",
     descNL: "Genereert rapporten vanuit alle afdelingen voor management",
     descEN: "Generates reports from all departments for management",
+    detailNL: ["Real-time dashboards", "Automatische weekrapporten", "KPI tracking per afdeling"],
+    detailEN: ["Real-time dashboards", "Automatic weekly reports", "KPI tracking per department"],
     icon: BarChart3,
-    x: 62,
+    x: 60,
     y: 42,
     connects: ["management", "operations", "customer-service"],
   },
   {
     id: "hr-onboarding-agent",
-    labelNL: "HR Onboarding Agent",
-    labelEN: "HR Onboarding Agent",
+    labelNL: "HR Onboarding",
+    labelEN: "HR Onboarding",
     descNL: "Begeleidt nieuwe medewerkers, coördineert met alle afdelingen",
     descEN: "Guides new employees, coordinates with all departments",
+    detailNL: ["Stap-voor-stap onboarding", "Documenten automatisch verzameld", "Check-ins met manager"],
+    detailEN: ["Step-by-step onboarding", "Documents collected automatically", "Check-ins with manager"],
     icon: Users,
     x: 25,
     y: 62,
@@ -124,12 +139,14 @@ const AGENT_NODES: AgentNode[] = [
   },
   {
     id: "kennisbank-agent",
-    labelNL: "Kennisbank Agent",
-    labelEN: "Knowledge Base Agent",
+    labelNL: "Kennisbank",
+    labelEN: "Knowledge Base",
     descNL: "Maakt kennis uit alle afdelingen doorzoekbaar voor iedereen",
     descEN: "Makes knowledge from all departments searchable for everyone",
+    detailNL: ["Doorzoekt 10.000+ documenten", "Geeft direct antwoord", "Leert bij elke interactie"],
+    detailEN: ["Searches 10,000+ documents", "Gives instant answers", "Learns from every interaction"],
     icon: Brain,
-    x: 60,
+    x: 58,
     y: 65,
     connects: ["hr", "management", "operations", "customer-service"],
   },
@@ -151,16 +168,11 @@ function ConnectionLines({
   containerHeight: number;
 }) {
   const deptMap = Object.fromEntries(departments.map((d) => [d.id, d]));
-
-  // Center offsets for nodes (dept nodes are ~56px, agent nodes are ~48px)
   const deptOffset = 28;
   const agentOffset = 24;
 
   return (
-    <svg
-      className="absolute inset-0 w-full h-full pointer-events-none"
-      style={{ zIndex: 1 }}
-    >
+    <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 1 }}>
       <defs>
         <linearGradient id="line-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
           <stop offset="0%" stopColor="#e67e22" stopOpacity="0.6" />
@@ -184,7 +196,6 @@ function ConnectionLines({
           const isActive = activeAgent === agent.id;
           const isVisible = !activeAgent || activeAgent === agent.id;
 
-          // Curved path
           const midX = (ax + dx) / 2;
           const midY = (ay + dy) / 2;
           const ctrlOffsetX = (dy - ay) * 0.15;
@@ -214,16 +225,8 @@ function ConnectionLines({
 
 // ─── Department Node ─────────────────────────────────────────────────────────
 
-function DeptNode({
-  dept,
-  isHighlighted,
-  language,
-  delay,
-}: {
-  dept: Department;
-  isHighlighted: boolean;
-  language: string;
-  delay: number;
+function DeptNode({ dept, isHighlighted, language, delay }: {
+  dept: Department; isHighlighted: boolean; language: string; delay: number;
 }) {
   const Icon = dept.icon;
   return (
@@ -235,42 +238,27 @@ function DeptNode({
       className="absolute flex flex-col items-center gap-1.5"
       style={{ left: `${dept.x}%`, top: `${dept.y}%`, zIndex: 2 }}
     >
-      <div
-        className={`w-14 h-14 rounded-2xl border-2 flex items-center justify-center transition-all duration-300 ${
-          isHighlighted
-            ? "bg-[#4a2c2a] border-[#4a2c2a] shadow-lg shadow-[#4a2c2a]/30 scale-110"
-            : "bg-white/80 border-[#4a2c2a]/20"
-        }`}
-      >
+      <div className={`w-14 h-14 rounded-2xl border-2 flex items-center justify-center transition-all duration-300 ${
+        isHighlighted
+          ? "bg-[#4a2c2a] border-[#4a2c2a] shadow-lg shadow-[#4a2c2a]/30 scale-110"
+          : "bg-white/80 border-[#4a2c2a]/20"
+      }`}>
         <Icon className={`h-6 w-6 transition-colors ${isHighlighted ? "text-[#fdf2e9]" : "text-[#4a2c2a]"}`} />
       </div>
-      <span
-        className={`text-[11px] font-bold whitespace-nowrap transition-colors ${
-          isHighlighted ? "text-[#4a2c2a]" : "text-[#8e6d6b]"
-        }`}
-      >
+      <span className={`text-[11px] font-bold whitespace-nowrap transition-colors ${
+        isHighlighted ? "text-[#4a2c2a]" : "text-[#8e6d6b]"
+      }`}>
         {language === "nl" ? dept.labelNL : dept.labelEN}
       </span>
     </motion.div>
   );
 }
 
-// ─── Agent Node (floating) ───────────────────────────────────────────────────
+// ─── Agent Node ──────────────────────────────────────────────────────────────
 
-function AgentNodeComponent({
-  agent,
-  isActive,
-  onClick,
-  language,
-  delay,
-}: {
-  agent: AgentNode;
-  isActive: boolean;
-  onClick: () => void;
-  language: string;
-  delay: number;
+function AgentNodeComponent({ agent, isActive, onClick, language, delay }: {
+  agent: AgentNode; isActive: boolean; onClick: () => void; language: string; delay: number;
 }) {
-  const Icon = agent.icon;
   const isNL = language === "nl";
 
   return (
@@ -283,55 +271,105 @@ function AgentNodeComponent({
       className="absolute cursor-pointer group"
       style={{ left: `${agent.x}%`, top: `${agent.y}%`, zIndex: 10 }}
     >
-      {/* Floating animation wrapper */}
       <motion.div
         animate={{ y: [0, -6, 0] }}
         transition={{ duration: 3 + Math.random() * 2, repeat: Infinity, ease: "easeInOut" }}
         className="flex flex-col items-center gap-1"
       >
-        {/* Glow ring */}
         <div className={`relative ${isActive ? "scale-110" : ""} transition-transform`}>
-          <div
-            className={`absolute -inset-1.5 rounded-full bg-gradient-to-br from-[#e67e22] to-[#ff7f50] transition-opacity ${
-              isActive ? "opacity-40 animate-pulse" : "opacity-0 group-hover:opacity-25"
-            }`}
-          />
-          <div
-            className={`relative w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 ${
-              isActive
-                ? "bg-gradient-to-br from-[#e67e22] to-[#ff7f50] shadow-xl shadow-[#e67e22]/40"
-                : "bg-gradient-to-br from-[#e67e22] to-[#ff7f50] shadow-md shadow-[#e67e22]/20 group-hover:shadow-lg group-hover:shadow-[#e67e22]/30"
-            }`}
-          >
+          <div className={`absolute -inset-1.5 rounded-full bg-gradient-to-br from-[#e67e22] to-[#ff7f50] transition-opacity ${
+            isActive ? "opacity-40 animate-pulse" : "opacity-0 group-hover:opacity-25"
+          }`} />
+          <div className={`relative w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 ${
+            isActive
+              ? "bg-gradient-to-br from-[#e67e22] to-[#ff7f50] shadow-xl shadow-[#e67e22]/40"
+              : "bg-gradient-to-br from-[#e67e22] to-[#ff7f50] shadow-md shadow-[#e67e22]/20 group-hover:shadow-lg"
+          }`}>
             <Bot className="h-5 w-5 text-white" />
           </div>
         </div>
         <span className="text-[10px] font-bold text-[#e67e22] whitespace-nowrap max-w-[100px] text-center leading-tight">
-          {isNL ? agent.labelNL.replace(" Agent", "") : agent.labelEN.replace(" Agent", "")}
+          {isNL ? agent.labelNL : agent.labelEN}
         </span>
       </motion.div>
-
-      {/* Tooltip on hover/active */}
-      <AnimatePresence>
-        {isActive && (
-          <motion.div
-            initial={{ opacity: 0, y: 5, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 5, scale: 0.9 }}
-            className="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-[#4a2c2a] text-[#fdf2e9] rounded-xl px-4 py-3 shadow-2xl min-w-[200px] max-w-[240px] z-50"
-          >
-            <div className="text-xs font-bold mb-1 flex items-center gap-1.5">
-              <Icon className="h-3.5 w-3.5 text-[#e67e22]" />
-              {isNL ? agent.labelNL : agent.labelEN}
-            </div>
-            <div className="text-[11px] text-[#fdf2e9]/70 leading-relaxed">
-              {isNL ? agent.descNL : agent.descEN}
-            </div>
-            <div className="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#4a2c2a] rotate-45" />
-          </motion.div>
-        )}
-      </AnimatePresence>
     </motion.div>
+  );
+}
+
+// ─── Detail Panel (Right Side) ──────────────────────────────────────────────
+
+function DetailPanel({ agent, language, onClose }: {
+  agent: AgentNode | null; language: string; onClose: () => void;
+}) {
+  const isNL = language === "nl";
+
+  return (
+    <AnimatePresence mode="wait">
+      {agent ? (
+        <motion.div
+          key={agent.id}
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          exit={{ opacity: 0, x: 20 }}
+          transition={{ duration: 0.25 }}
+          className="bg-white border border-[#4a2c2a]/10 rounded-2xl p-5 shadow-lg h-fit"
+        >
+          <div className="flex items-start justify-between mb-3">
+            <div className="flex items-center gap-2.5">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#e67e22] to-[#ff7f50] flex items-center justify-center flex-shrink-0">
+                <agent.icon className="h-5 w-5 text-white" />
+              </div>
+              <div>
+                <h4 className="text-sm font-bold text-[#4a2c2a]">
+                  {isNL ? agent.labelNL : agent.labelEN} Agent
+                </h4>
+                <p className="text-[10px] font-semibold uppercase tracking-wider text-[#8e6d6b]">
+                  {agent.connects.length} {isNL ? "afdelingen verbonden" : "departments connected"}
+                </p>
+              </div>
+            </div>
+            <button onClick={onClose} className="p-1 hover:bg-[#fdf2e9] rounded-lg transition-colors">
+              <X className="h-3.5 w-3.5 text-[#8e6d6b]" />
+            </button>
+          </div>
+
+          <p className="text-sm text-[#4a2c2a]/70 mb-4 leading-relaxed">
+            {isNL ? agent.descNL : agent.descEN}
+          </p>
+
+          <div className="space-y-2 mb-4">
+            {(isNL ? agent.detailNL : agent.detailEN).map((item, i) => (
+              <div key={i} className="flex items-start gap-2 text-xs text-[#4a2c2a]/80">
+                <Zap className="h-3 w-3 text-[#e67e22] flex-shrink-0 mt-0.5" />
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+
+          <button
+            onClick={() => scrollToSection("ready-to-start")}
+            className="w-full flex items-center justify-center gap-1.5 px-3 py-2 rounded-xl bg-[#4a2c2a] text-white text-xs font-medium hover:bg-[#3a1c1a] transition-colors"
+          >
+            {isNL ? "Plan afspraak" : "Book a call"}
+            <ArrowRight className="h-3 w-3" />
+          </button>
+        </motion.div>
+      ) : (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="bg-white/50 border border-dashed border-[#4a2c2a]/10 rounded-2xl p-5 flex flex-col items-center justify-center text-center h-fit min-h-[200px]"
+        >
+          <Bot className="h-8 w-8 text-[#e67e22]/30 mb-3" />
+          <p className="text-sm text-[#8e6d6b] font-medium">
+            {isNL ? "Klik op een agent" : "Click an agent"}
+          </p>
+          <p className="text-xs text-[#8e6d6b]/60 mt-1">
+            {isNL ? "om details te bekijken" : "to view details"}
+          </p>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
 
@@ -367,107 +405,112 @@ export default function AgentOrgVisual() {
     ? AGENT_NODES.find((a) => a.id === activeAgent)?.connects ?? []
     : [];
 
+  const activeAgentData = activeAgent ? AGENT_NODES.find((a) => a.id === activeAgent) ?? null : null;
+
   return (
     <section ref={sectionRef} className="py-16 sm:py-24 bg-[#fdf2e9] overflow-hidden">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          className="text-center mb-6"
+          className="text-center mb-10"
         >
           <span className="inline-block text-xs font-bold tracking-widest uppercase text-[#e67e22] mb-3">
             {isNL ? "Hoe het werkt" : "How it works"}
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#4a2c2a] mb-4">
             {isNL ? (
-              <>
-                Agents die <span className="text-[#e67e22]">tussen</span> je team werken
-              </>
+              <>Agents die <span className="text-[#e67e22]">tussen</span> je team werken</>
             ) : (
-              <>
-                Agents that work <span className="text-[#e67e22]">between</span> your team
-              </>
+              <>Agents that work <span className="text-[#e67e22]">between</span> your team</>
             )}
           </h2>
           <p className="text-base sm:text-lg text-[#8e6d6b] max-w-2xl mx-auto">
             {isNL
-              ? "Digitale medewerkers zweven tussen afdelingen. Ze pakken werk op waar het ontstaat , niet waar het toevallig belandt."
-              : "Digital employees float between departments. They pick up work where it originates , not where it happens to land."}
+              ? "Digitale medewerkers zweven tussen afdelingen. Ze pakken werk op waar het ontstaat."
+              : "Digital employees float between departments. They pick up work where it originates."}
           </p>
         </motion.div>
 
-        {/* Instruction */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.5 }}
-          className="text-center text-xs text-[#8e6d6b] mb-8"
-        >
-          {isNL ? "Klik op een agent om connecties te zien" : "Click an agent to see connections"}
-        </motion.p>
-
-        {/* Visual container */}
-        <div
-          ref={containerRef}
-          className="relative w-full mx-auto"
-          style={{ height: "clamp(340px, 42vw, 460px)" }}
-          onClick={(e) => {
-            if (e.target === e.currentTarget) setActiveAgent(null);
-          }}
-        >
-          {/* Background grid dots */}
+        {/* Grid: Network left, Detail panel right */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-6 items-start">
+          {/* Network visualization */}
           <div
-            className="absolute inset-0 opacity-[0.04]"
-            style={{
-              backgroundImage: `radial-gradient(circle, #4a2c2a 1px, transparent 1px)`,
-              backgroundSize: "32px 32px",
+            ref={containerRef}
+            className="relative w-full"
+            style={{ height: "clamp(340px, 42vw, 460px)" }}
+            onClick={(e) => {
+              if (e.target === e.currentTarget) setActiveAgent(null);
             }}
-          />
-
-          {/* Connection lines SVG */}
-          <ConnectionLines
-            agents={AGENT_NODES}
-            departments={DEPARTMENTS}
-            activeAgent={activeAgent}
-            containerWidth={dims.w}
-            containerHeight={dims.h}
-          />
-
-          {/* Department nodes */}
-          {DEPARTMENTS.map((dept, i) => (
-            <DeptNode
-              key={dept.id}
-              dept={dept}
-              isHighlighted={highlightedDepts.includes(dept.id)}
-              language={language}
-              delay={0.1 * i}
+          >
+            <div
+              className="absolute inset-0 opacity-[0.04]"
+              style={{
+                backgroundImage: `radial-gradient(circle, #4a2c2a 1px, transparent 1px)`,
+                backgroundSize: "32px 32px",
+              }}
             />
-          ))}
 
-          {/* Agent nodes (floating) */}
-          {AGENT_NODES.map((agent, i) => (
-            <AgentNodeComponent
-              key={agent.id}
-              agent={agent}
-              isActive={activeAgent === agent.id}
-              onClick={() => handleAgentClick(agent.id)}
-              language={language}
-              delay={0.3 + 0.08 * i}
+            <ConnectionLines
+              agents={AGENT_NODES}
+              departments={DEPARTMENTS}
+              activeAgent={activeAgent}
+              containerWidth={dims.w}
+              containerHeight={dims.h}
             />
-          ))}
 
-          {/* Legend */}
-          <div className="absolute bottom-2 left-2 flex items-center gap-4 text-[10px] text-[#8e6d6b]">
-            <div className="flex items-center gap-1.5">
-              <div className="w-5 h-5 rounded-lg bg-white/80 border-2 border-[#4a2c2a]/20" />
-              <span>{isNL ? "Afdeling" : "Department"}</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#e67e22] to-[#ff7f50]" />
-              <span>{isNL ? "Digitale medewerker" : "Digital employee"}</span>
+            {DEPARTMENTS.map((dept, i) => (
+              <DeptNode
+                key={dept.id}
+                dept={dept}
+                isHighlighted={highlightedDepts.includes(dept.id)}
+                language={language}
+                delay={0.1 * i}
+              />
+            ))}
+
+            {AGENT_NODES.map((agent, i) => (
+              <AgentNodeComponent
+                key={agent.id}
+                agent={agent}
+                isActive={activeAgent === agent.id}
+                onClick={() => handleAgentClick(agent.id)}
+                language={language}
+                delay={0.3 + 0.08 * i}
+              />
+            ))}
+
+            {/* Legend */}
+            <div className="absolute bottom-2 left-2 flex items-center gap-4 text-[10px] text-[#8e6d6b]">
+              <div className="flex items-center gap-1.5">
+                <div className="w-5 h-5 rounded-lg bg-white/80 border-2 border-[#4a2c2a]/20" />
+                <span>{isNL ? "Afdeling" : "Department"}</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <div className="w-5 h-5 rounded-full bg-gradient-to-br from-[#e67e22] to-[#ff7f50]" />
+                <span>{isNL ? "Digitale medewerker" : "Digital employee"}</span>
+              </div>
             </div>
           </div>
+
+          {/* Detail panel (right side, desktop only visible as panel, mobile below) */}
+          <div className="hidden lg:block sticky top-24">
+            <DetailPanel
+              agent={activeAgentData}
+              language={language}
+              onClose={() => setActiveAgent(null)}
+            />
+          </div>
+        </div>
+
+        {/* Mobile: detail panel below the network */}
+        <div className="lg:hidden mt-4">
+          <DetailPanel
+            agent={activeAgentData}
+            language={language}
+            onClose={() => setActiveAgent(null)}
+          />
         </div>
       </div>
     </section>

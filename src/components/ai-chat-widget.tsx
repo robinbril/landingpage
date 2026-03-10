@@ -2,8 +2,9 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageCircle, X, Send, Bot, User } from "lucide-react";
+import { X, Send } from "lucide-react";
 import { useLanguage } from "@/lib/i18n/language-context";
+import Image from "next/image";
 
 interface Message {
   id: string;
@@ -17,7 +18,7 @@ const INITIAL_MESSAGES_NL: Message[] = [
     id: "welcome",
     role: "assistant",
     content:
-      "Hey! Welke digitale medewerker zoek je? Vertel me je uitdaging en ik plan direct een gratis intake voor je in.",
+      "Hey! Robin hier. Vertel me waar je tegenaan loopt — welk proces kost te veel tijd of handjes? Dan kijk ik of een AI-agent dat kan overnemen.",
     timestamp: new Date(),
   },
 ];
@@ -27,21 +28,21 @@ const INITIAL_MESSAGES_EN: Message[] = [
     id: "welcome",
     role: "assistant",
     content:
-      "Hey! Which digital employee are you looking for? Tell me your challenge and I'll schedule a free intake right away.",
+      "Hey! Robin here. Tell me what you're dealing with — which process is eating too much time? I'll see if an AI agent can take it over.",
     timestamp: new Date(),
   },
 ];
 
 const SUGGESTED_PROMPTS_NL = [
-  "We willen onze klantenservice automatiseren",
-  "We hebben een order processing agent nodig",
-  "Onze kennisbank moet doorzoekbaar worden met AI",
+  "Onze klantenservice loopt vast",
+  "We verwerken te veel orders handmatig",
+  "Onze kennisbank is onvindbaar",
 ];
 
 const SUGGESTED_PROMPTS_EN = [
-  "We want to automate our customer service",
-  "We need an order processing agent",
-  "Our knowledge base needs to be searchable with AI",
+  "Our customer service is overwhelmed",
+  "We process too many orders manually",
+  "Our knowledge base is impossible to search",
 ];
 
 export default function AIChatWidget() {
@@ -53,6 +54,7 @@ export default function AIChatWidget() {
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [contactSubmitted, setContactSubmitted] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -84,12 +86,10 @@ export default function AIChatWidget() {
     setInput("");
     setIsTyping(true);
 
-    // Simulate AI processing delay
     await new Promise((r) => setTimeout(r, 1500));
 
-    // Generate contextual response based on the message
-    const responseNl = `Goed dat je dit aangeeft! Ik stuur je aanvraag door naar Robin. Hij neemt binnen 4 uur contact met je op om een gratis intake in te plannen.\n\nWat je beschreef:\n"${messageText}"\n\nVul hieronder je e-mail in zodat Robin je kan bereiken:`;
-    const responseEn = `Great that you're reaching out! I'm forwarding your request to Robin. He'll get back to you within 4 hours to schedule a free intake.\n\nWhat you described:\n"${messageText}"\n\nEnter your email below so Robin can reach you:`;
+    const responseNl = `Top, dat is precies het soort werk waar een AI-agent goed in is.\n\nLaat je WhatsApp-nummer of e-mail achter, dan bel of app ik je direct voor het maken van een afspraak.`;
+    const responseEn = `Great, that's exactly the kind of work an AI agent excels at.\n\nLeave your WhatsApp number or email, and I'll call or message you directly to set up a meeting.`;
 
     const assistantMessage: Message = {
       id: `assistant-${Date.now()}`,
@@ -103,25 +103,25 @@ export default function AIChatWidget() {
     setSubmitted(true);
   };
 
-  const handleEmailSubmit = async (email: string) => {
-    const emailMessage: Message = {
-      id: `email-${Date.now()}`,
+  const handleContactSubmit = async (contact: string) => {
+    const contactMessage: Message = {
+      id: `contact-${Date.now()}`,
       role: "user",
-      content: email,
+      content: contact,
       timestamp: new Date(),
     };
 
-    setMessages((prev) => [...prev, emailMessage]);
+    setMessages((prev) => [...prev, contactMessage]);
     setIsTyping(true);
 
-    // Here you would POST to your OpenClaw/n8n webhook:
+    // Here you would POST to your webhook:
     // POST https://your-n8n-instance.com/webhook/intake
-    // { message: messages, email, timestamp: new Date() }
+    // { messages, contact, timestamp: new Date() }
 
     await new Promise((r) => setTimeout(r, 1000));
 
-    const confirmNl = `Verzonden! Robin ontvangt nu je aanvraag en e-mail (${email}). Je krijgt binnen 4 uur een bevestiging met een link om een moment te kiezen.`;
-    const confirmEn = `Sent! Robin now has your request and email (${email}). You'll receive a confirmation within 4 hours with a link to pick a time.`;
+    const confirmNl = `Ontvangen! Ik neem zo snel mogelijk contact met je op. Spreek je snel!`;
+    const confirmEn = `Got it! I'll reach out to you as soon as possible. Talk soon!`;
 
     const confirmMessage: Message = {
       id: `confirm-${Date.now()}`,
@@ -132,27 +132,39 @@ export default function AIChatWidget() {
 
     setMessages((prev) => [...prev, confirmMessage]);
     setIsTyping(false);
+    setContactSubmitted(true);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
-      if (submitted) {
-        // If submitted, this is the email input
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (emailRegex.test(input)) {
-          handleEmailSubmit(input);
+      if (submitted && !contactSubmitted) {
+        if (input.trim()) {
+          handleContactSubmit(input.trim());
           setInput("");
         }
-      } else {
+      } else if (!submitted) {
         handleSend();
       }
     }
   };
 
+  // Robin's avatar component
+  const RobinAvatar = ({ size = "sm" }: { size?: "sm" | "lg" }) => (
+    <div className={`${size === "lg" ? "w-10 h-10" : "w-6 h-6"} rounded-full overflow-hidden flex-shrink-0 border border-[#4a2c2a]/10`}>
+      <Image
+        src="/images/contact/robin.jpeg"
+        alt="Robin Bril"
+        width={size === "lg" ? 40 : 24}
+        height={size === "lg" ? 40 : 24}
+        className="object-cover w-full h-full"
+      />
+    </div>
+  );
+
   return (
     <>
-      {/* Chat Toggle Button */}
+      {/* Chat Toggle Button - Robin's photo */}
       <AnimatePresence>
         {!isOpen && (
           <motion.button
@@ -162,10 +174,18 @@ export default function AIChatWidget() {
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-primary text-primary-foreground shadow-2xl flex items-center justify-center hover:bg-primary/90 transition-colors"
-            aria-label={language === "nl" ? "Open AI chat" : "Open AI chat"}
+            className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full shadow-2xl flex items-center justify-center overflow-hidden border-2 border-white"
+            aria-label={language === "nl" ? "Chat met Robin" : "Chat with Robin"}
           >
-            <Bot className="h-6 w-6" />
+            <Image
+              src="/images/contact/robin.jpeg"
+              alt="Robin Bril"
+              width={56}
+              height={56}
+              className="object-cover w-full h-full"
+            />
+            {/* Online indicator */}
+            <div className="absolute bottom-0 right-0 w-3.5 h-3.5 bg-green-500 rounded-full border-2 border-white" />
           </motion.button>
         )}
       </AnimatePresence>
@@ -178,19 +198,20 @@ export default function AIChatWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-48px)] h-[520px] max-h-[calc(100vh-100px)] bg-background border border-border rounded-2xl shadow-2xl flex flex-col overflow-hidden"
+            className="fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-48px)] h-[520px] max-h-[calc(100vh-100px)] bg-white border border-[#4a2c2a]/10 rounded-2xl shadow-2xl flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-card">
+            <div className="flex items-center justify-between px-4 py-3 border-b border-[#4a2c2a]/5 bg-[#fdf2e9]">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
-                  <Bot className="h-4 w-4 text-primary" />
+                <div className="relative">
+                  <RobinAvatar size="lg" />
+                  <div className="absolute -bottom-0.5 -right-0.5 w-3 h-3 bg-green-500 rounded-full border-2 border-[#fdf2e9]" />
                 </div>
                 <div>
-                  <div className="font-semibold text-sm text-foreground">
-                    Virelio AI
+                  <div className="font-bold text-sm text-[#4a2c2a]">
+                    Robin Bril
                   </div>
-                  <div className="text-xs text-green-500 flex items-center gap-1">
+                  <div className="text-xs text-green-600 flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-green-500 inline-block" />
                     {language === "nl" ? "Online" : "Online"}
                   </div>
@@ -198,15 +219,15 @@ export default function AIChatWidget() {
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-1.5 rounded-lg hover:bg-muted transition-colors"
+                className="p-1.5 rounded-lg hover:bg-white/60 transition-colors"
                 aria-label="Close chat"
               >
-                <X className="h-4 w-4 text-muted-foreground" />
+                <X className="h-4 w-4 text-[#4a2c2a]" />
               </button>
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-white">
               {messages.map((msg) => (
                 <div
                   key={msg.id}
@@ -215,15 +236,15 @@ export default function AIChatWidget() {
                   }`}
                 >
                   {msg.role === "assistant" && (
-                    <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-1">
-                      <Bot className="h-3 w-3 text-primary" />
+                    <div className="mt-1">
+                      <RobinAvatar />
                     </div>
                   )}
                   <div
                     className={`max-w-[80%] px-3 py-2 rounded-xl text-sm leading-relaxed whitespace-pre-wrap ${
                       msg.role === "user"
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-muted text-foreground"
+                        ? "bg-[#4a2c2a] text-white"
+                        : "bg-[#fdf2e9] text-[#4a2c2a]"
                     }`}
                   >
                     {msg.content}
@@ -238,7 +259,7 @@ export default function AIChatWidget() {
                     <button
                       key={idx}
                       onClick={() => handleSend(prompt)}
-                      className="block w-full text-left px-3 py-2 rounded-xl border border-border text-sm text-muted-foreground hover:border-primary/50 hover:text-foreground transition-all"
+                      className="block w-full text-left px-3 py-2 rounded-xl border border-[#4a2c2a]/10 text-sm text-[#8e6d6b] hover:border-[#e67e22]/50 hover:text-[#4a2c2a] transition-all"
                     >
                       {prompt}
                     </button>
@@ -249,14 +270,14 @@ export default function AIChatWidget() {
               {/* Typing indicator */}
               {isTyping && (
                 <div className="flex gap-2 items-center">
-                  <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center">
-                    <Bot className="h-3 w-3 text-primary" />
+                  <div className="mt-1">
+                    <RobinAvatar />
                   </div>
-                  <div className="bg-muted px-3 py-2 rounded-xl">
+                  <div className="bg-[#fdf2e9] px-3 py-2 rounded-xl">
                     <div className="flex gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground/50 animate-bounce" style={{ animationDelay: "0ms" }} />
-                      <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground/50 animate-bounce" style={{ animationDelay: "150ms" }} />
-                      <span className="w-1.5 h-1.5 rounded-full bg-muted-foreground/50 animate-bounce" style={{ animationDelay: "300ms" }} />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#8e6d6b]/50 animate-bounce" style={{ animationDelay: "0ms" }} />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#8e6d6b]/50 animate-bounce" style={{ animationDelay: "150ms" }} />
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#8e6d6b]/50 animate-bounce" style={{ animationDelay: "300ms" }} />
                     </div>
                   </div>
                 </div>
@@ -266,47 +287,47 @@ export default function AIChatWidget() {
             </div>
 
             {/* Input */}
-            <div className="px-4 py-3 border-t border-border bg-card">
+            <div className="px-4 py-3 border-t border-[#4a2c2a]/5 bg-white">
               <div className="flex items-center gap-2">
                 <input
                   ref={inputRef}
-                  type={submitted ? "email" : "text"}
+                  type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyDown}
+                  disabled={contactSubmitted}
                   placeholder={
-                    submitted
+                    contactSubmitted
                       ? language === "nl"
-                        ? "je@email.nl"
-                        : "you@email.com"
+                        ? "Ik neem contact op!"
+                        : "I'll be in touch!"
+                      : submitted
+                      ? language === "nl"
+                        ? "06-12345678 of je@email.nl"
+                        : "+31612345678 or you@email.com"
                       : language === "nl"
-                      ? "Beschrijf wat je zoekt..."
-                      : "Describe what you're looking for..."
+                      ? "Beschrijf je uitdaging..."
+                      : "Describe your challenge..."
                   }
-                  className="flex-1 bg-muted rounded-xl px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50"
+                  className="flex-1 bg-[#fdf2e9]/60 rounded-xl px-4 py-2.5 text-sm text-[#4a2c2a] placeholder:text-[#8e6d6b]/60 focus:outline-none focus:ring-2 focus:ring-[#e67e22]/30 disabled:opacity-50"
                 />
                 <button
                   onClick={() => {
-                    if (submitted) {
-                      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                      if (emailRegex.test(input)) {
-                        handleEmailSubmit(input);
-                        setInput("");
-                      }
-                    } else {
+                    if (submitted && !contactSubmitted && input.trim()) {
+                      handleContactSubmit(input.trim());
+                      setInput("");
+                    } else if (!submitted) {
                       handleSend();
                     }
                   }}
-                  disabled={!input.trim()}
-                  className="p-2.5 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  disabled={!input.trim() || contactSubmitted}
+                  className="p-2.5 rounded-xl bg-[#4a2c2a] text-white hover:bg-[#3a1c1a] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                   <Send className="h-4 w-4" />
                 </button>
               </div>
-              <div className="text-[10px] text-muted-foreground/50 text-center mt-2">
-                {language === "nl"
-                  ? "Powered by Virelio AI"
-                  : "Powered by Virelio AI"}
+              <div className="text-[10px] text-[#8e6d6b]/40 text-center mt-2">
+                Powered by Virelio AI
               </div>
             </div>
           </motion.div>
