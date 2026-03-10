@@ -58,7 +58,7 @@ function HeroContent() {
           variants={containerVariants}
           initial="hidden"
           animate={controls}
-          className="flex flex-col items-center space-y-4 sm:space-y-6 md:space-y-8 text-center"
+          className="flex flex-col items-center space-y-4 sm:space-y-6 md:space-y-8 text-center bg-[#fdf2e9]/70 backdrop-blur-md rounded-3xl py-10 sm:py-14 px-6 sm:px-10"
         >
           {/* Eyebrow text for context */}
           <motion.div
@@ -142,7 +142,7 @@ function HeroContent() {
             {[
               { label: language === 'nl' ? 'Binnen 4u reactie' : 'Within 4h response', icon: Clock },
               { label: language === 'nl' ? '18 bedrijven geholpen' : '18 companies helped', icon: Users },
-              { label: language === 'nl' ? 'Geld-terug garantie' : 'Money-back guarantee', icon: Trophy }
+              { label: language === 'nl' ? 'Geen terugkerende kosten' : 'No recurring costs', icon: Trophy }
             ].map((stat, idx) => {
               const StatIcon = stat.icon;
               return (

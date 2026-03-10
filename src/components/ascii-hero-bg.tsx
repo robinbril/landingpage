@@ -32,7 +32,7 @@ export default function ParticleHeroBg() {
           0.1,
           1000
         );
-        camera.position.z = 1;
+        camera.position.set(0.15, 0.05, 2);
 
         renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
         renderer.setSize(
@@ -100,8 +100,10 @@ export default function ParticleHeroBg() {
           (points: any) => {
             points.geometry.center();
             points.geometry.rotateX(Math.PI);
-            points.material.size = 0.003;
+            points.material.size = 0.0025;
             points.material.color.setHex(0xe67e22);
+            points.material.transparent = true;
+            points.material.opacity = 0.55;
             scene.add(points);
           },
           undefined,

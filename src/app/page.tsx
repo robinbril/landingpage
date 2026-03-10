@@ -5,6 +5,7 @@ import CompanySlider from "@/components/sections/company-slider";
 import Projects from "@/components/sections/projects";
 import Services from "@/components/sections/services";
 // import Testimonials from "@/components/sections/testimonials";
+import AgentOrgVisual from "@/components/sections/agent-org-visual";
 import Footer from "@/components/sections/footer";
 import AIChatWidget from "@/components/ai-chat-widget";
 import IntakeExplanationSection from "@/components/sections/intake-explanation-section";
@@ -79,6 +80,7 @@ export default function Home() {
         <Hero />
         <CompanySlider />
         {/* GuaranteeSection removed */}
+        <AgentOrgVisual />
         <div id={siteConfig.sections.services.substring(1)}>
           <Services />
         </div>
