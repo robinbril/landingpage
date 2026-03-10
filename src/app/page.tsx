@@ -9,7 +9,7 @@ import AgentOrgVisual from "@/components/sections/agent-org-visual";
 import Footer from "@/components/sections/footer";
 import AIChatWidget from "@/components/ai-chat-widget";
 import IntakeExplanationSection from "@/components/sections/intake-explanation-section";
-// import GuaranteeSection from "@/components/sections/guarantee-section";
+import GuaranteeSection from "@/components/sections/guarantee-section";
 import { generateMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/lib/config";
 import JsonLd from "@/components/seo/json-ld";
@@ -79,7 +79,7 @@ export default function Home() {
         <Navbar />
         <Hero />
         <CompanySlider />
-        {/* GuaranteeSection removed */}
+        <GuaranteeSection />
         <AgentOrgVisual />
         <div id={siteConfig.sections.services.substring(1)}>
           <Services />
