@@ -117,7 +117,7 @@ export default function Testimonials() {
                     alt={testimonial.name}
                     className="w-12 h-12 rounded-full object-cover"
                     onError={(e) => {
-                      e.currentTarget.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Ccircle cx='24' cy='24' r='24' fill='%23e5e7eb'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%236b7280' font-family='Arial' font-size='20' font-weight='bold'%3E${testimonial.name.charAt(0)}%3C/text%3E%3C/svg%3E`;
+                      e.currentTarget.src = `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Ccircle cx='24' cy='24' r='24' fill='%23fae6d5'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%234a2c2a' font-family='Arial' font-size='20' font-weight='bold'%3E${testimonial.name.charAt(0)}%3C/text%3E%3C/svg%3E`;
                     }}
                   />
                   <div>

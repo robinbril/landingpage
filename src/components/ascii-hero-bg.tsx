@@ -1,125 +1,150 @@
 "use client";
 
-import React, { useRef, useEffect, useState, useCallback } from "react";
+import React, { useRef, useEffect, useState } from "react";
 
-const ASCII_CHARS = " .,:;i1tfLCG08@#";
-const CHAR_SIZE = 14;
-const FONT = "12px monospace";
-
-export default function AsciiHeroBg() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+export default function ParticleHeroBg() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const sceneRef = useRef<any>(null);
+  const rendererRef = useRef<any>(null);
   const animFrameRef = useRef<number>(0);
-  const timeRef = useRef<number>(0);
-  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
+  const [mounted, setMounted] = useState(false);
 
-  const resize = useCallback(() => {
-    const w = window.innerWidth;
-    const h = window.innerHeight;
-    setDimensions({ width: w, height: h });
+  useEffect(() => {
+    setMounted(true);
   }, []);
 
   useEffect(() => {
-    resize();
-    window.addEventListener("resize", resize);
-    return () => window.removeEventListener("resize", resize);
-  }, [resize]);
+    if (!mounted || !containerRef.current) return;
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas || dimensions.width === 0) return;
+    let animFrameId: number;
+    let renderer: any;
 
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
+    const init = async () => {
+      try {
+        const THREE = await import("three");
 
-    canvas.width = dimensions.width;
-    canvas.height = dimensions.height;
+        // Scene setup
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0xfdf2e9);
+        sceneRef.current = scene;
 
-    const cols = Math.ceil(dimensions.width / (CHAR_SIZE * 0.6));
-    const rows = Math.ceil(dimensions.height / CHAR_SIZE);
+        const camera = new THREE.PerspectiveCamera(
+          30,
+          containerRef.current!.clientWidth / containerRef.current!.clientHeight,
+          0.1,
+          1000
+        );
+        camera.position.z = 1;
 
-    // Simplex-like noise using sin combinations
-    function noise(x: number, y: number, t: number): number {
-      const n1 = Math.sin(x * 0.03 + t * 0.4) * Math.cos(y * 0.04 - t * 0.3);
-      const n2 = Math.sin(x * 0.07 - t * 0.2) * Math.sin(y * 0.06 + t * 0.5);
-      const n3 = Math.cos(x * 0.05 + y * 0.05 + t * 0.15);
-      const n4 = Math.sin((x + y) * 0.02 + t * 0.25);
-      return (n1 + n2 + n3 + n4) / 4;
-    }
+        renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+        renderer.setSize(
+          containerRef.current!.clientWidth,
+          containerRef.current!.clientHeight
+        );
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        containerRef.current!.appendChild(renderer.domElement);
+        rendererRef.current = renderer;
 
-    // Wave displacement
-    function displacement(x: number, y: number, t: number): number {
-      const wave1 = Math.sin(x * 0.015 + t * 0.6) * 0.5;
-      const wave2 = Math.cos(y * 0.02 - t * 0.4) * 0.3;
-      const ripple = Math.sin(Math.sqrt(x * x + y * y) * 0.01 - t * 0.8) * 0.2;
-      return wave1 + wave2 + ripple;
-    }
+        // Lighting
+        const ambientLight = new THREE.AmbientLight(0xfff5e1, 0.6);
+        scene.add(ambientLight);
 
-    function render(timestamp: number) {
-      if (!ctx || !canvas) return;
-      const t = timestamp * 0.001;
-      timeRef.current = t;
+        const directionalLight = new THREE.DirectionalLight(0xff7f50, 0.8);
+        directionalLight.position.set(5, 10, 5);
+        scene.add(directionalLight);
 
-      ctx.fillStyle = "#000000";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.font = FONT;
+        // Create particle geometry
+        const particleCount = 10000;
+        const positions = new Float32Array(particleCount * 3);
+        const colors = new Float32Array(particleCount * 3);
 
-      for (let row = 0; row < rows; row++) {
-        for (let col = 0; col < cols; col++) {
-          const x = col * CHAR_SIZE * 0.6;
-          const y = row * CHAR_SIZE;
+        const orangeColor = new THREE.Color(0xe67e22);
 
-          // Combine noise layers
-          const n = noise(col, row, t);
-          const d = displacement(col, row, t);
-          const combined = (n + d) * 0.5 + 0.5; // normalize to 0-1
+        for (let i = 0; i < particleCount; i++) {
+          const i3 = i * 3;
 
-          // Map to character
-          const charIndex = Math.floor(
-            Math.max(0, Math.min(1, combined)) * (ASCII_CHARS.length - 1)
-          );
-          const char = ASCII_CHARS[charIndex];
+          // Create particles on a sphere surface
+          const theta = Math.random() * Math.PI * 2;
+          const phi = Math.acos(Math.random() * 2 - 1);
+          const radius = 0.4 + Math.random() * 0.1;
 
-          // Color: dark blue-ish with slight variation
-          const brightness = combined * 0.35;
-          const r = Math.floor(brightness * 80);
-          const g = Math.floor(brightness * 140);
-          const b = Math.floor(brightness * 255);
+          positions[i3] = radius * Math.sin(phi) * Math.cos(theta);
+          positions[i3 + 1] = radius * Math.sin(phi) * Math.sin(theta);
+          positions[i3 + 2] = radius * Math.cos(phi);
 
-          ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
-          ctx.fillText(char, x, y);
+          // Set color to orange
+          colors[i3] = orangeColor.r;
+          colors[i3 + 1] = orangeColor.g;
+          colors[i3 + 2] = orangeColor.b;
         }
+
+        const geometry = new THREE.BufferGeometry();
+        geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+        geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+
+        const material = new THREE.PointsMaterial({
+          size: 0.004,
+          vertexColors: true,
+          transparent: true,
+          opacity: 0.8,
+          sizeAttenuation: true,
+        });
+
+        const particles = new THREE.Points(geometry, material);
+        scene.add(particles);
+
+        // Handle window resize
+        const handleResize = () => {
+          const width = containerRef.current?.clientWidth || 1;
+          const height = containerRef.current?.clientHeight || 1;
+          camera.aspect = width / height;
+          camera.updateProjectionMatrix();
+          renderer.setSize(width, height);
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        // Animation loop
+        const animate = () => {
+          animFrameId = requestAnimationFrame(animate);
+
+          // Slow rotation
+          particles.rotation.y += 0.001;
+          particles.rotation.x += 0.0003;
+
+          renderer.render(scene, camera);
+        };
+
+        animate();
+
+        return () => {
+          window.removeEventListener("resize", handleResize);
+          cancelAnimationFrame(animFrameId);
+          geometry.dispose();
+          material.dispose();
+          renderer.dispose();
+          if (containerRef.current && renderer.domElement.parentNode === containerRef.current) {
+            containerRef.current.removeChild(renderer.domElement);
+          }
+        };
+      } catch (e) {
+        console.warn("Three.js failed to load:", e);
       }
+    };
 
-      // Radial gradient overlay: fade edges to black, keep center visible
-      const gradient = ctx.createRadialGradient(
-        canvas.width * 0.5,
-        canvas.height * 0.4,
-        canvas.width * 0.15,
-        canvas.width * 0.5,
-        canvas.height * 0.4,
-        canvas.width * 0.6
-      );
-      gradient.addColorStop(0, "rgba(0,0,0,0)");
-      gradient.addColorStop(0.5, "rgba(0,0,0,0.3)");
-      gradient.addColorStop(1, "rgba(0,0,0,0.85)");
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      animFrameRef.current = requestAnimationFrame(render);
-    }
-
-    animFrameRef.current = requestAnimationFrame(render);
+    const cleanup = init();
 
     return () => {
-      cancelAnimationFrame(animFrameRef.current);
+      cleanup?.then((fn) => fn?.());
+      cancelAnimationFrame(animFrameId);
     };
-  }, [dimensions]);
+  }, [mounted]);
 
   return (
-    <canvas
-      ref={canvasRef}
+    <div
+      ref={containerRef}
       className="absolute inset-0 w-full h-full"
-      style={{ opacity: 0.6 }}
+      style={{ background: "#fdf2e9" }}
     />
   );
 }

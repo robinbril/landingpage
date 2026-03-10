@@ -20,11 +20,11 @@ export default function GuaranteeSection() {
     ];
 
     return (
-        <section className="py-24 bg-[#EFF6FF]" id="guarantee">
+        <section className="py-24 bg-[#fae6d5]" id="guarantee">
             <div className="container mx-auto px-4">
                 <div className="max-w-3xl mx-auto text-center">
                     <motion.h2
-                        className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-[#111827] px-4"
+                        className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 text-[#4a2c2a] px-4"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -33,7 +33,7 @@ export default function GuaranteeSection() {
                     </motion.h2>
 
                     <motion.p
-                        className="text-lg sm:text-xl text-gray-600 mb-12 sm:mb-16 px-4"
+                        className="text-lg sm:text-xl text-[#8e6d6b] mb-12 sm:mb-16 px-4"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -55,7 +55,7 @@ export default function GuaranteeSection() {
                                 <div className="flex-shrink-0">
                                     <Check className="h-6 w-6 text-orange-500" strokeWidth={3} />
                                 </div>
-                                <p className="text-base sm:text-lg text-gray-800 leading-relaxed px-2">
+                                <p className="text-base sm:text-lg text-[#5a3d3a] leading-relaxed px-2">
                                     {guarantee}
                                 </p>
                             </motion.div>

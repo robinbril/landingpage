@@ -48,9 +48,9 @@ function HeroContent() {
     <section
       id="hero"
       ref={ref}
-      className="relative min-h-[85vh] sm:min-h-screen flex items-center justify-center overflow-hidden py-8 sm:py-12 md:py-16 bg-black"
+      className="relative min-h-[85vh] sm:min-h-screen flex items-center justify-center overflow-hidden py-8 sm:py-12 md:py-16 bg-[#fdf2e9]"
     >
-      {/* Animated ASCII art background */}
+      {/* Animated particle background */}
       <AsciiHeroBg />
 
       <div className="container relative z-10 px-4 sm:px-6 w-full max-w-7xl mx-auto">
@@ -63,7 +63,7 @@ function HeroContent() {
           {/* Eyebrow text for context */}
           <motion.div
             variants={itemVariants}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#e67e22]/5 border border-[#4a2c2a]/10 backdrop-blur-sm"
           >
             <span className="text-xs sm:text-sm font-medium text-orange-400">
               {language === 'nl' ? 'AI Agents voor bedrijven' : 'AI Agents for businesses'}
@@ -77,7 +77,7 @@ function HeroContent() {
             className="space-y-6 md:space-y-8"
           >
             {/* Main headline - larger and more impactful */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight max-w-5xl px-4 sm:px-0 leading-tight text-white">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight max-w-5xl px-4 sm:px-0 leading-tight text-[#4a2c2a]">
               {language === 'nl' ? (
                 <>
                   Virelio bouwt <em className="not-italic font-black text-orange-400">Agents</em>.
@@ -92,16 +92,16 @@ function HeroContent() {
 
           <motion.p
             variants={itemVariants}
-            className="max-w-2xl text-base sm:text-lg md:text-xl text-gray-400 font-normal leading-relaxed px-6 sm:px-0 text-center"
+            className="max-w-2xl text-base sm:text-lg md:text-xl text-[#8e6d6b] font-normal leading-relaxed px-6 sm:px-0 text-center"
           >
             {language === 'nl' ? (
               <>
-                <span className="font-bold text-white">Klantenservice. Facturatie. Sales. Kennisbanken.</span><br />
+                <span className="font-bold text-[#4a2c2a]">Klantenservice. Facturatie. Sales. Kennisbanken.</span><br />
                 Van idee tot werkende agent in 2 weken.
               </>
             ) : (
               <>
-                <span className="font-bold text-white">Customer service. Invoicing. Sales. Knowledge bases.</span><br />
+                <span className="font-bold text-[#4a2c2a]">Customer service. Invoicing. Sales. Knowledge bases.</span><br />
                 From idea to working agent in 2 weeks.
               </>
             )}
@@ -135,7 +135,7 @@ function HeroContent() {
           {/* Trust Indicators - Single Row */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-wrap items-center justify-center gap-6 sm:gap-12 pt-8 border-t border-white/10 max-w-4xl"
+            className="flex flex-wrap items-center justify-center gap-6 sm:gap-12 pt-8 border-t border-[#4a2c2a]/10 max-w-4xl"
           >
             {[
               { label: language === 'nl' ? 'Binnen 4u reactie' : 'Within 4h response', icon: Clock },
@@ -148,7 +148,7 @@ function HeroContent() {
                   <div className="p-1.5 rounded-full bg-orange-500/10">
                     <StatIcon className="h-4 w-4 text-orange-400" />
                   </div>
-                  <span className="text-sm font-medium text-gray-400">
+                  <span className="text-sm font-medium text-[#8e6d6b]">
                     {stat.label}
                   </span>
                 </div>
@@ -165,29 +165,29 @@ function HeroContent() {
 function HeroLoading() {
   const { t } = useLanguage();
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-background to-background/50">
+    <section className="relative min-h-screen flex items-center justify-center bg-[#fdf2e9]">
       <div className="container px-4 sm:px-6 text-center w-full max-w-7xl mx-auto">
         <div className="space-y-8">
           <div className="space-y-4 md:space-y-6">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary/90 max-w-5xl mx-auto px-2 sm:px-0 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-[#4a2c2a]/90 max-w-5xl mx-auto px-2 sm:px-0 leading-tight">
               {t.hero.title}
             </h1>
             <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 px-2 sm:px-0 max-w-2xl mx-auto">
               {[...Array(4)].map((_, i) => (
-                <div key={i} className="h-6 sm:h-8 w-16 sm:w-20 rounded-full bg-primary/20 animate-pulse" />
+                <div key={i} className="h-6 sm:h-8 w-16 sm:w-20 rounded-full bg-[#e67e22]/20 animate-pulse" />
               ))}
             </div>
           </div>
-          <p className="max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-muted-foreground/80 font-normal px-4 sm:px-0 text-center">
+          <p className="max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-[#8e6d6b]/80 font-normal px-4 sm:px-0 text-center">
             {t.hero.subtitle}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <div className="h-11 w-36 rounded-md bg-primary/90 animate-pulse" />
-            <div className="h-11 w-36 rounded-md border-2 border-primary/30 animate-pulse" />
+            <div className="h-11 w-36 rounded-md bg-orange-500 animate-pulse" />
+            <div className="h-11 w-36 rounded-md border-2 border-[#e67e22]/30 animate-pulse" />
           </div>
           {/* Scroll indicator placeholder */}
           <div className="mt-8 sm:mt-12 md:mt-16 lg:mt-20 flex justify-center">
-            <div className="h-14 w-14 rounded-full bg-primary/20 animate-pulse" />
+            <div className="h-14 w-14 rounded-full bg-[#e67e22]/20 animate-pulse" />
           </div>
         </div>
       </div>

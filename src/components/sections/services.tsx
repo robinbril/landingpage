@@ -74,7 +74,7 @@ const getServices = (language: string): Service[] => {
         language === 'nl' ? 'Alleen escalaties in je inbox, geen ruis' : 'Only escalations in your inbox, no noise'
       ],
       highlight: "",
-      gradient: "from-purple-500 to-pink-500"
+      gradient: "from-amber-500 to-orange-600"
     },
     {
       id: "automatiseringen",
@@ -200,7 +200,7 @@ const ServiceCard = ({
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Background gradient - subtle */}
-      <div className="absolute inset-0 rounded-2xl bg-slate-500/5 group-hover:bg-slate-500/10 transition-opacity duration-500" />
+      <div className="absolute inset-0 rounded-2xl bg-[#e67e22]/5 group-hover:bg-[#e67e22]/10 transition-opacity duration-500" />
 
       {/* Card content */}
       <div className={`
@@ -245,7 +245,7 @@ const ServiceCard = ({
                 transition={{ delay: idx * 0.05 }}
               >
                 <div className="mt-0.5">
-                  <Check className="h-4 w-4 text-green-500" />
+                  <Check className="h-4 w-4 text-[#e67e22]" />
                 </div>
                 <span className="text-sm text-foreground/70 dark:text-foreground/60">{feature}</span>
               </motion.div>

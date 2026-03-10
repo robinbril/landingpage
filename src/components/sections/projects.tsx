@@ -85,7 +85,7 @@ const getProjects = (language: string): Project[] => {
       impact: isNL ? "60% minder research tijd" : "60% less research time",
       category: "AI Agents",
       icon: Cog,
-      color: "from-purple-500 to-indigo-500",
+      color: "from-amber-500 to-orange-600",
       results: []
     },
     {
@@ -100,7 +100,7 @@ const getProjects = (language: string): Project[] => {
       impact: isNL ? "150% meer inbound leads" : "150% more inbound leads",
       category: "Marketing",
       icon: TrendingUp,
-      color: "from-pink-500 to-rose-500",
+      color: "from-orange-500 to-red-500",
       results: []
     },
     {
@@ -115,7 +115,7 @@ const getProjects = (language: string): Project[] => {
       impact: isNL ? "40 uur/maand bespaard" : "40 hours/month saved",
       category: "Automation",
       icon: Zap,
-      color: "from-green-500 to-emerald-500",
+      color: "from-amber-500 to-orange-600",
       results: []
     },
     {
@@ -145,7 +145,7 @@ const getProjects = (language: string): Project[] => {
       impact: isNL ? "30% hoger conversie" : "30% higher conversion",
       category: "AI Agents",
       icon: TrendingUp,
-      color: "from-green-500 to-emerald-500",
+      color: "from-orange-500 to-amber-600",
       results: []
     },
   ];

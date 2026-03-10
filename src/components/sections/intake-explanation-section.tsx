@@ -67,7 +67,7 @@ export default function IntakeExplanationSection() {
                     {/* Steps with Progress Bar */}
                     <div className="relative mb-32">
                         {/* Progress bar container */}
-                        <div className="absolute top-[60px] left-0 right-0 h-1 bg-gray-200 hidden md:block">
+                        <div className="absolute top-[60px] left-0 right-0 h-1 bg-[#e67e22]/20 hidden md:block">
                             <motion.div
                                 className="h-full bg-gradient-to-r from-orange-500 to-orange-600 rounded-full"
                                 initial={{ width: "0%" }}
@@ -160,15 +160,15 @@ export default function IntakeExplanationSection() {
                         {/* Trust Signals */}
                         <div className="flex flex-wrap justify-center gap-4 sm:gap-6 text-sm text-muted-foreground">
                             <div className="flex items-center gap-2">
-                                <Check className="h-4 w-4 text-green-500" strokeWidth={2.5} />
+                                <Check className="h-4 w-4 text-[#e67e22]" strokeWidth={2.5} />
                                 <span>{language === 'nl' ? 'Binnen 4u reactie' : 'Response within 4h'}</span>
                             </div>
                             <div className="flex items-center gap-2">
-                                <Check className="h-4 w-4 text-green-500" strokeWidth={2.5} />
+                                <Check className="h-4 w-4 text-[#e67e22]" strokeWidth={2.5} />
                                 <span>{language === 'nl' ? '18 bedrijven geholpen' : '18 companies helped'}</span>
                             </div>
                             <div className="flex items-center gap-2">
-                                <Check className="h-4 w-4 text-green-500" strokeWidth={2.5} />
+                                <Check className="h-4 w-4 text-[#e67e22]" strokeWidth={2.5} />
                                 <span>{language === 'nl' ? 'Geld-terug garantie' : 'Money-back guarantee'}</span>
                             </div>
                         </div>
@@ -191,30 +191,30 @@ export default function IntakeExplanationSection() {
                                     initial={{ opacity: 0, height: 0 }}
                                     animate={{ opacity: 1, height: 'auto' }}
                                     exit={{ opacity: 0, height: 0 }}
-                                    className="bg-gray-800/50 backdrop-blur-sm rounded-xl p-6 space-y-3 border border-gray-700"
+                                    className="bg-[#4a2c2a]/80 backdrop-blur-sm rounded-xl p-6 space-y-3 border border-[#4a2c2a]/40"
                                 >
                                     <a
                                         href="tel:+31640446732"
-                                        className="flex items-center gap-3 p-4 bg-gray-700/50 rounded-lg hover:bg-gray-700 transition-colors text-base"
+                                        className="flex items-center gap-3 p-4 bg-[#4a2c2a]/60 rounded-lg hover:bg-[#4a2c2a]/70 transition-colors text-base"
                                     >
                                         <Phone className="h-5 w-5 text-orange-400 flex-shrink-0" />
-                                        <span className="text-white font-medium">06-4044 6732</span>
+                                        <span className="text-[#fdf2e9] font-medium">06-4044 6732</span>
                                     </a>
                                     <a
                                         href="mailto:robin.bril@gmail.com"
-                                        className="flex items-center gap-3 p-4 bg-gray-700/50 rounded-lg hover:bg-gray-700 transition-colors text-base"
+                                        className="flex items-center gap-3 p-4 bg-[#4a2c2a]/60 rounded-lg hover:bg-[#4a2c2a]/70 transition-colors text-base"
                                     >
                                         <Mail className="h-5 w-5 text-orange-400 flex-shrink-0" />
-                                        <span className="text-white font-medium">robin.bril@gmail.com</span>
+                                        <span className="text-[#fdf2e9] font-medium">robin.bril@gmail.com</span>
                                     </a>
                                     <a
                                         href="https://wa.me/31640446732"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center gap-3 p-4 bg-gray-700/50 rounded-lg hover:bg-gray-700 transition-colors text-base"
+                                        className="flex items-center gap-3 p-4 bg-[#4a2c2a]/60 rounded-lg hover:bg-[#4a2c2a]/70 transition-colors text-base"
                                     >
                                         <MessageCircle className="h-5 w-5 text-orange-400 flex-shrink-0" />
-                                        <span className="text-white font-medium">WhatsApp</span>
+                                        <span className="text-[#fdf2e9] font-medium">WhatsApp</span>
                                     </a>
                                 </motion.div>
                             )}
