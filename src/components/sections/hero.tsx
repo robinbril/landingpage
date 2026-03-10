@@ -85,7 +85,7 @@ function HeroContent() {
           {/* Single Primary CTA */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-3"
           >
             <Button
               size="lg"

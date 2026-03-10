@@ -23,6 +23,8 @@ export default function ParticleHeroBg() {
         const { OrbitControls } = await import("three/addons/controls/OrbitControls.js");
         const { PCDLoader } = await import("three/addons/loaders/PCDLoader.js");
 
+        const isMobile = window.innerWidth < 768;
+
         const scene = new THREE.Scene();
 
         const camera = new THREE.PerspectiveCamera(
@@ -38,7 +40,7 @@ export default function ParticleHeroBg() {
           containerRef.current!.clientWidth,
           containerRef.current!.clientHeight
         );
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, isMobile ? 1.5 : 2));
         containerRef.current!.appendChild(renderer.domElement);
 
         const ambientLight = new THREE.AmbientLight(0xfff5e1, 0.6);
@@ -57,7 +59,8 @@ export default function ParticleHeroBg() {
         controls.enableRotate = false;
 
         const createFallback = () => {
-          const particleCount = 12000;
+          const isMobile = window.innerWidth < 768;
+          const particleCount = isMobile ? 4000 : 12000;
           const positions = new Float32Array(particleCount * 3);
           const colors = new Float32Array(particleCount * 3);
           const orangeColor = new THREE.Color(0xe67e22);

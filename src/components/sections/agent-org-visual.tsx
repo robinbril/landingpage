@@ -238,14 +238,14 @@ function DeptNode({ dept, isHighlighted, language, delay }: {
       className="absolute flex flex-col items-center gap-1.5"
       style={{ left: `${dept.x}%`, top: `${dept.y}%`, zIndex: 2 }}
     >
-      <div className={`w-14 h-14 rounded-2xl border-2 flex items-center justify-center transition-all duration-300 ${
+      <div className={`w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-lg sm:rounded-xl lg:rounded-2xl border-2 flex items-center justify-center transition-all duration-300 ${
         isHighlighted
           ? "bg-[#4a2c2a] border-[#4a2c2a] shadow-lg shadow-[#4a2c2a]/30 scale-110"
           : "bg-white/80 border-[#4a2c2a]/20"
       }`}>
-        <Icon className={`h-6 w-6 transition-colors ${isHighlighted ? "text-[#fdf2e9]" : "text-[#4a2c2a]"}`} />
+        <Icon className={`h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6 transition-colors ${isHighlighted ? "text-[#fdf2e9]" : "text-[#4a2c2a]"}`} />
       </div>
-      <span className={`text-[11px] font-bold whitespace-nowrap transition-colors ${
+      <span className={`text-[9px] sm:text-[10px] lg:text-[11px] font-bold whitespace-nowrap transition-colors ${
         isHighlighted ? "text-[#4a2c2a]" : "text-[#8e6d6b]"
       }`}>
         {language === "nl" ? dept.labelNL : dept.labelEN}
@@ -280,15 +280,15 @@ function AgentNodeComponent({ agent, isActive, onClick, language, delay }: {
           <div className={`absolute -inset-1.5 rounded-full bg-gradient-to-br from-[#e67e22] to-[#ff7f50] transition-opacity ${
             isActive ? "opacity-40 animate-pulse" : "opacity-0 group-hover:opacity-25"
           }`} />
-          <div className={`relative w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 ${
+          <div className={`relative w-9 h-9 sm:w-10 sm:h-10 lg:w-12 lg:h-12 rounded-full flex items-center justify-center transition-all duration-300 ${
             isActive
               ? "bg-gradient-to-br from-[#e67e22] to-[#ff7f50] shadow-xl shadow-[#e67e22]/40"
               : "bg-gradient-to-br from-[#e67e22] to-[#ff7f50] shadow-md shadow-[#e67e22]/20 group-hover:shadow-lg"
           }`}>
-            <Bot className="h-5 w-5 text-white" />
+            <Bot className="h-4 w-4 sm:h-4 sm:w-4 lg:h-5 lg:w-5 text-white" />
           </div>
         </div>
-        <span className="text-[10px] font-bold text-[#e67e22] whitespace-nowrap max-w-[100px] text-center leading-tight">
+        <span className="text-[8px] sm:text-[9px] lg:text-[10px] font-bold text-[#e67e22] whitespace-nowrap max-w-[70px] sm:max-w-[85px] lg:max-w-[100px] text-center leading-tight">
           {isNL ? agent.labelNL : agent.labelEN}
         </span>
       </motion.div>
@@ -497,12 +497,12 @@ export default function AgentOrgVisual() {
         </motion.div>
 
         {/* Grid: Network left, Detail panel right */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6 items-start mx-auto max-w-6xl">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-4 lg:gap-6 items-start mx-auto max-w-4xl lg:max-w-6xl">
           {/* Network visualization */}
           <div
             ref={containerRef}
             className="relative w-full"
-            style={{ height: "clamp(340px, 42vw, 460px)" }}
+            style={{ height: "clamp(380px, 50vw, 460px)" }}
             onClick={(e) => {
               if (e.target === e.currentTarget) setActiveAgent(null);
             }}
@@ -558,8 +558,8 @@ export default function AgentOrgVisual() {
           </div>
         </div>
 
-        {/* Mobile: detail panel below the network */}
-        <div className="lg:hidden mt-4">
+        {/* Mobile: detail panel as bottom sheet */}
+        <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-white border-t border-[#4a2c2a]/10 rounded-t-2xl shadow-2xl max-h-[60vh] overflow-y-auto p-4">
           <DetailPanel
             agent={activeAgentData}
             language={language}

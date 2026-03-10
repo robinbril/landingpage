@@ -178,8 +178,8 @@ function ROIScanner({
                 <div className="text-center py-4">
                   <div className="relative w-full h-6 bg-gradient-to-r from-red-200 via-yellow-200 to-green-200 rounded-full overflow-hidden mb-3">
                     <motion.div
-                      className="absolute top-0 bottom-0 left-0 rounded-full"
-                      style={{ backgroundColor: gaugeColor }}
+                      className="absolute top-0 bottom-0 left-0"
+                      style={{ backgroundColor: gaugeColor, borderRadius: "9999px 0 0 9999px" }}
                       initial={{ width: "0%" }}
                       animate={{ width: `${gaugeValue}%` }}
                       transition={{ duration: 0.6, ease: "easeOut" }}

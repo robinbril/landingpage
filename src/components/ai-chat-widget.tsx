@@ -190,7 +190,7 @@ export default function AIChatWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-48px)] h-[520px] max-h-[calc(100vh-100px)] bg-white border border-[#4a2c2a]/10 rounded-2xl shadow-2xl flex flex-col overflow-hidden"
+            className="fixed bottom-0 right-0 sm:bottom-6 sm:right-6 z-50 w-full sm:w-[380px] sm:max-w-[calc(100vw-48px)] h-[85dvh] sm:h-[520px] sm:max-h-[calc(100dvh-100px)] bg-white border border-[#4a2c2a]/10 rounded-t-2xl sm:rounded-2xl shadow-2xl flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="flex items-center justify-between px-4 py-3 border-b border-[#4a2c2a]/5 bg-[#fdf2e9]">
@@ -211,7 +211,7 @@ export default function AIChatWidget() {
               </div>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-1.5 rounded-lg hover:bg-white/60 transition-colors"
+                className="p-2.5 rounded-lg hover:bg-white/60 transition-colors"
                 aria-label="Close chat"
               >
                 <X className="h-4 w-4 text-[#4a2c2a]" />
@@ -301,7 +301,7 @@ export default function AIChatWidget() {
                       ? "Beschrijf je uitdaging..."
                       : "Describe your challenge..."
                   }
-                  className="flex-1 bg-[#fdf2e9]/60 rounded-xl px-4 py-2.5 text-sm text-[#4a2c2a] placeholder:text-[#8e6d6b]/60 focus:outline-none focus:ring-2 focus:ring-[#e67e22]/30 disabled:opacity-50"
+                  className="flex-1 bg-[#fdf2e9]/60 rounded-xl px-4 py-3 sm:py-2.5 text-sm text-[#4a2c2a] placeholder:text-[#8e6d6b]/60 focus:outline-none focus:ring-2 focus:ring-[#e67e22]/30 disabled:opacity-50"
                 />
                 <button
                   onClick={() => {
@@ -313,7 +313,7 @@ export default function AIChatWidget() {
                     }
                   }}
                   disabled={!input.trim() || contactSubmitted}
-                  className="p-2.5 rounded-xl bg-[#4a2c2a] text-white hover:bg-[#3a1c1a] disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  className="p-2.5 rounded-xl bg-[#4a2c2a] text-white hover:bg-[#3a1c1a] disabled:opacity-50 disabled:cursor-not-allowed transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
                 >
                   <Send className="h-4 w-4" />
                 </button>
