@@ -467,85 +467,6 @@ function MobileAgentCard({ agent, isActive, onClick, language }: {
   );
 }
 
-// ─── Animated Cursor Hint (desktop only) ────────────────────────────────────
-
-function AnimatedCursorHint({
-  containerWidth,
-  containerHeight,
-  inView,
-}: {
-  containerWidth: number;
-  containerHeight: number;
-  inView: boolean;
-}) {
-  const [hasPlayed, setHasPlayed] = useState(false);
-
-  useEffect(() => {
-    if (inView && !hasPlayed) {
-      const timer = setTimeout(() => setHasPlayed(true), 4000);
-      return () => clearTimeout(timer);
-    }
-  }, [inView, hasPlayed]);
-
-  if (!inView || hasPlayed) return null;
-
-  const targetX = (25 / 100) * containerWidth;
-  const targetY = (12 / 100) * containerHeight;
-  const startX = (42 / 100) * containerWidth;
-  const startY = (38 / 100) * containerHeight;
-
-  return (
-    <motion.div
-      className="absolute pointer-events-none"
-      style={{ left: 0, top: 0, width: "100%", height: "100%", zIndex: 30 }}
-    >
-      <motion.svg
-        width="24"
-        height="24"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="absolute"
-        initial={{ opacity: 0, left: startX, top: startY }}
-        animate={{
-          opacity: [0, 1, 1, 1, 0],
-          left: [startX, startX, targetX, targetX, targetX],
-          top: [startY, startY, targetY, targetY, targetY],
-        }}
-        transition={{
-          duration: 3.5,
-          times: [0, 0.15, 0.55, 0.8, 1],
-          ease: "easeInOut",
-          delay: 1.5,
-        }}
-      >
-        <path
-          d="M3 3L10.5 17.5L13 12.5L19 13.5L3 3Z"
-          fill="#e67e22"
-          stroke="#ff7f50"
-          strokeWidth="0.5"
-        />
-      </motion.svg>
-
-      <motion.div
-        className="absolute rounded-full border-2 border-[#e67e22]"
-        style={{ width: 40, height: 40 }}
-        initial={{ opacity: 0, left: targetX - 20, top: targetY - 20, scale: 0.5 }}
-        animate={{
-          opacity: [0, 0, 0, 0.8, 0],
-          scale: [0.5, 0.5, 0.5, 1.3, 1.5],
-        }}
-        transition={{
-          duration: 3.5,
-          times: [0, 0.15, 0.55, 0.75, 1],
-          ease: "easeOut",
-          delay: 1.5,
-        }}
-      />
-    </motion.div>
-  );
-}
-
 // ─── Main Section ────────────────────────────────────────────────────────────
 
 export default function AgentOrgVisual() {
@@ -606,13 +527,14 @@ export default function AgentOrgVisual() {
           </p>
         </motion.div>
 
-        {/* ── Desktop: Network visualization + detail below ── */}
-        <div className="hidden md:block">
-          <div className="relative mx-auto max-w-3xl">
+        {/* ── Desktop: Network left + Detail panel right ── */}
+        <div className="hidden md:flex items-start gap-6 lg:gap-8">
+          {/* Network visualization — takes remaining space */}
+          <div className="flex-1 min-w-0">
             <div
               ref={containerRef}
               className="relative w-full"
-              style={{ height: "clamp(380px, 45vw, 460px)" }}
+              style={{ height: "clamp(380px, 40vw, 460px)" }}
               onClick={(e) => {
                 if (e.target === e.currentTarget) setActiveAgent(null);
               }}
@@ -653,13 +575,11 @@ export default function AgentOrgVisual() {
                   delay={0.3 + 0.08 * i}
                 />
               ))}
-
-              <AnimatedCursorHint containerWidth={dims.w} containerHeight={dims.h} inView={inView} />
             </div>
           </div>
 
-          {/* Detail panel below network, centered */}
-          <div className="mx-auto max-w-md mt-6">
+          {/* Detail panel — fixed width on right, vertically centered */}
+          <div className="w-[300px] lg:w-[340px] flex-shrink-0 sticky top-24">
             <DetailPanel
               agent={activeAgentData}
               language={language}

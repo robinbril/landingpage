@@ -48,6 +48,7 @@ const SUGGESTED_PROMPTS_EN = [
 export default function AIChatWidget() {
   const { language } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
+  const [showButton, setShowButton] = useState(false);
   const [messages, setMessages] = useState<Message[]>(
     language === "nl" ? INITIAL_MESSAGES_NL : INITIAL_MESSAGES_EN
   );
@@ -57,6 +58,16 @@ export default function AIChatWidget() {
   const [contactSubmitted, setContactSubmitted] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
+  // Only show chat button after scrolling past the hero
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowButton(window.scrollY > 400);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const suggestedPrompts =
     language === "nl" ? SUGGESTED_PROMPTS_NL : SUGGESTED_PROMPTS_EN;
@@ -164,9 +175,9 @@ export default function AIChatWidget() {
 
   return (
     <>
-      {/* Chat Toggle Button - AI icon (Robin's face only inside chat) */}
+      {/* Chat Toggle Button - only visible after scrolling past hero */}
       <AnimatePresence>
-        {!isOpen && (
+        {!isOpen && showButton && (
           <motion.button
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}

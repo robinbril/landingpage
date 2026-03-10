@@ -144,14 +144,8 @@ export default function IntakeExplanationSection() {
                         </div>
                     </div>
 
-                    {/* Bottom: reassurance + contact */}
+                    {/* Bottom: contact */}
                     <div className="text-center">
-                        <p className="text-sm text-muted-foreground mb-4">
-                            {language === 'nl'
-                                ? 'Geen verplichtingen. Geen verborgen kosten.'
-                                : 'No obligations. No hidden costs.'}
-                        </p>
-
                         <div className="max-w-sm mx-auto">
                             <button
                                 onClick={() => setShowContact(!showContact)}
