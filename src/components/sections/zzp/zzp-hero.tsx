@@ -13,7 +13,7 @@ interface ZzpHeroProps {
 
 export default function ZzpHero({ isEnglish = false }: ZzpHeroProps) {
   const content = isEnglish ? {
-    badge: "VIRELIO FREELANCE",
+    badge: "ROBIN BRIL FREELANCE",
     title: "Freelance for AI Projects",
     subtitle: "Omar & Robin",
     description: "Professional freelance developers specializing in AI, backend development, and innovative digital solutions. Available for hire individually or as a team.",
@@ -24,7 +24,7 @@ export default function ZzpHero({ isEnglish = false }: ZzpHeroProps) {
       flexible: "Flexible collaboration"
     }
   } : {
-    badge: "VIRELIO ZZP",
+    badge: "ROBIN BRIL ZZP",
     title: "ZZP'ers voor AI Projecten",
     subtitle: "Omar & Robin", 
     description: "Professionele ZZP'ers gespecialiseerd in AI, backend ontwikkeling en innovatieve digitale oplossingen. Je kunt ons inhuren als duo of apart, afhankelijk van jouw projectbehoeften.",

@@ -126,7 +126,7 @@ export default function Navbar() {
             className="flex items-center hover:opacity-80 transition"
           >
             <span className="text-xl sm:text-2xl md:text-3xl font-black tracking-tight">
-              Virelio<span className="text-primary">.</span>
+              Robin Bril<span className="text-primary">.</span>
             </span>
           </a>
         </motion.div>
@@ -277,7 +277,7 @@ export default function Navbar() {
 
                   {/* Email Button */}
                   <motion.a
-                    href={`mailto:${t.contact?.emailAddress || 'contact@virelio.com'}`}
+                    href={`mailto:${t.contact?.emailAddress || 'contact@robinbril.com'}`}
                     className="flex items-center gap-4 px-6 py-4 bg-gradient-to-r from-orange-500/10 to-amber-500/10 hover:from-orange-500/20 hover:to-amber-500/20 rounded-2xl border border-orange-500/20 hover:border-orange-500/40 transition-all duration-300 group hover:shadow-lg"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
@@ -290,7 +290,7 @@ export default function Navbar() {
                         {t.contact?.email || "Email Us"}
                       </p>
                       <p className="text-sm text-orange-600/80 dark:text-orange-400/80 truncate">
-                        {t.contact?.emailAddress || "contact@virelio.com"}
+                        {t.contact?.emailAddress || "contact@robinbril.com"}
                       </p>
                     </div>
                   </motion.a>

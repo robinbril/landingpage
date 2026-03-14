@@ -3,11 +3,11 @@ export const translations = {
     // Voice AI translations
     voiceAI: {
       company: {
-        name: "Virelio",
+        name: "Robin Bril",
         tagline: "Stem AI Operaties voor Ondernemingen",
       },
       contact: {
-        email: "hallo@virelio.ai",
+        email: "robin@robinbril.com",
         phone: "+31 (0)20 123-4567",
         address: "Amsterdam, Nederland",
       },
@@ -63,7 +63,7 @@ export const translations = {
         },
       },
       solution: {
-        title: "Zie Virelio in actie",
+        title: "Zie het in actie",
         subtitle: "Ervaar hoe menselijke AI klantinteracties afhandelt",
         demoScenarios: [
           {
@@ -103,28 +103,28 @@ export const translations = {
         testimonials: [
           // {
           //   quote:
-          //     "De implementatie van Virelio's voice AI heeft onze responstijden drastisch verbeterd. Klanten krijgen nu direct hulp, zelfs buiten kantooruren.",
+          //     "De implementatie van Robin's voice AI heeft onze responstijden drastisch verbeterd. Klanten krijgen nu direct hulp, zelfs buiten kantooruren.",
           //   author: "Lars van der Berg",
           //   company: "Vloto",
           //   role: "Customer Success Manager",
           // },
           {
             quote:
-              "We hebben de klanttevredenheid zien stijgen met 35% sinds we Virelio gebruiken. De AI begrijpt context en geeft relevante antwoorden.",
+              "We hebben de klanttevredenheid zien stijgen met 35% sinds we de AI agents gebruiken. De AI begrijpt context en geeft relevante antwoorden.",
             author: "Sophie Martens",
             company: "Capgemini",
             role: "Service Delivery Lead",
           },
           {
             quote:
-              "Onze supportafdeling kan zich nu focussen op complexe vraagstukken terwijl Virelio de standaardvragen afhandelt. Een game-changer.",
+              "Onze supportafdeling kan zich nu focussen op complexe vraagstukken terwijl de AI agent de standaardvragen afhandelt. Een game-changer.",
             author: "Mark Jansen",
             company: "E-flux",
             role: "Operations Manager",
           },
           {
             quote:
-              "De integratie was naadloos en binnen een week zagen we al resultaat. Virelio heeft onze verwachtingen overtroffen.",
+              "De integratie was naadloos en binnen een week zagen we al resultaat. Robin heeft onze verwachtingen overtroffen.",
             author: "Emma de Vries",
             company: "Road",
             role: "Product Manager",
@@ -143,13 +143,13 @@ export const translations = {
           },
           {
             value: "100+",
-            label: "bedrijven vertrouwen Virelio",
+            label: "bedrijven vertrouwen Robin Bril",
             icon: "Users",
           },
         ],
       },
       benefits: {
-        title: "Waarom kiezen voor Virelio",
+        title: "Waarom kiezen voor Robin Bril",
         subtitle: "Drie voordelen die je klantinteracties transformeren",
         items: [
           {
@@ -214,12 +214,12 @@ export const translations = {
             {
               title: "Live stem‑AI interactie",
               description:
-                "zie hoe Virelio klantscenario's in jouw sector afhandelt",
+                "zie hoe de AI agents klantscenario's in jouw sector afhandelen",
             },
             {
               title: "Aangepast integratieplan",
               description:
-                "hoe Virelio aansluit op je huidige systemen",
+                "hoe de oplossing aansluit op je huidige systemen",
             },
             {
               title: "ROI‑calculator",
@@ -389,7 +389,7 @@ export const translations = {
     about: {
       title: "Over Ons",
       subtitle: "Ons team en onze missie",
-      theTeam: "Het Virelio team",
+      theTeam: "Over Robin Bril",
       description:
         "Wij zijn Robin en Omar. Twee nuchtere IT'ers met 5+ jaar ervaring bij grote organisaties. We bouwen en testen snel. Nieuwe tool gezien? Die dag nog een prototype.\nWe maken complexe technologie praktisch en toepasbaar. Geen lange theorie, wel oplossingen die direct waarde leveren voor MKB en enterprise.\nVan snelle experimenten tot stabiele productiesystemen. Van automatisering tot maatwerk AI. Gericht, efficiënt, praktisch.",
       missionTitle: "Onze Missie",
@@ -835,11 +835,11 @@ export const translations = {
     // Voice AI translations
     voiceAI: {
       company: {
-        name: "Virelio",
+        name: "Robin Bril",
         tagline: "Voice AI Operations for Enterprise",
       },
       contact: {
-        email: "hello@virelio.ai",
+        email: "robin@robinbril.com",
         phone: "+1 (555) 123-4567",
         address: "San Francisco, CA",
       },
@@ -892,7 +892,7 @@ export const translations = {
         },
       },
       solution: {
-        title: "See Virelio in Action",
+        title: "See It in Action",
         subtitle:
           "Experience how human-like AI handles real customer interactions",
         demoScenarios: [
@@ -932,28 +932,28 @@ export const translations = {
         testimonials: [
           // {
           //   quote:
-          //     "Implementing Virelio's voice AI has drastically improved our response times. Customers now get instant help, even outside office hours.",
+          //     "Implementing Robin's voice AI has drastically improved our response times. Customers now get instant help, even outside office hours.",
           //   author: "Lars van der Berg",
           //   company: "Vloto",
           //   role: "Customer Success Manager",
           // },
           {
             quote:
-              "We've seen customer satisfaction increase by 35% since using Virelio. The AI understands context and provides relevant answers.",
+              "We've seen customer satisfaction increase by 35% since using the AI agents. The AI understands context and provides relevant answers.",
             author: "Sophie Martens",
             company: "Capgemini",
             role: "Service Delivery Lead",
           },
           {
             quote:
-              "Our support team can now focus on complex issues while Virelio handles standard queries. It's been a game-changer.",
+              "Our support team can now focus on complex issues while the AI agent handles standard queries. It's been a game-changer.",
             author: "Mark Jansen",
             company: "E-flux",
             role: "Operations Manager",
           },
           {
             quote:
-              "The integration was seamless and we saw results within a week. Virelio exceeded our expectations.",
+              "The integration was seamless and we saw results within a week. Robin exceeded our expectations.",
             author: "Emma de Vries",
             company: "Road",
             role: "Product Manager",
@@ -972,13 +972,13 @@ export const translations = {
           },
           {
             value: "100+",
-            label: "Companies trust Virelio",
+            label: "Companies trust Robin Bril",
             icon: "Users",
           },
         ],
       },
       benefits: {
-        title: "Why Choose Virelio",
+        title: "Why Choose Robin Bril",
         subtitle: "Three core benefits that transform your customer operations",
         items: [
           {
@@ -1023,7 +1023,7 @@ export const translations = {
       cta: {
         title: "Ready to hear how it sounds?",
         subtitle:
-          "Get a personalized demo of Virelio handling your specific use case",
+          "Get a personalized demo of Robin Bril's AI handling your specific use case",
         ctaText: "Book Your Demo",
         form: {
           name: "Full Name",
@@ -1043,12 +1043,12 @@ export const translations = {
             {
               title: "Live Voice AI Interaction",
               description:
-                "See Virelio handle real customer scenarios in your industry",
+                "See the AI agents handle real customer scenarios in your industry",
             },
             {
               title: "Custom Integration Plan",
               description:
-                "Walkthrough of how Virelio fits into your current systems",
+                "Walkthrough of how the solution fits into your current systems",
             },
             {
               title: "ROI Calculator",
@@ -1217,7 +1217,7 @@ export const translations = {
     about: {
       title: "About Us",
       subtitle: "Learn more about our team and mission.",
-      theTeam: "The Virelio team",
+      theTeam: "About Robin Bril",
       description:
         "We are Robin and Omar. Two down-to-earth, certified IT professionals with over 5 years of experience and a diverse portfolio of projects at major companies. Rather than passive consumption, we build. Read about something new? We test it. New AI tool? We have a working prototype the same day.\nWe make complex technology understandable and immediately applicable. No lengthy theories, just smart solutions that deliver immediate value for both local entrepreneurs and large corporations.\nFrom rapid experiments to stable production systems. From clever automation to powerful AI applications. We keep building. Focused. Efficient. Practical.",
       missionTitle: "Our Mission",

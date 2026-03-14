@@ -75,7 +75,7 @@ export async function generateMetadata({
   return createMetadata({
     title: post.title,
     description: post.excerpt,
-    keywords: `${post.title}, blog, Virelio, technology, insights`,
+    keywords: `${post.title}, blog, Robin Bril, technology, insights`,
     pathname: `/blog/${post.slug}`,
     imageUrl: post.coverImage,
     imageAlt: `Cover image for ${post.title}`,
@@ -95,22 +95,22 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
     {
       position: 1,
       name: "Home",
-      item: "https://virelio.nl",
+      item: "https://robinbril.com",
     },
     {
       position: 2,
       name: "Projects",
-      item: "https://virelio.nl/#projects",
+      item: "https://robinbril.com/#projects",
     },
     {
       position: 3,
       name: post.title,
-      item: `https://virelio.nl/blog/${post.slug}`,
+      item: `https://robinbril.com/blog/${post.slug}`,
     },
   ];
 
   // Prepare blog post schema data
-  const postUrl = `https://virelio.nl/blog/${post.slug}`;
+  const postUrl = `https://robinbril.com/blog/${post.slug}`;
 
   return (
     <>

@@ -5,7 +5,7 @@ import { ThemeProvider } from "@/components/layout/theme-provider";
 import { LanguageProvider } from "@/lib/i18n/language-context";
 import BackgroundEffect from "@/components/layout/background";
 import JsonLd from "@/components/seo/json-ld";
-import { organizationSchema, websiteSchema } from "@/lib/schema";
+import { organizationSchema, websiteSchema, personSchema } from "@/lib/schema";
 import { siteConfig } from "@/lib/config";
 import dynamic from 'next/dynamic';
 import GoogleAnalytics from "@/components/seo/google-analytics";
@@ -31,7 +31,7 @@ const ClientCookieConsent = dynamic(
 );
 
 export const viewport: Viewport = {
-  themeColor: "#ffffff",
+  themeColor: "#fdf2e9",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -42,16 +42,15 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "Virelio - AI Solutions & Software Development | Amsterdam",
-    template: "%s | Virelio"
+    default: "Robin Bril — AI Engineer | Digitale Medewerkers & AI Agents",
+    template: "%s | Robin Bril"
   },
   description:
-    "Virelio levert AI spraakassistenten, SaaS platforms, en custom software oplossingen. 200+ automatiseringen geleverd. Gespecialiseerd in AI telefonie, KYC integraties en e-commerce.",
-  keywords:
-    "Virelio, AI Solutions, spraakassistent, voice AI, SaaS platforms, KYC integrations, shop automations, development, technology, Amsterdam, Nederland, web development, AI development, e-commerce automation, custom AI solutions, AI telefonie, zakelijke automatisering",
-  authors: [{ name: "Virelio Team" }],
-  creator: "Virelio",
-  publisher: "Virelio",
+    "Robin Bril bouwt digitale medewerkers. AI agents die tussen je team werken — van klantenservice tot operations. 200+ productie deploys. Amsterdam.",
+  keywords: siteConfig.keywords.join(", "),
+  authors: [{ name: "Robin Bril" }],
+  creator: "Robin Bril",
+  publisher: "Robin Bril",
   formatDetection: {
     email: false,
     address: false,
@@ -73,26 +72,26 @@ export const metadata: Metadata = {
     locale: "nl_NL",
     alternateLocale: ["en_US"],
     url: siteConfig.url,
-    siteName: "Virelio - AI & Software Solutions",
-    title: "Virelio - AI Spraakassistent & Software Development | Amsterdam",
+    siteName: "Robin Bril — AI Engineer",
+    title: "Robin Bril — AI Engineer | Digitale Medewerkers & AI Agents",
     description:
-      "Virelio: 200+ automatiseringen geleverd. AI spraakassistenten, SaaS platforms, KYC integraties. Verminder 87% van klantgesprekken. Start gratis proef.",
+      "Robin Bril bouwt digitale medewerkers. AI agents die tussen je team werken. 200+ productie deploys. Van intake tot live in 2 weken.",
     images: [
       {
         url: `${siteConfig.url}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: "Virelio - Digital Innovation for Your Business",
+        alt: "Robin Bril — AI Engineer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Virelio - AI Spraakassistent & Software Solutions",
-    description: "200+ automatiseringen. AI telefonie die 87% gesprekken automatiseert. Voor MKB & Enterprise.",
-    site: "@Virelio",
-    creator: "@Virelio",
-    images: [`${siteConfig.url}/images/logo.png`],
+    title: "Robin Bril — AI Engineer | Digitale Medewerkers",
+    description: "AI agents die tussen je team werken. 200+ productie deploys. Van intake tot live in 2 weken.",
+    site: "@robinbril",
+    creator: "@robinbril",
+    images: [`${siteConfig.url}/og-image.jpg`],
   },
   robots: {
     index: true,
@@ -138,10 +137,10 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "default",
-    title: "Virelio",
+    title: "Robin Bril",
   },
   other: {
-    "msapplication-TileColor": "#ffffff",
+    "msapplication-TileColor": "#fdf2e9",
     "msapplication-TileImage": "/ms-icon-144x144.png",
     "mobile-web-app-capable": "yes",
   },
@@ -157,6 +156,7 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <JsonLd data={personSchema()} />
         <JsonLd data={organizationSchema()} />
         <JsonLd data={websiteSchema()} />
         <GoogleAnalytics />

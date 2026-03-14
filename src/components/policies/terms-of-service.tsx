@@ -26,7 +26,7 @@ export default function TermsOfService() {
         <div className="prose dark:prose-invert max-w-none prose-headings:text-foreground dark:prose-headings:text-foreground prose-p:text-foreground/90 dark:prose-p:text-foreground/90 prose-strong:text-foreground dark:prose-strong:text-foreground prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline">
           <h2>1. Introduction</h2>
           <p>
-            Welcome to Virelio ("Company", "we", "our", "us")! These Terms of Service ("Terms", "Terms of Service") govern your use of our website located at virelio.nl ("Service") operated by Virelio.
+            Welcome to Robin Bril ("Company", "we", "our", "us")! These Terms of Service ("Terms", "Terms of Service") govern your use of our website located at robinbril.com ("Service") operated by Robin Bril.
           </p>
           <p>
             By accessing or using the Service you agree to be bound by these Terms. If you disagree with any part of the terms then you may not access the Service.
@@ -55,15 +55,15 @@ export default function TermsOfService() {
 
           <h2>5. Intellectual Property</h2>
           <p>
-            The Service and its original content (excluding Content provided by users), features and functionality are and will remain the exclusive property of Virelio and its licensors. The Service is protected by copyright, trademark, and other laws of both the Netherlands and foreign countries. Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of Virelio.
+            The Service and its original content (excluding Content provided by users), features and functionality are and will remain the exclusive property of Robin Bril and its licensors. The Service is protected by copyright, trademark, and other laws of both the Netherlands and foreign countries. Our trademarks and trade dress may not be used in connection with any product or service without the prior written consent of Robin Bril.
           </p>
 
           <h2>6. Links To Other Web Sites</h2>
           <p>
-            Our Service may contain links to third party web sites or services that are not owned or controlled by Virelio.
+            Our Service may contain links to third party web sites or services that are not owned or controlled by Robin Bril.
           </p>
           <p>
-            Virelio has no control over, and assumes no responsibility for the content, privacy policies, or practices of any third party web sites or services. We do not warrant the offerings of any of these entities/individuals or their websites.
+            Robin Bril has no control over, and assumes no responsibility for the content, privacy policies, or practices of any third party web sites or services. We do not warrant the offerings of any of these entities/individuals or their websites.
           </p>
 
           <h2>7. Termination</h2>
@@ -73,7 +73,7 @@ export default function TermsOfService() {
 
           <h2>8. Limitation Of Liability</h2>
           <p>
-            In no event shall Virelio, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from (i) your access to or use of or inability to access or use the Service; (ii) any conduct or content of any third party on the Service; (iii) any content obtained from the Service; and (iv) unauthorized access, use or alteration of your transmissions or content, whether based on warranty, contract, tort (including negligence) or any other legal theory, whether or not we have been informed of the possibility of such damage, and even if a remedy set forth herein is found to have failed of its essential purpose.
+            In no event shall Robin Bril, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from (i) your access to or use of or inability to access or use the Service; (ii) any conduct or content of any third party on the Service; (iii) any content obtained from the Service; and (iv) unauthorized access, use or alteration of your transmissions or content, whether based on warranty, contract, tort (including negligence) or any other legal theory, whether or not we have been informed of the possibility of such damage, and even if a remedy set forth herein is found to have failed of its essential purpose.
           </p>
 
           <h2>9. Governing Law</h2>
@@ -94,7 +94,7 @@ export default function TermsOfService() {
             If you have any questions about these Terms, please contact us:
           </p>
           <p className="dark:text-white">
-            <strong className="text-foreground dark:text-foreground">Email:</strong> <a href="mailto:legal@virelio.nl" className="text-blue-600 dark:text-blue-400 hover:underline">legal@virelio.nl</a><br />
+            <strong className="text-foreground dark:text-foreground">Email:</strong> <a href="mailto:legal@robinbril.com" className="text-blue-600 dark:text-blue-400 hover:underline">legal@robinbril.com</a><br />
             <strong className="text-foreground dark:text-foreground">Address:</strong> Amsterdam, The Netherlands
           </p>
         </div>

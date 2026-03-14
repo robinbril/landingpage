@@ -19,7 +19,7 @@ export function generateMetadata({
   keywords,
   pathname = "",
   imageUrl = siteConfig.ogImage,
-  imageAlt = "Virelio - Digital Innovation for Your Business",
+  imageAlt = "Robin Bril — AI Engineer",
   locale = "en_US",
   type = "website",
   noIndex = false,

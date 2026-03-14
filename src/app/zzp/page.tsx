@@ -43,10 +43,10 @@ function zzpTeamSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "Virelio ZZP Team",
+    name: "Robin Bril ZZP Team",
     description:
       "Freelance development team gespecialiseerd in software development, AI-integraties, data-analyse en business intelligence.",
-    url: "https://virelio.nl/zzp",
+    url: "https://robinbril.com/zzp",
     member: [
       {
         "@type": "Person",
@@ -91,7 +91,7 @@ function zzpPersonSchema() {
     "@type": "Person",
     name: "Omar Nassar",
     jobTitle: "Freelance Backend Developer & AI Specialist",
-    url: "https://virelio.nl/zzp",
+    url: "https://robinbril.com/zzp",
     sameAs: [
       "https://www.linkedin.com/in/omar-nassar-93a176155/",
       "https://github.com/omarnassar1127",
@@ -145,14 +145,14 @@ function zzpServiceSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    name: "Virelio ZZP Software Development Services",
+    name: "Robin Bril ZZP Software Development Services",
     description:
-      "Virelio ZZP: Freelance software development services gespecialiseerd in backend development, AI-integraties en web applicaties.",
-    url: "https://virelio.nl/zzp",
+      "Robin Bril ZZP: Freelance software development services gespecialiseerd in backend development, AI-integraties en web applicaties.",
+    url: "https://robinbril.com/zzp",
     provider: {
       "@type": "Person",
       name: "Omar Nassar",
-      url: "https://virelio.nl/zzp",
+      url: "https://robinbril.com/zzp",
     },
     areaServed: {
       "@type": "Place",
@@ -185,11 +185,11 @@ function zzpServiceSchema() {
 }
 
 export const metadata: Metadata = generateMetadata({
-  title: "Virelio ZZP - Expert Freelance Developers Omar & Robin Nederland",
+  title: "Robin Bril ZZP - Expert Freelance Developers Omar & Robin Nederland",
   description:
-    "Virelio ZZP: Omar (Backend/AI Developer) en Robin (Business Analyst/Data Specialist) bieden freelance software development, data-analyse, AI-integraties en business intelligence services in Nederland.",
+    "Robin Bril ZZP: Omar (Backend/AI Developer) en Robin (Business Analyst/Data Specialist) bieden freelance software development, data-analyse, AI-integraties en business intelligence services in Nederland.",
   keywords:
-    "Virelio ZZP, ZZP developer, freelance programmeur Nederland, ZZP software ontwikkelaar, freelance backend developer, AI developer ZZP, PHP Laravel freelancer, Python developer ZZP, Amsterdam freelance developer, Virelio freelance, business analyst ZZP, data analist freelance, BI developer ZZP, SQL specialist freelance, machine learning developer, automatisering specialist, proces optimalisatie consultant, dashboard developer, data scientist ZZP, freelance consultant, ZZP ICT, IT freelancer Amsterdam, web developer ZZP, app developer freelance, API developer, database specialist, e-commerce developer, medische software ontwikkelaar, healthcare IT specialist, fintech developer, scraping specialist, data mining expert, business intelligence consultant, lean six sigma consultant, project manager ZZP, technical consultant, software architect freelance",
+    "Robin Bril ZZP, ZZP developer, freelance programmeur Nederland, ZZP software ontwikkelaar, freelance backend developer, AI developer ZZP, PHP Laravel freelancer, Python developer ZZP, Amsterdam freelance developer, Robin Bril freelance, business analyst ZZP, data analist freelance, BI developer ZZP, SQL specialist freelance, machine learning developer, automatisering specialist, proces optimalisatie consultant, dashboard developer, data scientist ZZP, freelance consultant, ZZP ICT, IT freelancer Amsterdam, web developer ZZP, app developer freelance, API developer, database specialist, e-commerce developer, medische software ontwikkelaar, healthcare IT specialist, fintech developer, scraping specialist, data mining expert, business intelligence consultant, lean six sigma consultant, project manager ZZP, technical consultant, software architect freelance",
   pathname: "/zzp",
 });
 

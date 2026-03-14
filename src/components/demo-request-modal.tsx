@@ -28,7 +28,7 @@ export default function DemoRequestModal({ isOpen, onClose }: DemoRequestModalPr
         setIsSubmitting(true);
 
         // Create mailto link with form data
-        const subject = encodeURIComponent("Demo Request - Virelio");
+        const subject = encodeURIComponent("Demo Request - Robin Bril");
         const body = encodeURIComponent(`
 Nieuwe Demo Aanvraag:
 

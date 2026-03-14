@@ -29,7 +29,7 @@ export default function Footer() {
                 }}
               >
                 <span className="text-2xl font-black tracking-tight">
-                  Virelio<span className="text-primary">.</span>
+                  Robin Bril<span className="text-primary">.</span>
                 </span>
               </a>
               <p className="text-sm sm:text-base text-muted-foreground max-w-md leading-relaxed">
@@ -112,7 +112,7 @@ export default function Footer() {
 
         <div className="border-t border-border mt-12 pt-8">
           <p className="text-sm text-muted-foreground text-center">
-            &copy; {new Date().getFullYear()} Virelio. {t.footer.rights}
+            &copy; {new Date().getFullYear()} Robin Bril. {t.footer.rights}
           </p>
         </div>
       </div>

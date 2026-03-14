@@ -24,18 +24,18 @@ interface ZzpFooterProps {
 
 export default function ZzpFooter({ isEnglish = false }: ZzpFooterProps) {
   const content = isEnglish ? {
-    description: "Virelio Freelance: Expert developers Omar & Robin delivering professional software development services in the Netherlands.",
+    description: "Robin Bril Freelance: Expert developers Omar & Robin delivering professional software development services in the Netherlands.",
     quickLinks: "Quick Links",
     contact: "Contact",
     team: "Our Team",
     legal: "Legal",
     privacyPolicy: "Privacy Policy",
-    termsOfService: "Terms of Service", 
+    termsOfService: "Terms of Service",
     cookiePolicy: "Cookie Policy",
     sitemap: "Sitemap",
     rights: "All rights reserved."
   } : {
-    description: "Virelio ZZP: Expert developers Omar & Robin leveren professionele software development services in Nederland.",
+    description: "Robin Bril ZZP: Expert developers Omar & Robin leveren professionele software development services in Nederland.",
     quickLinks: "Snelle Links",
     contact: "Contact",
     team: "Ons Team",
@@ -65,11 +65,11 @@ export default function ZzpFooter({ isEnglish = false }: ZzpFooterProps) {
               transition={{ duration: 0.5 }}
               className="space-y-4"
             >
-              <Link 
-                href="/" 
+              <Link
+                href="/"
                 className="text-2xl font-bold tracking-widest bg-gradient-to-r from-purple-400 to-blue-400 text-transparent bg-clip-text hover:opacity-80 transition"
               >
-                VIRELIO
+                ROBIN BRIL
               </Link>
               <p className="text-muted-foreground max-w-md text-sm sm:text-base">
                 {content.description}
@@ -144,7 +144,7 @@ export default function ZzpFooter({ isEnglish = false }: ZzpFooterProps) {
 
         <div className="border-t border-border mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Virelio. {content.rights}
+            &copy; {new Date().getFullYear()} Robin Bril. {content.rights}
           </p>
 
           <div className="flex space-x-6 mt-4 md:mt-0">

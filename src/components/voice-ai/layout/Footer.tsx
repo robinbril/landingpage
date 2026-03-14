@@ -46,7 +46,7 @@ export default function Footer({ currentLang }: FooterProps) {
             </div>
             
             <div className="flex items-center gap-3">
-              <a href="https://linkedin.com/company/virelio" className="text-gray-400 hover:text-gray-600 transition-colors">
+              <a href="https://linkedin.com/in/robinbril" className="text-gray-400 hover:text-gray-600 transition-colors">
                 <FiLinkedin size={18} />
               </a>
             </div>

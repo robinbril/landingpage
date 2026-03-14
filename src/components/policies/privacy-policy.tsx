@@ -26,7 +26,7 @@ export default function PrivacyPolicy() {
         <div className="prose dark:prose-invert max-w-none prose-headings:text-foreground dark:prose-headings:text-foreground prose-p:text-foreground/90 dark:prose-p:text-foreground/90 prose-strong:text-foreground dark:prose-strong:text-foreground prose-a:text-blue-600 dark:prose-a:text-blue-400 prose-a:no-underline hover:prose-a:underline">
           <h2>Introduction</h2>
           <p>
-            At Virelio, we respect your privacy and are committed to protecting your personal data. This privacy policy will inform you about how we look after your personal data when you visit our website and tell you about your privacy rights and how the law protects you.
+            At Robin Bril, we respect your privacy and are committed to protecting your personal data. This privacy policy will inform you about how we look after your personal data when you visit our website and tell you about your privacy rights and how the law protects you.
           </p>
 
           <h2>The Data We Collect About You</h2>
@@ -85,7 +85,7 @@ export default function PrivacyPolicy() {
             If you have any questions about this privacy policy or our privacy practices, please contact us at:
           </p>
           <p className="dark:text-white">
-            <strong className="text-foreground dark:text-foreground">Email:</strong> <a href="mailto:privacy@virelio.nl" className="text-blue-600 dark:text-blue-400 hover:underline">privacy@virelio.nl</a><br />
+            <strong className="text-foreground dark:text-foreground">Email:</strong> <a href="mailto:privacy@robinbril.com" className="text-blue-600 dark:text-blue-400 hover:underline">privacy@robinbril.com</a><br />
             <strong className="text-foreground dark:text-foreground">Address:</strong> Amsterdam, The Netherlands
           </p>
         </div>

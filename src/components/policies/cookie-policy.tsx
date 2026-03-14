@@ -32,7 +32,7 @@ export default function CookiePolicy() {
             Cookies can be "persistent" or "session" cookies. Persistent cookies remain on your personal computer or mobile device when you go offline, while session cookies are deleted as soon as you close your web browser.
           </p>
 
-          <h2>How Virelio Uses Cookies</h2>
+          <h2>How Robin Bril Uses Cookies</h2>
           <p>
             When you use and access the Service, we may place a number of cookie files in your web browser. We use cookies for the following purposes:
           </p>
@@ -80,7 +80,7 @@ export default function CookiePolicy() {
             If you have any questions about our Cookie Policy, please contact us:
           </p>
           <p className="dark:text-white">
-            <strong className="text-foreground dark:text-foreground">Email:</strong> <a href="mailto:privacy@virelio.nl" className="text-blue-600 dark:text-blue-400 hover:underline">privacy@virelio.nl</a><br />
+            <strong className="text-foreground dark:text-foreground">Email:</strong> <a href="mailto:privacy@robinbril.com" className="text-blue-600 dark:text-blue-400 hover:underline">privacy@robinbril.com</a><br />
             <strong className="text-foreground dark:text-foreground">Address:</strong> Amsterdam, The Netherlands
           </p>
         </div>

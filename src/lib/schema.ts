@@ -77,6 +77,41 @@ type AutomationAchievementProps = {
   uptime: number;
 };
 
+export function personSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": `${siteConfig.url}/#person`,
+    name: "Robin Bril",
+    jobTitle: "Senior AI Engineer",
+    description: siteConfig.description,
+    url: siteConfig.url,
+    image: `${siteConfig.url}/images/contact/robin.jpeg`,
+    sameAs: [
+      siteConfig.socials.linkedin,
+      siteConfig.socials.github,
+      siteConfig.socials.twitter,
+    ],
+    worksFor: {
+      "@type": "Organization",
+      name: "Fellowmind",
+    },
+    knowsAbout: [
+      "AI Agents",
+      "Multi-agent Systems",
+      "RAG",
+      "LLM Integration",
+      "MCP Servers",
+      "Process Automation",
+    ],
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Amstelveen",
+      addressCountry: "NL",
+    },
+  };
+}
+
 export const servicesSchema = () => {
   return {
     "@context": "https://schema.org",
@@ -84,78 +119,34 @@ export const servicesSchema = () => {
     itemListElement: [
       {
         "@type": "Service",
-        name: "AI Development",
+        name: "AI Agent Development",
         description:
-          "Custom AI solutions that automate business processes and enhance customer interactions.",
+          "Custom AI agents that work between your team — automating operations, customer service, and knowledge management.",
         provider: {
-          "@type": "Organization",
-          name: "Virelio",
+          "@type": "Person",
+          name: "Robin Bril",
           url: siteConfig.url,
         },
       },
       {
         "@type": "Service",
-        name: "SaaS Development",
+        name: "Process Automation",
         description:
-          "Tailored Software-as-a-Service solutions that are scalable, reliable, and user-friendly.",
+          "End-to-end automation of business processes using multi-agent AI systems and MCP integrations.",
         provider: {
-          "@type": "Organization",
-          name: "Virelio",
+          "@type": "Person",
+          name: "Robin Bril",
           url: siteConfig.url,
         },
       },
       {
         "@type": "Service",
-        name: "KYC Integration",
+        name: "RAG & Knowledge Systems",
         description:
-          "Seamless Know Your Customer integrations that meet regulations and streamline user verification.",
+          "Retrieval-augmented generation systems that make your company knowledge searchable and actionable.",
         provider: {
-          "@type": "Organization",
-          name: "Virelio",
-          url: siteConfig.url,
-        },
-      },
-      {
-        "@type": "Service",
-        name: "E-commerce Automation",
-        description:
-          "Solutions that streamline online sales processes and improve operational efficiency.",
-        provider: {
-          "@type": "Organization",
-          name: "Virelio",
-          url: siteConfig.url,
-        },
-      },
-      {
-        "@type": "Service",
-        name: "Workshop Training",
-        description:
-          "Expert-led workshops and training sessions on AI, SaaS development, and modern web technologies.",
-        provider: {
-          "@type": "Organization",
-          name: "Virelio",
-          url: siteConfig.url,
-        },
-      },
-      {
-        "@type": "Service",
-        name: "Custom AI Solutions",
-        description:
-          "Personalized AI systems specifically tailored to your business's unique challenges.",
-        provider: {
-          "@type": "Organization",
-          name: "Virelio",
-          url: siteConfig.url,
-        },
-      },
-      {
-        "@type": "Service",
-        name: "Web Development",
-        description:
-          "High-performance websites and web applications that increase conversion and user engagement.",
-        provider: {
-          "@type": "Organization",
-          name: "Virelio",
+          "@type": "Person",
+          name: "Robin Bril",
           url: siteConfig.url,
         },
       },
@@ -168,7 +159,7 @@ export function videoSchema() {
     "@context": "https://schema.org",
     "@type": "VideoObject",
     "name": "AI Agent Demo",
-    "description": "Watch our intelligent AI agent in action. This is one of our many AI solutions that can be customized for your specific business needs and industry.",
+    "description": "Watch an intelligent AI agent in action — one of many solutions that can be customized for your specific business needs.",
     "thumbnailUrl": `${siteConfig.url}/demo-vid-thumbnail.jpg`,
     "uploadDate": "2024-05-01T08:00:00+08:00",
     "duration": "PT1M",
@@ -180,14 +171,9 @@ export function videoSchema() {
       "startOffset-input": "required name=seek_to_second_number"
     },
     "publisher": {
-      "@type": "Organization",
-      "name": "Virelio",
-      "logo": {
-        "@type": "ImageObject",
-        "url": `${siteConfig.url}/logo.png`,
-        "width": "96",
-        "height": "96"
-      }
+      "@type": "Person",
+      "name": "Robin Bril",
+      "url": siteConfig.url,
     }
   };
 }
@@ -218,7 +204,7 @@ export function websiteSchema({
   url = siteConfig.url,
   name = siteConfig.name,
   description = siteConfig.description,
-  language = `${siteConfig.locale}-US`,
+  language = `${siteConfig.locale}-NL`,
 }: WebsiteProps = {}) {
   return {
     "@context": "https://schema.org",
@@ -227,11 +213,6 @@ export function websiteSchema({
     name,
     description,
     inLanguage: language,
-    potentialAction: {
-      "@type": "SearchAction",
-      target: `${url}/search?q={search_term_string}`,
-      "query-input": "required name=search_term_string",
-    },
   };
 }
 
@@ -254,8 +235,8 @@ export function blogPostSchema({
   publishedAt,
   updatedAt,
   authorName,
-  authorUrl = "https://virelio.nl/team",
-  image = "https://virelio.nl/og-image.jpg",
+  authorUrl = siteConfig.url,
+  image = `${siteConfig.url}/og-image.jpg`,
   url,
 }: BlogPostProps) {
   return {
@@ -273,12 +254,9 @@ export function blogPostSchema({
       url: authorUrl,
     },
     publisher: {
-      "@type": "Organization",
-      name: "Virelio",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://virelio.nl/logo.png",
-      },
+      "@type": "Person",
+      name: "Robin Bril",
+      url: siteConfig.url,
     },
     mainEntityOfPage: {
       "@type": "WebPage",
@@ -296,7 +274,7 @@ export function productSchema({
   priceCurrency = "EUR",
   availability = "InStock",
   sku,
-  brand = "Virelio",
+  brand = "Robin Bril",
   reviewCount,
   reviewRating,
 }: ProductProps) {
@@ -365,15 +343,10 @@ export function testimonialsSchema({ items }: TestimonialsProps) {
         },
         reviewBody: item.text,
         itemReviewed: {
-          "@type": "Organization",
+          "@type": "Person",
           name: siteConfig.name,
           url: siteConfig.url,
-          description: "Software development and AI solutions company",
-          address: {
-            "@type": "PostalAddress",
-            addressCountry: "NL",
-            addressLocality: "Amsterdam",
-          },
+          description: "AI Engineer — Digitale medewerkers die je team versterken",
         },
         reviewRating: {
           "@type": "Rating",
@@ -391,12 +364,12 @@ export function workshopSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "EducationalEvent",
-    name: "Virelio AI & SaaS Development Workshop",
-    description: "Expert-led workshops and training sessions on AI, SaaS development, and modern web technologies. Learn from industry professionals and get hands-on experience.",
+    name: "AI Agent Workshop by Robin Bril",
+    description: "Hands-on workshop over AI agents, multi-agent systemen, en procesautomatisering. Leer hoe je digitale medewerkers bouwt voor je organisatie.",
     url: `${siteConfig.url}${siteConfig.sections.workshop}`,
     organizer: {
-      "@type": "Organization",
-      name: "Virelio",
+      "@type": "Person",
+      name: "Robin Bril",
       url: siteConfig.url,
     },
     location: {
@@ -416,22 +389,9 @@ export function workshopSchema() {
       validFrom: new Date().toISOString(),
     },
     about: [
-      {
-        "@type": "Thing",
-        name: "Artificial Intelligence",
-      },
-      {
-        "@type": "Thing", 
-        name: "SaaS Development",
-      },
-      {
-        "@type": "Thing",
-        name: "Web Development",
-      },
-      {
-        "@type": "Thing",
-        name: "Automation",
-      },
+      { "@type": "Thing", name: "AI Agents" },
+      { "@type": "Thing", name: "Process Automation" },
+      { "@type": "Thing", name: "Multi-agent Systems" },
     ],
   };
 }
@@ -448,77 +408,19 @@ export function voiceAIServiceSchema() {
     image: `${siteConfig.url}/images/logo.png`,
     serviceType: "AI Voice Automation",
     provider: {
-      "@type": "Organization",
-      "@id": `${siteConfig.url}#organization`,
-      name: "Virelio",
+      "@type": "Person",
+      "@id": `${siteConfig.url}/#person`,
+      name: "Robin Bril",
       url: siteConfig.url,
-      logo: `${siteConfig.url}/images/logo.png`,
       address: {
         "@type": "PostalAddress",
-        addressLocality: "Amsterdam",
+        addressLocality: "Amstelveen",
         addressCountry: "NL"
       },
-      contactPoint: {
-        "@type": "ContactPoint",
-        telephone: "+31-6-12345678",
-        contactType: "sales",
-        availableLanguage: ["nl", "en"]
-      }
     },
     areaServed: {
       "@type": "Country",
       name: "Netherlands"
     },
-    hasOfferCatalog: {
-      "@type": "OfferCatalog",
-      name: "AI Spraakassistent Pakketten",
-      itemListElement: [
-        {
-          "@type": "Offer",
-          name: "Gratis Proefperiode",
-          description: "Test onze AI spraakassistent gratis",
-          price: "0",
-          priceCurrency: "EUR"
-        },
-        {
-          "@type": "Offer",
-          name: "Business Pakket",
-          description: "Voor MKB bedrijven",
-          priceSpecification: {
-            "@type": "PriceSpecification",
-            price: "Op aanvraag",
-            priceCurrency: "EUR"
-          }
-        },
-        {
-          "@type": "Offer",
-          name: "Enterprise Pakket",
-          description: "Voor grote organisaties",
-          priceSpecification: {
-            "@type": "PriceSpecification",
-            price: "Op aanvraag",
-            priceCurrency: "EUR"
-          }
-        }
-      ]
-    },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.8",
-      reviewCount: "127",
-      bestRating: "5",
-      worstRating: "1"
-    },
-    potentialAction: {
-      "@type": "UseAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${siteConfig.url}/spraakassistent`,
-        actionPlatform: [
-          "http://schema.org/DesktopWebPlatform",
-          "http://schema.org/MobileWebPlatform"
-        ]
-      }
-    }
   };
 }

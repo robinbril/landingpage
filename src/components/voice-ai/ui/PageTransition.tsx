@@ -71,7 +71,7 @@ export default function PageTransition({ children }: PageTransitionProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Virelio
+            Robin Bril
           </motion.h2>
           
           <motion.p

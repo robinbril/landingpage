@@ -29,7 +29,7 @@ const AIChatWidget = dynamic(() => import("@/components/ai-chat-widget"), {
 const faqData = {
   items: [
     {
-      question: "Wat doet Robin Bril / Virelio?",
+      question: "Wat doet Robin Bril?",
       answer:
         "Robin Bril bouwt digitale medewerkers: AI agents die zelfstandig werk overnemen. Van klantenservice teams tot order processing, sales agents en kennisbanken. Live in 2 weken.",
     },
@@ -39,9 +39,9 @@ const faqData = {
         "Na een gratis intake en quick scan lever ik binnen 2 weken een werkend prototype op jullie eigen data. Geen maandenlange trajecten. Je ziet direct wat het oplevert.",
     },
     {
-      question: "Waar is Virelio gevestigd?",
+      question: "Waar is Robin Bril gevestigd?",
       answer:
-        "Virelio is gevestigd in Amstelveen en werkt met klanten door heel Nederland.",
+        "Robin Bril is gevestigd in Amstelveen en werkt met klanten door heel Nederland.",
     },
   ],
 };
@@ -72,7 +72,7 @@ export const metadata: Metadata = generateMetadata({
   description:
     "Robin Bril bouwt digitale medewerkers: AI agents die zelfstandig werk overnemen. Klantenservice, order processing, sales, kennisbanken. Live in 2 weken.",
   keywords:
-    "digitale medewerkers, AI agents, klantenservice agent, order processing, sales agent, AI kennisbank, Robin Bril, Virelio, AI oplossingen Nederland",
+    "digitale medewerkers, AI agents, klantenservice agent, order processing, sales agent, AI kennisbank, Robin Bril, AI oplossingen Nederland",
   pathname: "/",
 });
 

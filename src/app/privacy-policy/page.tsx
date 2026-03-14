@@ -5,8 +5,8 @@ import Footer from "@/components/sections/footer";
 
 export const metadata: Metadata = generateMetadata({
   title: "Privacy Policy",
-  description: "Learn about how Virelio collects, uses, and protects your personal information.",
-  keywords: "privacy policy, data protection, personal information, GDPR, Virelio",
+  description: "Learn about how Robin Bril collects, uses, and protects your personal information.",
+  keywords: "privacy policy, data protection, personal information, GDPR, Robin Bril",
   pathname: "/privacy-policy",
 });
 
@@ -23,7 +23,7 @@ export default function PrivacyPolicyPage() {
         <div className="prose dark:prose-invert max-w-none">
           <h2>Introduction</h2>
           <p>
-            At Virelio, we respect your privacy and are committed to protecting your personal data. This privacy policy will inform you about how we look after your personal data when you visit our website and tell you about your privacy rights and how the law protects you.
+            At Robin Bril, we respect your privacy and are committed to protecting your personal data. This privacy policy will inform you about how we look after your personal data when you visit our website and tell you about your privacy rights and how the law protects you.
           </p>
 
           <h2>The Data We Collect About You</h2>
@@ -82,7 +82,7 @@ export default function PrivacyPolicyPage() {
             If you have any questions about this privacy policy or our privacy practices, please contact us at:
           </p>
           <p>
-            <strong>Email:</strong> privacy@virelio.nl<br />
+            <strong>Email:</strong> privacy@robinbril.com<br />
             <strong>Address:</strong> Amsterdam, The Netherlands
           </p>
         </div>

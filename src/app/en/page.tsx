@@ -4,74 +4,40 @@ import Hero from "@/components/sections/hero";
 import CompanySlider from "@/components/sections/company-slider";
 import Projects from "@/components/sections/projects";
 import Services from "@/components/sections/services";
-import Testimonials from "@/components/sections/testimonials";
 import Footer from "@/components/sections/footer";
-import FloatingWhatsAppButton from "@/components/floating-whatsapp-button";
 import IntakeExplanationSection from "@/components/sections/intake-explanation-section";
 import GuaranteeSection from "@/components/sections/guarantee-section";
 import { generateMetadata } from "@/lib/metadata";
 import { siteConfig } from "@/lib/config";
 import JsonLd from "@/components/seo/json-ld";
-import { faqSchema, testimonialsSchema, servicesSchema, workshopSchema } from "@/lib/schema";
+import { faqSchema, servicesSchema, workshopSchema } from "@/lib/schema";
 
-// Sample FAQ data for the landing page (English version)
 const faqData = {
   items: [
     {
-      question: "What services does Virelio offer?",
+      question: "What does Robin Bril do?",
       answer:
-        "Virelio specializes in AI solutions, SaaS development, KYC integrations, and e-commerce automation to help businesses thrive in the digital age.",
+        "Robin Bril builds digital employees: AI agents that autonomously take over work. From customer service to order processing, sales agents and knowledge bases. Live in 2 weeks.",
     },
     {
-      question: "How can Virelio help my business?",
+      question: "How fast can I expect results?",
       answer:
-        "We provide innovative technology solutions tailored to your business needs, helping you improve efficiency, enhance customer experience, and drive growth in the digital marketplace.",
+        "After a free intake and quick scan, I deliver a working prototype on your own data within 2 weeks. No months-long projects. You see the results immediately.",
     },
     {
-      question: "Where is Virelio located?",
+      question: "Where is Robin Bril based?",
       answer:
-        "Virelio is based in Amsterdam, Netherlands, but we work with clients globally.",
-    },
-  ],
-};
-
-// Testimonials data for structured data
-const testimonialsData = {
-  items: [
-    {
-      author: "Azeez Bayonle Abideen",
-      role: "User Experience Designer",
-      text: "I have the pleasure of working with Omar, where he has consistently demonstrated exceptional skills as a backend developer, delivering efficient, maintainable code, tackling complex problems with innovative solutions, and fostering a collaborative team environment.",
-    },
-    {
-      author: "Cristian Arboleda",
-      role: ".NET Developer",
-      text: "Omar is a talented developer with a strong drive to continuously grow and improve himself. He is always willing to support his colleagues, which makes him a valuable team player.",
-    },
-    {
-      author: "Ihor Tolkachov",
-      role: "Frontend Developer",
-      text: "I had the pleasure of working with Omar where he proved to be a reliable and skilled colleague. His communication, planning, and coding abilities were evident in all our projects.",
-    },
-    {
-      author: "Sophia Chen",
-      role: "Product Manager at TechInnovate",
-      text: "Working with Omar and his team at Virelio has transformed our product development workflow. Their AI solutions have automated processes that used to take days into minutes.",
-    },
-    {
-      author: "Jan van der Meer",
-      role: "CTO at Dutch E-commerce Solutions",
-      text: "The shop automation system developed by Virelio has revolutionized how we manage our e-commerce operations. Omar's deep understanding of both the technical and business aspects of e-commerce allowed for a solution that seamlessly integrates with our existing platforms.",
+        "Robin Bril is based in Amstelveen, Netherlands, and works with clients across the Netherlands and internationally.",
     },
   ],
 };
 
 export const metadata: Metadata = generateMetadata({
-  title: "Innovative Solutions for Modern Challenges",
+  title: "Robin Bril — AI Engineer | Digital Employees & AI Agents",
   description:
-    "We specialize in AI solutions, SaaS platforms, KYC integrations, and shop automations to help businesses thrive in the digital age.",
+    "Robin Bril builds digital employees: AI agents that autonomously handle work. Customer service, order processing, sales, knowledge bases. Live in 2 weeks.",
   keywords:
-    "AI solutions, SaaS development, KYC integration, e-commerce automation, web development, technology consulting, Virelio",
+    "digital employees, AI agents, customer service agent, order processing, sales agent, AI knowledge base, Robin Bril, AI solutions Netherlands",
   pathname: "/en",
   locale: "en",
 });
@@ -79,9 +45,7 @@ export const metadata: Metadata = generateMetadata({
 export default function EnglishHome() {
   return (
     <>
-      {/* Adding structured data for better SEO */}
       <JsonLd data={faqSchema(faqData)} />
-      <JsonLd data={testimonialsSchema(testimonialsData)} />
       <JsonLd data={servicesSchema()} />
       <JsonLd data={workshopSchema()} />
 
@@ -96,14 +60,8 @@ export default function EnglishHome() {
         <div id={siteConfig.sections.projects.substring(1)}>
           <Projects />
         </div>
-        <div id={siteConfig.sections.testimonials.substring(1)}>
-          <Testimonials />
-        </div>
         <IntakeExplanationSection />
-
-
         <Footer />
-        <FloatingWhatsAppButton />
       </main>
     </>
   );

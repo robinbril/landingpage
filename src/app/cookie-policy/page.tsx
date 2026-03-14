@@ -5,8 +5,8 @@ import Footer from "@/components/sections/footer";
 
 export const metadata: Metadata = generateMetadata({
   title: "Cookie Policy",
-  description: "Learn about how Virelio uses cookies and similar technologies on our website.",
-  keywords: "cookie policy, cookies, tracking technologies, website cookies, Virelio",
+  description: "Learn about how Robin Bril uses cookies and similar technologies on our website.",
+  keywords: "cookie policy, cookies, tracking technologies, website cookies, Robin Bril",
   pathname: "/cookie-policy",
 });
 
@@ -29,7 +29,7 @@ export default function CookiePolicyPage() {
             Cookies can be "persistent" or "session" cookies. Persistent cookies remain on your personal computer or mobile device when you go offline, while session cookies are deleted as soon as you close your web browser.
           </p>
 
-          <h2>How Virelio Uses Cookies</h2>
+          <h2>How Robin Bril Uses Cookies</h2>
           <p>
             When you use and access the Service, we may place a number of cookie files in your web browser. We use cookies for the following purposes:
           </p>
@@ -77,7 +77,7 @@ export default function CookiePolicyPage() {
             If you have any questions about our Cookie Policy, please contact us:
           </p>
           <p>
-            <strong>Email:</strong> privacy@virelio.nl<br />
+            <strong>Email:</strong> privacy@robinbril.com<br />
             <strong>Address:</strong> Amsterdam, The Netherlands
           </p>
         </div>

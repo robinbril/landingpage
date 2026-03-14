@@ -35,7 +35,7 @@ const EXPERIENCE: ExperienceEntry[] = [
     highlights: [],
   },
   {
-    company: "Virelio",
+    company: "Robin Bril",
     role: {
       nl: "AI Engineer & Oprichter",
       en: "AI Engineer & Founder",

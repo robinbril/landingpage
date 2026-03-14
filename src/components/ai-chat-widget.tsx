@@ -346,7 +346,7 @@ export default function AIChatWidget() {
                 </button>
               </div>
               <div className="text-[10px] text-[#8e6d6b]/40 text-center mt-2">
-                Powered by Virelio AI
+                Powered by Robin Bril
               </div>
             </div>
           </motion.div>

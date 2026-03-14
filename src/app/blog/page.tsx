@@ -7,7 +7,7 @@ import Link from "next/link";
 export const metadata: Metadata = generateMetadata({
   title: "Blog",
   description:
-    "Stay updated with the latest tech insights, industry trends, and news from Virelio.",
+    "Stay updated with the latest tech insights, industry trends, and news from Robin Bril.",
   keywords:
     "tech blog, SaaS insights, AI developments, e-commerce trends, technology news",
   pathname: "/blog",

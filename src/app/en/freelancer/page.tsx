@@ -45,7 +45,7 @@ function freelancerPersonSchema() {
     "@type": "Person",
     name: "Omar Nassar",
     jobTitle: "Freelance Backend Developer & AI Specialist",
-    url: "https://virelio.nl/en/freelancer",
+    url: "https://robinbril.com/en/freelancer",
     sameAs: [
       "https://www.linkedin.com/in/omar-nassar-93a176155/",
       "https://github.com/omarnassar1127",
@@ -89,14 +89,14 @@ function freelancerServiceSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    name: "Virelio Freelance Software Development Services",
+    name: "Robin Bril Freelance Software Development Services",
     description:
-      "Virelio Freelance: Professional software development services specializing in backend development, AI integrations, and web applications.",
-    url: "https://virelio.nl/en/freelancer",
+      "Robin Bril Freelance: Professional software development services specializing in backend development, AI integrations, and web applications.",
+    url: "https://robinbril.com/en/freelancer",
     provider: {
       "@type": "Person",
       name: "Omar Nassar",
-      url: "https://virelio.nl/en/freelancer",
+      url: "https://robinbril.com/en/freelancer",
     },
     areaServed: [
       {
@@ -135,11 +135,11 @@ function freelancerServiceSchema() {
 }
 
 export const metadata: Metadata = generateMetadata({
-  title: "Virelio Freelance - Expert Developers Omar & Robin Netherlands",
+  title: "Robin Bril Freelance - Expert Developers Omar & Robin Netherlands",
   description:
-    "Virelio Freelance: Experienced developers specializing in backend development, AI integrations, and web applications. Omar & Robin offer professional freelance software development services.",
+    "Robin Bril Freelance: Experienced developers specializing in backend development, AI integrations, and web applications. Omar & Robin offer professional freelance software development services.",
   keywords:
-    "Virelio freelance, freelance developer, freelance programmer Netherlands, freelance software developer, freelance backend developer, AI developer freelance, PHP Laravel freelancer, Python developer, Amsterdam freelance developer, business analyst freelance, data analyst contractor, BI developer freelance, SQL specialist contractor, machine learning developer, automation specialist, process optimization consultant, dashboard developer, data scientist contractor, freelance consultant, ICT contractor, IT freelancer Amsterdam, web developer contractor, app developer freelance, API developer, database specialist, e-commerce developer, medical software developer, healthcare IT specialist, fintech developer, scraping specialist, data mining expert, business intelligence consultant, lean six sigma consultant, project manager contractor, technical consultant, software architect freelance",
+    "Robin Bril freelance, freelance developer, freelance programmer Netherlands, freelance software developer, freelance backend developer, AI developer freelance, PHP Laravel freelancer, Python developer, Amsterdam freelance developer, business analyst freelance, data analyst contractor, BI developer freelance, SQL specialist contractor, machine learning developer, automation specialist, process optimization consultant, dashboard developer, data scientist contractor, freelance consultant, ICT contractor, IT freelancer Amsterdam, web developer contractor, app developer freelance, API developer, database specialist, e-commerce developer, medical software developer, healthcare IT specialist, fintech developer, scraping specialist, data mining expert, business intelligence consultant, lean six sigma consultant, project manager contractor, technical consultant, software architect freelance",
   pathname: "/en/freelancer",
 });
 

@@ -11,7 +11,7 @@ export default function VoiceAIStructuredData({ lang }: VoiceAIStructuredDataPro
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    "name": "Virelio Voice AI",
+    "name": "Robin Bril Voice AI",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web, Cloud",
     "description": lang === 'nl' 
@@ -20,7 +20,7 @@ export default function VoiceAIStructuredData({ lang }: VoiceAIStructuredDataPro
     "url": lang === 'nl' ? "https://nexbuy.com/spraakassistent" : "https://nexbuy.com/voiceassistant",
     "provider": {
       "@type": "Organization",
-      "name": "Virelio",
+      "name": "Robin Bril",
       "url": "https://nexbuy.com",
       "logo": "https://nexbuy.com/images/logo.png",
       "address": {
@@ -77,10 +77,10 @@ export default function VoiceAIStructuredData({ lang }: VoiceAIStructuredDataPro
       },
       {
         "@type": "Question",
-        "name": "Hoeveel kost de Virelio spraakassistent?",
+        "name": "Hoeveel kost de Robin Bril spraakassistent?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Virelio biedt een gratis proefperiode zonder opstartkosten. Contacteer ons voor een op maat gemaakt prijsvoorstel gebaseerd op uw bedrijfsbehoeften."
+          "text": "Robin Bril biedt een gratis proefperiode zonder opstartkosten. Contacteer ons voor een op maat gemaakt prijsvoorstel gebaseerd op uw bedrijfsbehoeften."
         }
       },
       {
@@ -102,10 +102,10 @@ export default function VoiceAIStructuredData({ lang }: VoiceAIStructuredDataPro
       },
       {
         "@type": "Question",
-        "name": "How much does the Virelio voice assistant cost?",
+        "name": "How much does the Robin Bril voice assistant cost?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Virelio offers a free trial with no setup fees. Contact us for a customized pricing proposal based on your business needs."
+          "text": "Robin Bril offers a free trial with no setup fees. Contact us for a customized pricing proposal based on your business needs."
         }
       },
       {
@@ -127,13 +127,13 @@ export default function VoiceAIStructuredData({ lang }: VoiceAIStructuredDataPro
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://virelio.nl"
+        "item": "https://robinbril.com"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": lang === 'nl' ? "AI Spraakassistent" : "AI Voice Assistant",
-        "item": lang === 'nl' ? "https://virelio.nl/spraakassistent" : "https://virelio.nl/voiceassistant"
+        "item": lang === 'nl' ? "https://robinbril.com/spraakassistent" : "https://robinbril.com/voiceassistant"
       }
     ]
   };
@@ -141,11 +141,11 @@ export default function VoiceAIStructuredData({ lang }: VoiceAIStructuredDataPro
   const localBusinessData = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "Virelio - AI Spraakassistent",
+    "name": "Robin Bril - AI Spraakassistent",
     "description": lang === 'nl' 
-      ? "Virelio levert geavanceerde AI spraakassistenten voor bedrijven in Nederland. Automatiseer klantgesprekken, verhoog efficiency."
-      : "Virelio delivers advanced AI voice assistants for businesses. Automate customer calls, increase efficiency.",
-    "url": "https://virelio.nl",
+      ? "Robin Bril levert geavanceerde AI spraakassistenten voor bedrijven in Nederland. Automatiseer klantgesprekken, verhoog efficiency."
+      : "Robin Bril delivers advanced AI voice assistants for businesses. Automate customer calls, increase efficiency.",
+    "url": "https://robinbril.com",
     "telephone": "+31-6-12345678",
     "address": {
       "@type": "PostalAddress",

@@ -1,8 +1,8 @@
 export const siteConfig = {
-  name: "Virelio",
-  description: "AI Agents & Automatisering voor bedrijven",
-  url: "https://virelio.nl",
-  metadataBase: "https://virelio.nl",
+  name: "Robin Bril",
+  description: "AI Engineer — Digitale medewerkers die je team versterken",
+  url: "https://robinbril.com",
+  metadataBase: "https://robinbril.com",
   logoUrl: "/logo.svg",
   ogImage: "/og-image.jpg",
   twitterHandle: "@robinbril",
@@ -10,7 +10,7 @@ export const siteConfig = {
   authors: [
     {
       name: "Robin Bril",
-      url: "https://virelio.nl",
+      url: "https://robinbril.com",
     },
   ],
   socials: {
@@ -19,11 +19,11 @@ export const siteConfig = {
     linkedin: "https://linkedin.com/in/robinbril",
   },
   contact: {
-    email: "robin@virelio.nl",
+    email: "robin@robinbril.com",
     phone: "+31 (0)6 40446732",
     address: "Amstelveen, Netherlands",
   },
-  themeColor: "#ffffff",
+  themeColor: "#fdf2e9",
   keywords: [
     "AI Agents",
     "AI Automatisering",
@@ -31,7 +31,7 @@ export const siteConfig = {
     "Procesautomatisering",
     "AI Engineer",
     "Robin Bril",
-    "Virelio",
+    "Digitale Medewerkers",
     "AI Kennisbank",
     "Document Intelligence",
     "AI Oplossingen Nederland",
@@ -40,8 +40,8 @@ export const siteConfig = {
     "AI Consultancy",
   ],
   alternateLanguages: {
-    nl: "https://virelio.nl",
-    en: "https://virelio.nl/en",
+    nl: "https://robinbril.com",
+    en: "https://robinbril.com/en",
   },
   sections: {
     projects: "#projects",
