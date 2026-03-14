@@ -53,6 +53,26 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     },
     
+    // Service landing pages (SEO)
+    {
+      url: `${baseUrl}/diensten/ai-agent-bouwen/`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/diensten/digitale-medewerker/`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/diensten/ai-automatisering-mkb/`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+    },
+
     // Blog
     {
       url: `${baseUrl}/blog/`,
