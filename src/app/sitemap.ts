@@ -53,6 +53,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.5,
     },
     
+    // Blog
+    {
+      url: `${baseUrl}/blog/`,
+      lastModified,
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/blog/ai-in-ecommerce/`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog/saas-development-best-practices/`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/blog/kyc-integration-guide/`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    },
+
     // English pages - main routes only
     {
       url: `${baseUrl}/en/`,

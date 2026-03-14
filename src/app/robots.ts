@@ -13,7 +13,6 @@ export default function robots(): MetadataRoute.Robots {
           "/admin/",
           "/search",
           "/test-terms/",
-          "/blog/", // If blog is not ready yet
         ],
       }
     ],
