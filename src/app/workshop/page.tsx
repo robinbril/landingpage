@@ -39,11 +39,11 @@ const workshopFaqData = {
 };
 
 export const metadata: Metadata = generateMetadata({
-  title: "AI Workshop for Organizations - Transform Your Business with Practical AI Training",
+  title: "AI Workshop voor Bedrijven — Praktische AI Training | Robin Bril",
   description:
-    "Professional AI workshops for companies and organizations. Learn practical AI implementation, build custom solutions, and transform your business processes. Available in Dutch and English.",
+    "AI workshop voor teams en organisaties. Leer AI agents bouwen, processen automatiseren en digitale medewerkers inzetten. Beschikbaar in Nederlands en Engels.",
   keywords:
-    "AI workshop, artificial intelligence training, business AI implementation, corporate AI training, AI for companies, machine learning workshop, AI strategy, digital transformation",
+    "AI workshop, AI training bedrijven, AI workshop Nederland, AI cursus, digitale transformatie workshop, Robin Bril workshop",
   pathname: "/workshop",
 });
 

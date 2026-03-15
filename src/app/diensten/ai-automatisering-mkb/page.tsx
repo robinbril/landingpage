@@ -242,6 +242,27 @@ export default function AIAutomatiseringMKBPage() {
           </div>
         </section>
 
+        {/* Gerelateerd */}
+        <section className="py-12 px-4 sm:px-6 bg-[#fdf2e9]/50">
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-lg font-bold text-[#4a2c2a] mb-4">Gerelateerde artikelen</h2>
+            <div className="grid sm:grid-cols-2 gap-4">
+              <Link href="/blog/wat-kost-ai-agent" className="block p-4 bg-white rounded-xl border border-[#4a2c2a]/8 hover:border-[#e67e22]/40 transition-colors">
+                <p className="text-sm font-bold text-[#4a2c2a]">Wat Kost een AI Agent?</p>
+                <p className="text-xs text-[#4a2c2a]/60 mt-1">Eerlijk kostenoverzicht voor MKB</p>
+              </Link>
+              <Link href="/blog/ai-readiness-check-mkb" className="block p-4 bg-white rounded-xl border border-[#4a2c2a]/8 hover:border-[#e67e22]/40 transition-colors">
+                <p className="text-sm font-bold text-[#4a2c2a]">Is Jouw Bedrijf Klaar voor AI?</p>
+                <p className="text-xs text-[#4a2c2a]/60 mt-1">De eerlijke AI-readiness check</p>
+              </Link>
+            </div>
+            <div className="mt-4 flex gap-4 text-xs">
+              <Link href="/diensten/ai-agent-bouwen" className="text-[#e67e22] hover:underline">AI Agent Bouwen →</Link>
+              <Link href="/diensten/digitale-medewerker" className="text-[#e67e22] hover:underline">Digitale Medewerker →</Link>
+            </div>
+          </div>
+        </section>
+
         {/* CTA */}
         <section className="py-16 px-4 sm:px-6 bg-[#4a2c2a]">
           <div className="max-w-3xl mx-auto text-center">

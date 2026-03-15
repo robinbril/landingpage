@@ -135,11 +135,11 @@ function freelancerServiceSchema() {
 }
 
 export const metadata: Metadata = generateMetadata({
-  title: "Robin Bril Freelance - Expert Developers Omar & Robin Netherlands",
+  title: "Robin Bril — Freelance AI Engineer | AI Agents & Automation Netherlands",
   description:
-    "Robin Bril Freelance: Experienced developers specializing in backend development, AI integrations, and web applications. Omar & Robin offer professional freelance software development services.",
+    "Robin Bril: Senior freelance AI engineer specializing in AI agents, digital employees, and process automation. Available for projects in the Netherlands and internationally.",
   keywords:
-    "Robin Bril freelance, freelance developer, freelance programmer Netherlands, freelance software developer, freelance backend developer, AI developer freelance, PHP Laravel freelancer, Python developer, Amsterdam freelance developer, business analyst freelance, data analyst contractor, BI developer freelance, SQL specialist contractor, machine learning developer, automation specialist, process optimization consultant, dashboard developer, data scientist contractor, freelance consultant, ICT contractor, IT freelancer Amsterdam, web developer contractor, app developer freelance, API developer, database specialist, e-commerce developer, medical software developer, healthcare IT specialist, fintech developer, scraping specialist, data mining expert, business intelligence consultant, lean six sigma consultant, project manager contractor, technical consultant, software architect freelance",
+    "Robin Bril freelance, freelance AI engineer, AI agent developer, freelance AI consultant Netherlands, digital employee builder, AI automation specialist",
   pathname: "/en/freelancer",
 });
 

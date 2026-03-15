@@ -185,11 +185,11 @@ function zzpServiceSchema() {
 }
 
 export const metadata: Metadata = generateMetadata({
-  title: "Robin Bril ZZP - Expert Freelance Developers Omar & Robin Nederland",
+  title: "Robin Bril — ZZP AI Engineer | Freelance AI Developer Nederland",
   description:
-    "Robin Bril ZZP: Omar (Backend/AI Developer) en Robin (Business Analyst/Data Specialist) bieden freelance software development, data-analyse, AI-integraties en business intelligence services in Nederland.",
+    "Robin Bril, ZZP AI Engineer. Gespecialiseerd in AI agents, digitale medewerkers en procesautomatisering. Beschikbaar voor freelance opdrachten in Nederland.",
   keywords:
-    "Robin Bril ZZP, ZZP developer, freelance programmeur Nederland, ZZP software ontwikkelaar, freelance backend developer, AI developer ZZP, PHP Laravel freelancer, Python developer ZZP, Amsterdam freelance developer, Robin Bril freelance, business analyst ZZP, data analist freelance, BI developer ZZP, SQL specialist freelance, machine learning developer, automatisering specialist, proces optimalisatie consultant, dashboard developer, data scientist ZZP, freelance consultant, ZZP ICT, IT freelancer Amsterdam, web developer ZZP, app developer freelance, API developer, database specialist, e-commerce developer, medische software ontwikkelaar, healthcare IT specialist, fintech developer, scraping specialist, data mining expert, business intelligence consultant, lean six sigma consultant, project manager ZZP, technical consultant, software architect freelance",
+    "Robin Bril ZZP, ZZP AI engineer, freelance AI developer Nederland, AI agent developer, freelance AI consultant, ZZP software developer Amsterdam",
   pathname: "/zzp",
 });
 

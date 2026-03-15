@@ -5,11 +5,11 @@ import Footer from "@/components/sections/footer";
 import Link from "next/link";
 
 export const metadata: Metadata = generateMetadata({
-  title: "Blog",
+  title: "Blog — AI Agents, Automatisering & Digitale Medewerkers | Robin Bril",
   description:
-    "Stay updated with the latest tech insights, industry trends, and news from Robin Bril.",
+    "Artikelen over AI agents, digitale medewerkers en AI automatisering voor MKB. Praktische inzichten van AI engineer Robin Bril.",
   keywords:
-    "tech blog, SaaS insights, AI developments, e-commerce trends, technology news",
+    "AI blog, AI agents Nederland, digitale medewerkers blog, AI automatisering artikelen, Robin Bril blog",
   pathname: "/blog",
 });
 
@@ -38,6 +38,38 @@ const blogPosts = [
     excerpt:
       "Everything you need to know about implementing secure and efficient KYC processes in your platform.",
     date: "2025-02-15",
+  },
+  {
+    id: 4,
+    slug: "ai-agent-vs-digitale-medewerker",
+    title: "AI Agent vs Digitale Medewerker: Welke Automatisering Past bij Jouw Bedrijf?",
+    excerpt:
+      "Ontdek het verschil tussen AI agents en digitale medewerkers en bepaal welke automatiseringsoplossing het beste bij jouw bedrijf past.",
+    date: "2026-03-15",
+  },
+  {
+    id: 5,
+    slug: "ai-readiness-check-mkb",
+    title: "Is Jouw Bedrijf Klaar voor AI? De Eerlijke AI-Readiness Check",
+    excerpt:
+      "Ontdek of jouw MKB echt klaar is voor AI. Sluit je aan bij de groeiende beweging van Nederlandse ondernemers die AI succesvol implementeren.",
+    date: "2026-03-15",
+  },
+  {
+    id: 6,
+    slug: "administratie-automatiseren-ai",
+    title: "Administratie Automatiseren met AI: Zo Bespaar Je 10-20 Uur per Week",
+    excerpt:
+      "Ontdek hoe Nederlandse MKB's administratieve bottlenecks aanpakken met AI en 10-20 uur per week besparen. Praktische voorbeelden uit logistiek, e-commerce en financiële diensten.",
+    date: "2026-03-15",
+  },
+  {
+    id: 7,
+    slug: "wat-kost-ai-agent",
+    title: "Wat Kost een AI Agent? Eerlijk Kostenoverzicht voor MKB",
+    excerpt:
+      "Ontdek de werkelijke kosten van AI-automatisering voor MKB'en. Transparante kostenoverzichten, concrete voorbeelden, WBSO-subsidies en ROI-berekeningen.",
+    date: "2026-03-15",
   },
 ];
 
