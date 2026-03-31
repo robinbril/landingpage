@@ -96,8 +96,8 @@ function Terminal() {
       {/* Content */}
       <div
         ref={terminalRef}
-        className="p-4 sm:p-5 space-y-1 overflow-y-auto"
-        style={{ minHeight: "260px", maxHeight: "320px" }}
+        className="p-3 sm:p-5 space-y-1 overflow-y-auto"
+        style={{ minHeight: "200px", maxHeight: "260px" }}
       >
         {TERMINAL_LINES.map((line, i) => (
           <TypingLine
@@ -146,8 +146,8 @@ function AgentChat({ started }: { started: boolean }) {
       {/* Messages */}
       <div
         ref={chatRef}
-        className="p-4 space-y-3 overflow-y-auto"
-        style={{ minHeight: "260px", maxHeight: "320px" }}
+        className="p-3 sm:p-4 space-y-2.5 overflow-y-auto"
+        style={{ minHeight: "200px", maxHeight: "260px" }}
       >
         <AnimatePresence>
           {AGENT_MESSAGES.map((msg, i) =>
@@ -161,7 +161,7 @@ function AgentChat({ started }: { started: boolean }) {
               >
                 {/* Agent avatar */}
                 <div
-                  className="w-7 h-7 rounded-lg flex items-center justify-center text-sm flex-shrink-0 mt-0.5"
+                  className="w-6 h-6 sm:w-7 sm:h-7 rounded-lg flex items-center justify-center text-xs sm:text-sm flex-shrink-0 mt-0.5"
                   style={{ background: msg.color + "22", border: `1px solid ${msg.color}44` }}
                 >
                   {msg.icon}
@@ -172,7 +172,7 @@ function AgentChat({ started }: { started: boolean }) {
                     {msg.agent}
                   </span>
                   <div
-                    className="rounded-lg rounded-tl-none px-3 py-2 text-xs sm:text-sm text-orange-100/90 leading-relaxed"
+                    className="rounded-lg rounded-tl-none px-2.5 py-1.5 sm:px-3 sm:py-2 text-xs text-orange-100/90 leading-relaxed"
                     style={{ background: msg.color + "15", border: `1px solid ${msg.color}25` }}
                   >
                     {msg.msg}
