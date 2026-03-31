@@ -91,7 +91,10 @@ function Terminal() {
         <div className="w-3 h-3 rounded-full bg-red-500/80" />
         <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
         <div className="w-3 h-3 rounded-full bg-green-500/80" />
-        <span className="ml-3 text-xs text-orange-700 font-mono">robin — terminal</span>
+        <span className="ml-3 flex items-center gap-1.5">
+          <span className="w-4 h-4 rounded bg-orange-500/80 text-white flex items-center justify-center text-[9px] font-black">R</span>
+          <span className="text-xs text-orange-700 font-mono">terminal</span>
+        </span>
       </div>
       {/* Content */}
       <div
@@ -134,7 +137,10 @@ function AgentChat({ started }: { started: boolean }) {
       <div className="flex items-center justify-between px-4 py-3 border-b border-orange-900/30" style={{ background: "#120b05" }}>
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+          <span className="flex items-center gap-1.5">
+          <span className="w-4 h-4 rounded bg-orange-500/80 text-white flex items-center justify-center text-[9px] font-black">R</span>
           <span className="text-xs text-orange-400 font-mono font-semibold">Agent Team — Live</span>
+        </span>
         </div>
         <div className="flex items-center gap-1.5">
           <span className="text-xs text-orange-700 font-mono">3 agents active</span>
@@ -238,11 +244,11 @@ export default function RobinTerminalSection() {
             Live demo
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-[#4a2c2a] mb-4">
-            Kijk hoe Robin{" "}
-            <em className="not-italic text-orange-400">werkt</em>.
+            5× sneller ontwikkelen.{" "}
+            <em className="not-italic text-orange-400">Koppel agents aan elke software.</em>
           </h2>
           <p className="text-[#7a4c3a] text-lg max-w-xl mx-auto">
-            Een team van agents pakt je taak op. Parallel. Asynchroon. Terwijl jij verder bouwt.
+            Via API gekoppeld aan jouw ERP, WMS of cloud platform. Agents werken parallel — zonder handmatige stappen.
           </p>
         </motion.div>
 
