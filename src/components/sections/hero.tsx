@@ -47,12 +47,10 @@ function HeroContent() {
       ref={ref}
       className="relative min-h-[100dvh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden py-8 sm:py-12 md:py-16 bg-[#fdf2e9]"
     >
-      {/* ASCII face background — dimmed */}
-      <div className="absolute inset-0 opacity-40">
+      <div className="absolute inset-0 opacity-60">
         <AsciiHeroBg />
       </div>
-      {/* Gradient overlay to keep text readable */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#fdf2e9]/60 via-[#fdf2e9]/40 to-[#fdf2e9]/80" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#fdf2e9]/30 via-[#fdf2e9]/20 to-[#fdf2e9]/60" />
 
       <div className="container relative z-10 px-4 sm:px-6 w-full max-w-7xl mx-auto">
         <motion.div
@@ -66,13 +64,13 @@ function HeroContent() {
             variants={itemVariants}
             className="space-y-6 md:space-y-8"
           >
-            {/* Name + role */}
-            <p className="text-sm font-semibold tracking-widest uppercase text-orange-500 mb-2">
-              Robin Bril — AI Developer
+            {/* Role label */}
+            <p className="text-xs font-semibold tracking-widest uppercase text-orange-500 mb-2">
+              AI Developer
             </p>
 
-            {/* Main headline — short & punchy */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05] text-[#4a2c2a]">
+            {/* Main headline */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-tight text-[#4a2c2a]" style={{ hyphens: 'none' }}>
               {language === 'nl' ? (
                 <>
                   Stop met<br />
@@ -89,20 +87,15 @@ function HeroContent() {
             {/* One punchy line */}
             <p className="text-lg sm:text-xl text-[#7a4c3a] max-w-sm mx-auto mt-5">
               {language === 'nl'
-                ? 'Ik bouw een agent op maat — gekoppeld aan jouw software via API.'
-                : 'I build a custom agent — connected to your software via API.'}
+                ? 'Ik bouw een agent op maat. Gekoppeld aan jouw software via API.'
+                : 'I build a custom agent. Connected to your software via API.'}
             </p>
 
             {/* Trust signals */}
             <div className="flex flex-wrap justify-center gap-3 mt-4">
-              {(language === 'nl'
-                ? ['5x sneller gebouwd', 'Via API aan elk systeem']
-                : ['Built 5x faster', 'Connected via API']
-              ).map((tag) => (
-                <span key={tag} className="text-xs font-medium px-3 py-1 rounded-full bg-orange-100 text-orange-700 border border-orange-200">
-                  {tag}
-                </span>
-              ))}
+              <span className="text-xs font-medium px-3 py-1 rounded-full bg-orange-100 text-orange-700 border border-orange-200">
+                {language === 'nl' ? 'Via API aan elk systeem' : 'Via API to any system'}
+              </span>
             </div>
 
           </motion.div>
@@ -110,7 +103,7 @@ function HeroContent() {
           {/* Single Primary CTA */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row items-center justify-center gap-3"
+            className="flex items-center justify-center"
           >
             <a
               href="#ready-to-start"
@@ -119,13 +112,6 @@ function HeroContent() {
             >
               {language === 'nl' ? 'Plan een gratis gesprek' : 'Book a free call'}
               <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </a>
-            <a
-              href="#services"
-              onClick={(e) => { e.preventDefault(); scrollToSection("services"); }}
-              className="text-sm font-medium text-[#7a4c3a] hover:text-orange-500 transition-colors underline underline-offset-4"
-            >
-              {language === 'nl' ? 'Bekijk de agentlijst' : 'Browse agent list'}
             </a>
           </motion.div>
         </motion.div>
