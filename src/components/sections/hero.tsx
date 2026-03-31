@@ -47,8 +47,12 @@ function HeroContent() {
       ref={ref}
       className="relative min-h-[100dvh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden py-8 sm:py-12 md:py-16 bg-[#fdf2e9]"
     >
-      {/* Subtle gradient background only */}
-      <div className="absolute inset-0 bg-gradient-to-b from-orange-50/60 to-[#fdf2e9]" />
+      {/* ASCII face background — dimmed */}
+      <div className="absolute inset-0 opacity-20">
+        <AsciiHeroBg />
+      </div>
+      {/* Gradient overlay to keep text readable */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#fdf2e9]/60 via-[#fdf2e9]/40 to-[#fdf2e9]/80" />
 
       <div className="container relative z-10 px-4 sm:px-6 w-full max-w-7xl mx-auto">
         <motion.div
