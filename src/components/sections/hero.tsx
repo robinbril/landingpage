@@ -48,7 +48,7 @@ function HeroContent() {
       className="relative min-h-[100dvh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden py-8 sm:py-12 md:py-16 bg-[#fdf2e9]"
     >
       {/* ASCII face background â€” dimmed */}
-      <div className="absolute inset-0 opacity-20">
+      <div className="absolute inset-0 opacity-40">
         <AsciiHeroBg />
       </div>
       {/* Gradient overlay to keep text readable */}
@@ -95,7 +95,7 @@ function HeroContent() {
 
             {/* Trust signals */}
             <div className="flex flex-wrap justify-center gap-3 mt-4">
-              {['5Ã- sneller', 'Elke software via API', 'Op maat gebouwd'].map((tag) => (
+              {['5ï¿½- sneller', 'Elke software via API', 'Op maat gebouwd'].map((tag) => (
                 <span key={tag} className="text-xs font-medium px-3 py-1 rounded-full bg-orange-100 text-orange-700 border border-orange-200">
                   {tag}
                 </span>
