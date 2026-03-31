@@ -95,7 +95,7 @@ function HeroContent() {
 
             {/* Trust signals */}
             <div className="flex flex-wrap justify-center gap-3 mt-4">
-              {['5Ã— sneller', 'Elke software via API', 'Op maat gebouwd'].map((tag) => (
+              {['5Ã- sneller', 'Elke software via API', 'Op maat gebouwd'].map((tag) => (
                 <span key={tag} className="text-xs font-medium px-3 py-1 rounded-full bg-orange-100 text-orange-700 border border-orange-200">
                   {tag}
                 </span>

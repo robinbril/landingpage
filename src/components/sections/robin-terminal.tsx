@@ -12,18 +12,18 @@ const TERMINAL_LINES = [
   { text: "  ✓ All 56 features unlocked", delay: 2200, color: "text-green-400" },
   { text: "  ✓ Connected to OpenRouter API", delay: 2700, color: "text-green-400" },
   { text: "", delay: 3200, color: "" },
-  { text: "◆ Waiting for task...", delay: 3400, color: "text-orange-200" },
+  { text: "�-� Waiting for task...", delay: 3400, color: "text-orange-200" },
   { text: "> Refactor auth module, add OAuth2, write tests", delay: 4000, color: "text-white" },
   { text: "", delay: 4400, color: "" },
-  { text: "◆ Dispatching to agent team...", delay: 4600, color: "text-orange-300" },
+  { text: "�-� Dispatching to agent team...", delay: 4600, color: "text-orange-300" },
 ];
 
 // Agent chat messages
 const AGENT_MESSAGES = [
-  { agent: "Architect", color: "#f97316", icon: "🏗", msg: "Analysing auth module structure...", delay: 5200 },
+  { agent: "Architect", color: "#f97316", icon: "�-", msg: "Analysing auth module structure...", delay: 5200 },
   { agent: "Developer", color: "#fb923c", icon: "💻", msg: "Found 3 auth patterns. Proposing OAuth2 flow.", delay: 6000 },
   { agent: "Tester", color: "#fdba74", icon: "🧪", msg: "Generating test suite for new flows.", delay: 6800 },
-  { agent: "Architect", color: "#f97316", icon: "🏗", msg: "Auth module refactored. 847 lines → 312 lines.", delay: 7800 },
+  { agent: "Architect", color: "#f97316", icon: "�-", msg: "Auth module refactored. 847 lines → 312 lines.", delay: 7800 },
   { agent: "Developer", color: "#fb923c", icon: "💻", msg: "OAuth2 + refresh tokens implemented ✓", delay: 8600 },
   { agent: "Tester", color: "#fdba74", icon: "🧪", msg: "42 tests passing. Coverage: 97% ✓", delay: 9400 },
   { agent: "Robin", color: "#ea580c", icon: "🦞", msg: "Done. Task complete in 38 seconds.", delay: 10200 },
@@ -191,7 +191,7 @@ function AgentChat({ started }: { started: boolean }) {
 
         {visibleMessages.length === 0 && (
           <div className="flex items-center gap-2 text-orange-800 text-xs font-mono pt-8 justify-center">
-            <span className="animate-pulse">●</span>
+            <span className="animate-pulse">�-�</span>
             <span>Wachten op taak...</span>
           </div>
         )}
@@ -244,7 +244,7 @@ export default function RobinTerminalSection() {
             Live demo
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-[#4a2c2a] mb-4">
-            Ik bouw 5× sneller{" "}
+            Ik bouw 5�- sneller{" "}
             <em className="not-italic text-orange-400">omdat ik zelf met agents werk.</em>
           </h2>
           <p className="text-[#7a4c3a] text-lg max-w-xl mx-auto">
@@ -290,7 +290,7 @@ export default function RobinTerminalSection() {
           className="grid grid-cols-3 gap-4 mt-10 max-w-lg mx-auto text-center"
         >
           {[
-            { num: "3–5×", label: "sneller" },
+            { num: "3–5�-", label: "sneller" },
             { num: "56", label: "features" },
             { num: "∞", label: "agents" },
           ].map((stat) => (
