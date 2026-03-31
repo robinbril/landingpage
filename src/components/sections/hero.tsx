@@ -47,8 +47,8 @@ function HeroContent() {
       ref={ref}
       className="relative min-h-[100dvh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden py-8 sm:py-12 md:py-16 bg-[#fdf2e9]"
     >
-      {/* Animated particle background */}
-      <AsciiHeroBg />
+      {/* Subtle gradient background only */}
+      <div className="absolute inset-0 bg-gradient-to-b from-orange-50/60 to-[#fdf2e9]" />
 
       <div className="container relative z-10 px-4 sm:px-6 w-full max-w-7xl mx-auto">
         <motion.div
@@ -62,64 +62,63 @@ function HeroContent() {
             variants={itemVariants}
             className="space-y-6 md:space-y-8"
           >
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase mb-2"
-              style={{ background: "#f9731618", border: "1px solid #f9731635", color: "#c2410c" }}>
-              <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />
-              {language === 'nl' ? 'Freelance AI Developer' : 'Freelance AI Developer'}
-            </div>
+            {/* Name + role */}
+            <p className="text-sm font-semibold tracking-widest uppercase text-orange-500 mb-2">
+              Robin Bril — AI Developer
+            </p>
 
-            {/* Main headline */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight max-w-4xl px-4 sm:px-0 leading-tight text-[#4a2c2a]">
+            {/* Main headline — short & punchy */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05] text-[#4a2c2a]">
               {language === 'nl' ? (
                 <>
-                  Robin Bril bouwt{' '}
-                  <em className="not-italic text-orange-400">digitale medewerkers</em>.
+                  Stop met<br />
+                  <em className="not-italic text-orange-400">handmatig werken.</em>
                 </>
               ) : (
                 <>
-                  Robin Bril builds{' '}
-                  <em className="not-italic text-orange-400">digital employees</em>.
+                  Stop doing<br />
+                  <em className="not-italic text-orange-400">things manually.</em>
                 </>
               )}
             </h1>
 
-            {/* Sub-proposition */}
-            <p className="text-base sm:text-lg md:text-xl text-[#7a4c3a] max-w-2xl mx-auto mt-4 leading-relaxed">
+            {/* One punchy line */}
+            <p className="text-lg sm:text-xl text-[#7a4c3a] max-w-sm mx-auto mt-5">
               {language === 'nl'
-                ? 'Op maat, gekoppeld aan jouw software via API. Ik werk 5× sneller omdat ik zelf met agents bouw. Nieuwsgierig? Kies samen een agent of leer het zelf.'
-                : 'Custom-built, connected to your software via API. I work 5× faster because I build with agents myself. Curious? Pick an agent together or learn it yourself.'}
+                ? 'Ik bouw een agent op maat — gekoppeld aan jouw software, live in 2 weken.'
+                : 'I build a custom agent — connected to your software, live in 2 weeks.'}
             </p>
+
+            {/* 3 trust signals */}
+            <div className="flex flex-wrap justify-center gap-3 mt-4">
+              {['5× sneller', 'Elke software via API', 'Live in 2 weken'].map((tag) => (
+                <span key={tag} className="text-xs font-medium px-3 py-1 rounded-full bg-orange-100 text-orange-700 border border-orange-200">
+                  {tag}
+                </span>
+              ))}
+            </div>
 
           </motion.div>
 
           {/* Single Primary CTA */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-3"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3"
           >
             <a
               href="#ready-to-start"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection("ready-to-start");
-              }}
-              className="inline-flex items-center justify-center gap-2 bg-[#4a2c2a] hover:bg-[#3a1c1a] text-white rounded-full px-6 sm:px-8 py-4 sm:py-5 text-sm sm:text-base font-medium shadow-lg shadow-[#4a2c2a]/20 hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] group"
-              aria-label={language === 'nl' ? "Plan gratis intake" : "Book free intake"}
+              onClick={(e) => { e.preventDefault(); scrollToSection("ready-to-start"); }}
+              className="inline-flex items-center justify-center gap-2 bg-[#4a2c2a] hover:bg-[#3a1c1a] text-white rounded-full px-8 py-4 text-base font-semibold shadow-lg shadow-[#4a2c2a]/20 hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] group"
             >
-              {language === 'nl' ? 'Kies samen een agent' : 'Pick an agent together'}
+              {language === 'nl' ? 'Plan een gratis gesprek' : 'Book a free call'}
               <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </a>
             <a
               href="#services"
-              onClick={(e) => {
-                e.preventDefault();
-                scrollToSection("services");
-              }}
-              className="inline-flex items-center justify-center gap-2 bg-white/80 hover:bg-white border border-[#4a2c2a]/15 text-[#4a2c2a] rounded-full px-6 sm:px-8 py-4 sm:py-5 text-sm sm:text-base font-medium backdrop-blur-sm hover:shadow-md transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] group"
+              onClick={(e) => { e.preventDefault(); scrollToSection("services"); }}
+              className="text-sm font-medium text-[#7a4c3a] hover:text-orange-500 transition-colors underline underline-offset-4"
             >
-              {language === 'nl' ? 'Leer het zelf →' : 'Learn it yourself →'}
-              <ChevronDown className="h-5 w-5 group-hover:translate-y-0.5 transition-transform" />
+              {language === 'nl' ? 'Bekijk de agentlijst' : 'Browse agent list'}
             </a>
           </motion.div>
         </motion.div>
