@@ -388,60 +388,129 @@ export default function Services() {
   const { language } = useLanguage();
   const isNL = language === "nl";
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [activeCategory, setActiveCategory] = useState(CATEGORIES[0].id);
+  const [calcAgent, setCalcAgent] = useState<Agent | null>(null);
+
+  const current = CATEGORIES.find((c) => c.id === activeCategory)!;
 
   return (
     <section className="py-20 sm:py-28 bg-[#fdf2e9]" ref={ref}>
-      <div className="max-w-5xl mx-auto px-4 sm:px-6">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-14"
+          className="text-center mb-10"
         >
-          <span className="inline-block text-[11px] font-bold tracking-[0.2em] uppercase text-[#e67e22] mb-4">
-            {isNL ? "20 digitale medewerkers" : "20 digital employees"}
-          </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#4a2c2a] mb-5 leading-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#4a2c2a] mb-4 leading-tight">
             {isNL ? (
-              <>
-                Welke digitale medewerker past{" "}
-                <span className="text-[#e67e22]">bij jou</span>?
-              </>
+              <>Wat kan ik <span className="text-[#e67e22]">voor je automatiseren</span>?</>
             ) : (
-              <>
-                Which digital employee{" "}
-                <span className="text-[#e67e22]">fits you</span>?
-              </>
+              <>What can I <span className="text-[#e67e22]">automate for you</span>?</>
             )}
           </h2>
-          <p className="text-base sm:text-lg text-[#8e6d6b] max-w-2xl mx-auto">
+          <p className="text-base text-[#8e6d6b] max-w-xl mx-auto">
             {isNL
-              ? "Klik op een medewerker om je besparing te berekenen. Prijs na gratis intake."
-              : "Click any employee to calculate your savings. Price after free intake."}
+              ? "Klik op een use case om de terugverdientijd te berekenen."
+              : "Click a use case to calculate the payback period."}
           </p>
         </motion.div>
 
-        {/* Category grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          {CATEGORIES.map((cat, i) => (
-            <CategoryCard key={cat.id} category={cat} language={language} index={i} />
+        {/* Filter pills */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="flex flex-wrap gap-2 mb-8 justify-center"
+        >
+          {CATEGORIES.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setActiveCategory(cat.id)}
+              className={`px-4 py-2 rounded-full text-sm font-semibold transition-all border ${
+                activeCategory === cat.id
+                  ? "bg-[#4a2c2a] text-[#fdf2e9] border-[#4a2c2a] shadow-sm"
+                  : "bg-white text-[#4a2c2a] border-[#4a2c2a]/15 hover:border-[#e67e22]/40 hover:text-[#e67e22]"
+              }`}
+            >
+              {isNL ? cat.titleNL : cat.titleEN}
+            </button>
           ))}
-        </div>
+        </motion.div>
 
-        {/* Bottom note */}
+        {/* Agent list */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeCategory}
+            initial={{ opacity: 0, y: 8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.25 }}
+            className="bg-white rounded-2xl border border-[#4a2c2a]/8 shadow-sm overflow-hidden"
+          >
+            {/* Category subtitle */}
+            <div className="px-6 py-4 border-b border-[#4a2c2a]/6">
+              <p className="text-xs text-[#8e6d6b] font-medium">
+                {isNL ? current.subtitleNL : current.subtitleEN}
+              </p>
+            </div>
+
+            {/* Agents */}
+            {current.agents.map((agent, i) => (
+              <button
+                key={agent.id}
+                onClick={() => setCalcAgent(agent)}
+                className={`w-full text-left group flex items-start justify-between px-6 py-4 transition-colors hover:bg-[#fdf2e9]/70 ${
+                  i < current.agents.length - 1 ? "border-b border-[#4a2c2a]/5" : ""
+                }`}
+              >
+                <div className="min-w-0 flex-1 pr-4">
+                  <div className="text-sm font-bold text-[#4a2c2a] group-hover:text-[#e67e22] transition-colors mb-0.5">
+                    {isNL ? agent.titleNL : agent.titleEN}
+                  </div>
+                  <div className="text-xs text-[#8e6d6b] leading-relaxed">
+                    {isNL ? agent.descNL : agent.descEN}
+                  </div>
+                  <div className="text-[10px] text-[#e67e22]/60 mt-1.5 font-mono">
+                    {isNL ? agent.toolsNL : agent.toolsEN}
+                  </div>
+                </div>
+                <div className="flex-shrink-0 flex flex-col items-end gap-1 pt-0.5">
+                  <span className="text-xs font-bold text-[#4a2c2a]/70">
+                    €{agent.priceRange[0].toLocaleString("nl-NL")}+
+                  </span>
+                  <span className="text-[10px] text-[#8e6d6b]">
+                    ~{agent.avgTimeSavedHoursWeek}h/wk
+                  </span>
+                  <ChevronRight className="h-3.5 w-3.5 text-[#e67e22] opacity-0 group-hover:opacity-100 transition-opacity mt-1" />
+                </div>
+              </button>
+            ))}
+          </motion.div>
+        </AnimatePresence>
+
         <motion.p
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-          className="text-center text-xs text-[#8e6d6b] mt-10"
+          transition={{ delay: 0.4 }}
+          className="text-center text-xs text-[#8e6d6b] mt-6"
         >
           {isNL
-            ? "Alle prijzen zijn indicatief. De exacte prijs bepalen we samen na een gratis intake."
-            : "All prices are indicative. We determine the exact price together after a free intake."}
+            ? "Prijzen zijn indicatief. Exacte prijs na gratis intake."
+            : "Prices are indicative. Exact price after free intake."}
         </motion.p>
       </div>
+
+      {calcAgent && (
+        <ROIScanner
+          agent={calcAgent}
+          isOpen={!!calcAgent}
+          onClose={() => setCalcAgent(null)}
+          language={language}
+        />
+      )}
     </section>
   );
 }
