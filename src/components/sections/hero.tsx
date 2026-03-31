@@ -62,21 +62,34 @@ function HeroContent() {
             variants={itemVariants}
             className="space-y-6 md:space-y-8"
           >
-            {/* Main headline - larger and more impactful */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight max-w-5xl px-4 sm:px-0 leading-tight text-[#4a2c2a]">
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide uppercase mb-2"
+              style={{ background: "#f9731618", border: "1px solid #f9731635", color: "#c2410c" }}>
+              <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />
+              {language === 'nl' ? 'AI Agents voor operationele teams' : 'AI Agents for operational teams'}
+            </div>
+
+            {/* Main headline */}
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight max-w-4xl px-4 sm:px-0 leading-tight text-[#4a2c2a]">
               {language === 'nl' ? (
                 <>
-                  Robin Bril bouwt{' '}
-                  <br className="sm:hidden" />
-                  <em className="not-italic font-black text-orange-400">digitale medewerkers</em>.
+                  Handmatig werk in je ERP?{' '}
+                  <em className="not-italic text-orange-400">Een agent doet het.</em>
                 </>
               ) : (
                 <>
-                  Robin Bril builds{' '}
-                  <em className="not-italic font-black text-orange-400">digital employees</em>.
+                  Manual work in your ERP?{' '}
+                  <em className="not-italic text-orange-400">An agent handles it.</em>
                 </>
               )}
             </h1>
+
+            {/* Sub-proposition */}
+            <p className="text-base sm:text-lg md:text-xl text-[#7a4c3a] max-w-2xl mx-auto mt-4 leading-relaxed">
+              {language === 'nl'
+                ? 'AI agents die via API koppelen aan Dynamics, SAP, Amazon of elk ander systeem. Geen handmatige stappen meer. Live in 2 weken.'
+                : 'AI agents that connect via API to Dynamics, SAP, Amazon or any other system. No more manual steps. Live in 2 weeks.'}
+            </p>
 
           </motion.div>
 
@@ -92,9 +105,9 @@ function HeroContent() {
                 scrollToSection("ready-to-start");
               }}
               className="inline-flex items-center justify-center gap-2 bg-[#4a2c2a] hover:bg-[#3a1c1a] text-white rounded-full px-6 sm:px-8 py-4 sm:py-5 text-sm sm:text-base font-medium shadow-lg shadow-[#4a2c2a]/20 hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] group"
-              aria-label={language === 'nl' ? "Plan intake" : "Book intake"}
+              aria-label={language === 'nl' ? "Plan gratis intake" : "Book free intake"}
             >
-              {language === 'nl' ? 'Plan intake' : 'Book intake'}
+              {language === 'nl' ? 'Plan gratis intake' : 'Book free intake'}
               <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </a>
             <a
@@ -105,7 +118,7 @@ function HeroContent() {
               }}
               className="inline-flex items-center justify-center gap-2 bg-white/80 hover:bg-white border border-[#4a2c2a]/15 text-[#4a2c2a] rounded-full px-6 sm:px-8 py-4 sm:py-5 text-sm sm:text-base font-medium backdrop-blur-sm hover:shadow-md transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] group"
             >
-              {language === 'nl' ? 'Meer informatie' : 'Learn more'}
+              {language === 'nl' ? 'Bekijk use cases' : 'See use cases'}
               <ChevronDown className="h-5 w-5 group-hover:translate-y-0.5 transition-transform" />
             </a>
           </motion.div>
