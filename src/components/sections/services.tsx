@@ -405,15 +405,15 @@ export default function Services() {
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#4a2c2a] mb-4 leading-tight">
             {isNL ? (
-              <>Wat kan ik <span className="text-[#e67e22]">voor je automatiseren</span>?</>
+              <>Nieuwsgierig? <span className="text-[#e67e22]">Kies een agent uit de lijst.</span></>
             ) : (
-              <>What can I <span className="text-[#e67e22]">automate for you</span>?</>
+              <>Curious? <span className="text-[#e67e22]">Pick an agent from the list.</span></>
             )}
           </h2>
           <p className="text-base text-[#8e6d6b] max-w-xl mx-auto">
             {isNL
-              ? "Klik op een use case om de terugverdientijd te berekenen."
-              : "Click a use case to calculate the payback period."}
+              ? "Voorbeelden van wat ik bouw. Samen kijken we welke agent jouw grootste bottleneck aanpakt. Klik voor de terugverdientijd."
+              : "Examples of what I build. Together we figure out which agent tackles your biggest bottleneck. Click to see the payback."}
           </p>
         </motion.div>
 

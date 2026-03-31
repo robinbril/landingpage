@@ -244,11 +244,11 @@ export default function RobinTerminalSection() {
             Live demo
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-[#4a2c2a] mb-4">
-            5× sneller ontwikkelen.{" "}
-            <em className="not-italic text-orange-400">Koppel agents aan elke software.</em>
+            Ik bouw 5× sneller{" "}
+            <em className="not-italic text-orange-400">omdat ik zelf met agents werk.</em>
           </h2>
           <p className="text-[#7a4c3a] text-lg max-w-xl mx-auto">
-            Via API gekoppeld aan jouw ERP, WMS of cloud platform. Agents werken parallel — zonder handmatige stappen.
+            Een agent-team pakt taken op, parallel en asynchroon. Koppelbaar aan elke software via API. Dat mag jij ook leren.
           </p>
         </motion.div>
 
