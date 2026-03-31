@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState, useEffect } from "react";
 import { LanguageToggle } from "@/components/ui/language-toggle";
@@ -252,7 +252,7 @@ export default function Navbar() {
                 transition={{ duration: 0.4, delay: 0.2 }}
               >
                 <h3 className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-4 px-2">
-                  {t.contact?.contactInfo || "Contact Us"}
+                  {t.contact?.contactInfo || (language === 'nl' ? 'Contact' : 'Contact Us')}
                 </h3>
                 <div className="grid grid-cols-1 gap-3">
                   {/* Phone Button */}

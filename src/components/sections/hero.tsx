@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
@@ -95,7 +95,10 @@ function HeroContent() {
 
             {/* Trust signals */}
             <div className="flex flex-wrap justify-center gap-3 mt-4">
-              {['5�- sneller', 'Elke software via API', 'Op maat gebouwd'].map((tag) => (
+              {(language === 'nl'
+                ? ['5x sneller gebouwd', 'Via API aan elk systeem']
+                : ['Built 5x faster', 'Connected via API']
+              ).map((tag) => (
                 <span key={tag} className="text-xs font-medium px-3 py-1 rounded-full bg-orange-100 text-orange-700 border border-orange-200">
                   {tag}
                 </span>

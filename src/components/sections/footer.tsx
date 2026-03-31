@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React from "react";
 import { motion } from "framer-motion";
@@ -34,8 +34,8 @@ export default function Footer() {
               </a>
               <p className="text-sm sm:text-base text-muted-foreground max-w-md leading-relaxed">
                 {language === 'nl'
-                  ? 'AI-oplossingen op maat. Kennisbanken, AI Agents en Automatiseringen. Van idee tot live in 2 weken.'
-                  : 'Custom AI solutions. Knowledge bases, AI Agents, and Automations. From idea to live in 2 weeks.'}
+                  ? 'Ik bouw AI agents die repetitief werk overnemen. Op maat, gekoppeld aan jouw software.'
+                  : 'I build AI agents that take over repetitive work. Custom-built, connected to your software.'}
               </p>
             </motion.div>
           </div>

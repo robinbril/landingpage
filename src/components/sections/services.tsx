@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -405,15 +405,15 @@ export default function Services() {
         >
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-[#4a2c2a] mb-4 leading-tight">
             {isNL ? (
-              <>Nieuwsgierig? <span className="text-[#e67e22]">Kies een agent uit de lijst.</span></>
+              <>Wat wil je <span className="text-[#e67e22]">nooit meer handmatig</span> doen?</>
             ) : (
-              <>Curious? <span className="text-[#e67e22]">Pick an agent from the list.</span></>
+              <>What do you want to <span className="text-[#e67e22]">stop doing manually?</span></>
             )}
           </h2>
           <p className="text-base text-[#8e6d6b] max-w-xl mx-auto">
             {isNL
-              ? "Voorbeelden van wat ik bouw. Samen kijken we welke agent jouw grootste bottleneck aanpakt. Klik voor de terugverdientijd."
-              : "Examples of what I build. Together we figure out which agent tackles your biggest bottleneck. Click to see the payback."}
+              ? "Voorbeelden uit de praktijk. We kijken welke agent jouw grootste bottleneck oplost. Klik voor terugverdientijd."
+              : "Real-world examples. We figure out which agent solves your biggest bottleneck. Click to see payback time."}
           </p>
         </motion.div>
 
@@ -498,8 +498,8 @@ export default function Services() {
           className="text-center text-xs text-[#8e6d6b] mt-6"
         >
           {isNL
-            ? "Prijzen zijn indicatief. Exacte prijs na gratis intake."
-            : "Prices are indicative. Exact price after free intake."}
+            ? "Exacte prijs na intake. Geen verplichtingen."
+            : "Exact price after intake. No obligations."}
         </motion.p>
       </div>
 
