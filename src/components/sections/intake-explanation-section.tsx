@@ -33,8 +33,8 @@ export default function IntakeExplanationSection() {
             icon: Rocket,
             title: language === 'nl' ? 'Bouwen & overdragen' : 'Build & handover',
             description: language === 'nl'
-                ? 'Zodra de agent in jouw roadmap staat, heb ik hem binnen 2-4 weken opgeleverd en overgedragen.'
-                : 'Once the agent is on your roadmap, I deliver and hand it over within 2-4 weeks.'
+                ? 'Zodra de agent in jouw roadmap staat, heb ik hem snel opgeleverd en overgedragen.'
+                : 'Once the agent is on your roadmap, I deliver and hand it over quickly.'
         }
     ];
 

@@ -43,7 +43,7 @@ const EXPERIENCE: ExperienceEntry[] = [
     period: "2024 – heden",
     highlights: [
       { nl: "10+ klanten geholpen met AI-agents en automatiseringen", en: "10+ clients helped with AI agents and automations" },
-      { nl: "Van intake tot live oplossing in 2 weken", en: "From intake to live solution in 2 weeks" },
+      { nl: "Van intake tot live oplossing", en: "From intake to live solution" },
     ],
   },
   {

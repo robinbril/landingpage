@@ -73,7 +73,7 @@ const agents: Agent[] = [
             nl: ["OCR + AI extractie van elke factuurindeling", "Automatische matching met inkooporders", "Direct boeken in Exact, Twinfield of AFAS", "Afwijkingen flaggen voor review"],
             en: ["OCR + AI extraction from any invoice format", "Automatic matching with purchase orders", "Direct booking in Exact, Twinfield or AFAS", "Flag anomalies for review"]
         },
-        proof: { nl: "94% straight-through processing na 2 weken", en: "94% straight-through processing after 2 weeks" },
+        proof: { nl: "94% straight-through processing ", en: "94% straight-through processing after 2 weeks" },
         integrations: ["Exact Online", "Twinfield", "AFAS", "Google Drive", "Outlook"]
     },
     {
@@ -120,7 +120,7 @@ const agents: Agent[] = [
         department: { nl: "Finance", en: "Finance" },
         accentColor: "#A3C9A6",
         name: { nl: "Finance & Reconciliatie", en: "Finance & Reconciliation" },
-        tagline: { nl: "Maandafsluiting in uren, niet weken", en: "Month-end close in hours, not weeks" },
+        tagline: { nl: "Maandafsluiting in uren", en: "Month-end close in hours" },
         description: {
             nl: "Automatiseert bank reconciliatie, expense categorisatie en rapportage. Pakt discrepanties op voordat ze problemen worden.",
             en: "Automates bank reconciliation, expense categorization and reporting. Catches discrepancies before they become problems."
