@@ -73,13 +73,13 @@ function HeroContent() {
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight max-w-4xl px-4 sm:px-0 leading-tight text-[#4a2c2a]">
               {language === 'nl' ? (
                 <>
-                  Kies een agent die jouw{' '}
-                  <em className="not-italic text-orange-400">grootste bottleneck oplost.</em>
+                  Robin Bril bouwt{' '}
+                  <em className="not-italic text-orange-400">digitale medewerkers</em>.
                 </>
               ) : (
                 <>
-                  Pick an agent that solves your{' '}
-                  <em className="not-italic text-orange-400">biggest bottleneck.</em>
+                  Robin Bril builds{' '}
+                  <em className="not-italic text-orange-400">digital employees</em>.
                 </>
               )}
             </h1>
@@ -87,8 +87,8 @@ function HeroContent() {
             {/* Sub-proposition */}
             <p className="text-base sm:text-lg md:text-xl text-[#7a4c3a] max-w-2xl mx-auto mt-4 leading-relaxed">
               {language === 'nl'
-                ? 'Ik bouw hem samen met jou — op maat, gekoppeld aan jouw software via API. Ik werk 5× sneller omdat ik zelf met agents bouw. Dat mag jij ook leren.'
-                : 'I build it together with you — custom, connected to your software via API. I work 5× faster because I build with agents myself. You can learn that too.'}
+                ? 'Op maat, gekoppeld aan jouw software via API. Ik werk 5× sneller omdat ik zelf met agents bouw. Nieuwsgierig? Kies samen een agent of leer het zelf.'
+                : 'Custom-built, connected to your software via API. I work 5× faster because I build with agents myself. Curious? Pick an agent together or learn it yourself.'}
             </p>
 
           </motion.div>
