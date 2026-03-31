@@ -125,9 +125,8 @@ export default function Navbar() {
             onClick={(e) => handleNavClick(e, "#")}
             className="flex items-center hover:opacity-80 transition"
           >
-            <span className="inline-flex items-center gap-2">
-              <span className="w-8 h-8 rounded-lg bg-[#4a2c2a] text-[#fdf2e9] flex items-center justify-center text-base font-black">R</span>
-              <span className="text-xl sm:text-2xl font-black tracking-tight">Robin Bril<span className="text-primary">.</span></span>
+            <span className="text-xl sm:text-2xl md:text-3xl font-black tracking-tight">
+              Robin Bril<span className="text-primary">.</span>
             </span>
           </a>
         </motion.div>
