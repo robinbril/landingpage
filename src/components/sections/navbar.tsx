@@ -126,7 +126,7 @@ export default function Navbar() {
             className="flex items-center hover:opacity-80 transition"
           >
             <span className="text-xl sm:text-2xl md:text-3xl font-black tracking-tight">
-              Robin Bril<span className="text-primary">.</span>
+              Robin Bril
             </span>
           </a>
         </motion.div>
