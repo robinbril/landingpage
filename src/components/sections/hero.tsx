@@ -85,13 +85,13 @@ function HeroContent() {
             {/* One punchy line */}
             <p className="text-lg sm:text-xl text-[#7a4c3a] max-w-sm mx-auto mt-5">
               {language === 'nl'
-                ? 'Ik bouw een agent op maat — gekoppeld aan jouw software, live in 2 weken.'
-                : 'I build a custom agent — connected to your software, live in 2 weeks.'}
+                ? 'Ik bouw een agent op maat — gekoppeld aan jouw software via API.'
+                : 'I build a custom agent — connected to your software via API.'}
             </p>
 
-            {/* 3 trust signals */}
+            {/* Trust signals */}
             <div className="flex flex-wrap justify-center gap-3 mt-4">
-              {['5× sneller', 'Elke software via API', 'Live in 2 weken'].map((tag) => (
+              {['5× sneller', 'Elke software via API', 'Op maat gebouwd'].map((tag) => (
                 <span key={tag} className="text-xs font-medium px-3 py-1 rounded-full bg-orange-100 text-orange-700 border border-orange-200">
                   {tag}
                 </span>
