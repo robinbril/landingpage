@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Navbar from "@/components/sections/navbar";
 import Hero from "@/components/sections/hero";
+import RobinTerminalSection from "@/components/sections/robin-terminal";
 import CompanySlider from "@/components/sections/company-slider";
 import Footer from "@/components/sections/footer";
 import IntakeExplanationSection from "@/components/sections/intake-explanation-section";
@@ -88,6 +89,7 @@ export default function Home() {
       <main className="min-h-screen">
         <Navbar />
         <Hero />
+        <RobinTerminalSection />
         <CompanySlider />
         <GuaranteeSection />
         <AgentOrgVisual />
