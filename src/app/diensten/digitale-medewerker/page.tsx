@@ -116,11 +116,11 @@ export default function DigitaleMedewerkerPage() {
                 </thead>
                 <tbody className="text-[#4a2c2a]/70">
                   {[
-                    ["Zelfstandig beslissingen nemen", "✓", "�-", "✓"],
-                    ["24/7 beschikbaar", "✓", "✓", "�-"],
-                    ["Schaalt zonder extra kosten", "✓", "±", "�-"],
+                    ["Zelfstandig beslissingen nemen", "✓", "✗", "✓"],
+                    ["24/7 beschikbaar", "✓", "✓", "✗"],
+                    ["Schaalt zonder extra kosten", "✓", "±", "✗"],
                     ["Integreert met bestaande systemen", "✓", "±", "✓"],
-                    ["Leert van jouw data", "✓", "�-", "✓"],
+                    ["Leert van jouw data", "✓", "✗", "✓"],
                     ["Maandkosten", "Laag", "Laag", "€3.000-6.000+"],
                     ["Live in", "2 weken", "1 week", "3-6 maanden"],
                   ].map(([label, dm, cb, fte], i) => (
