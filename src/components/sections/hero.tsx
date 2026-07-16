@@ -9,46 +9,14 @@ import { scrollToSection } from "@/lib/scroll-utils";
 import { useLanguage } from "@/lib/i18n/language-context";
 
 const AsciiHeroBg = dynamic(() => import("@/components/ascii-hero-bg"), { ssr: false });
-const ShaderHeroBg = dynamic(() => import("@/components/shader-hero-bg"), { ssr: false });
-
-const BG_STORAGE_KEY = "hero-bg-mode";
-type HeroBgMode = "ascii" | "shader";
 
 function HeroContent() {
   const { t, language } = useLanguage();
   const [ref, inView] = useInView({ threshold: 0.1 });
   const controls = useAnimation();
-  const [bgMode, setBgMode] = useState<HeroBgMode>("ascii");
-  const isShader = bgMode === "shader";
-
   useEffect(() => {
     if (inView) controls.start("visible");
   }, [inView, controls]);
-
-  useEffect(() => {
-    try {
-      if (localStorage.getItem(BG_STORAGE_KEY) === "shader") setBgMode("shader");
-    } catch {
-      // private mode: keuze geldt alleen deze sessie
-    }
-  }, []);
-
-  // De navbar ligt over de hero heen en is bovenaan transparant; via dit
-  // attribuut kleurt hij mee zonder dat de hero zijn state hoeft te delen.
-  useEffect(() => {
-    document.documentElement.setAttribute("data-hero-bg", bgMode);
-    return () => document.documentElement.removeAttribute("data-hero-bg");
-  }, [bgMode]);
-
-  const toggleBg = () => {
-    const next: HeroBgMode = isShader ? "ascii" : "shader";
-    setBgMode(next);
-    try {
-      localStorage.setItem(BG_STORAGE_KEY, next);
-    } catch {
-      // private mode: keuze geldt alleen deze sessie
-    }
-  };
 
   // Modernized animation variants
   const containerVariants = {
@@ -77,52 +45,12 @@ function HeroContent() {
     <section
       id="hero"
       ref={ref}
-      className={`relative min-h-[100dvh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden py-8 sm:py-12 md:py-16 transition-colors duration-500 ${
-        isShader ? "bg-black" : "bg-[#fdf2e9]"
-      }`}
+      className="relative min-h-[100dvh] sm:min-h-[90vh] flex items-center justify-center overflow-hidden py-8 sm:py-12 md:py-16 bg-[#fdf2e9]"
     >
-      {isShader ? (
-        <>
-          <div className="absolute inset-0">
-            <ShaderHeroBg />
-          </div>
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_75%_55%_at_50%_50%,rgba(0,0,0,0.7)_0%,rgba(0,0,0,0.35)_45%,transparent_80%)]" />
-        </>
-      ) : (
-        <>
-          <div className="absolute inset-0 opacity-60">
-            <AsciiHeroBg />
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-b from-[#fdf2e9]/30 via-[#fdf2e9]/20 to-[#fdf2e9]/60" />
-        </>
-      )}
-
-      <button
-        type="button"
-        onClick={toggleBg}
-        aria-pressed={isShader}
-        aria-label={
-          isShader
-            ? language === "nl"
-              ? "Schakel terug naar de ASCII-achtergrond"
-              : "Switch back to the ASCII background"
-            : language === "nl"
-              ? "Schakel naar de shader-achtergrond"
-              : "Switch to the shader background"
-        }
-        className={`absolute top-24 right-4 sm:right-6 lg:right-10 z-20 inline-flex items-center gap-2 rounded-full border px-3 py-2 text-[10px] font-semibold uppercase tracking-[0.14em] backdrop-blur-md transition-all duration-300 hover:-translate-y-px ${
-          isShader
-            ? "border-orange-400/40 bg-black/40 text-orange-50 hover:border-orange-400/70"
-            : "border-[#4a2c2a]/15 bg-white/60 text-[#4a2c2a]/80 hover:border-[#4a2c2a]/35"
-        }`}
-      >
-        <span
-          className={`h-1.5 w-1.5 rounded-full transition-all duration-300 ${
-            isShader ? "bg-orange-400 shadow-[0_0_10px_rgba(251,146,60,0.9)]" : "bg-[#4a2c2a]/30"
-          }`}
-        />
-        {isShader ? "Shader" : "ASCII"}
-      </button>
+      <div className="absolute inset-0 opacity-60">
+        <AsciiHeroBg />
+      </div>
+      <div className="absolute inset-0 bg-gradient-to-b from-[#fdf2e9]/30 via-[#fdf2e9]/20 to-[#fdf2e9]/60" />
 
       <div className="container relative z-10 px-4 sm:px-6 w-full max-w-7xl mx-auto">
         <motion.div
@@ -137,12 +65,12 @@ function HeroContent() {
             className="space-y-6 md:space-y-8"
           >
             {/* Role label */}
-            <p className={`text-xs font-semibold tracking-widest uppercase mb-2 transition-colors duration-500 ${isShader ? "text-orange-300" : "text-orange-500"}`}>
+            <p className="text-xs font-semibold tracking-widest uppercase text-orange-500 mb-2">
               AI Developer
             </p>
 
             {/* Main headline */}
-            <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-tight transition-colors duration-500 ${isShader ? "text-[#fdf2e9]" : "text-[#4a2c2a]"}`} style={{ hyphens: 'none' }}>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tight leading-tight text-[#4a2c2a]" style={{ hyphens: 'none' }}>
               {language === 'nl' ? (
                 <>
                   Stop met<br />
@@ -157,7 +85,7 @@ function HeroContent() {
             </h1>
 
             {/* One punchy line */}
-            <p className={`text-lg sm:text-xl max-w-sm mx-auto mt-5 transition-colors duration-500 ${isShader ? "text-[#fdf2e9]/80" : "text-[#7a4c3a]"}`}>
+            <p className="text-lg sm:text-xl text-[#7a4c3a] max-w-sm mx-auto mt-5">
               {language === 'nl'
                 ? 'Ik bouw een agent op maat. Gekoppeld aan jouw software via API.'
                 : 'I build a custom agent. Connected to your software via API.'}
@@ -165,7 +93,7 @@ function HeroContent() {
 
             {/* Trust signals */}
             <div className="flex flex-wrap justify-center gap-3 mt-4">
-              <span className={`text-xs font-medium px-3 py-1 rounded-full border transition-colors duration-500 ${isShader ? "bg-orange-400/10 text-orange-200 border-orange-300/30" : "bg-orange-100 text-orange-700 border-orange-200"}`}>
+              <span className="text-xs font-medium px-3 py-1 rounded-full bg-orange-100 text-orange-700 border border-orange-200">
                 {language === 'nl' ? 'Via API aan elk systeem' : 'Via API to any system'}
               </span>
             </div>
@@ -180,11 +108,7 @@ function HeroContent() {
             <a
               href="#ready-to-start"
               onClick={(e) => { e.preventDefault(); scrollToSection("ready-to-start"); }}
-              className={`inline-flex items-center justify-center gap-2 rounded-full px-8 py-4 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] group ${
-                isShader
-                  ? "bg-[#fdf2e9] hover:bg-white text-[#3a1c1a] shadow-black/40"
-                  : "bg-[#4a2c2a] hover:bg-[#3a1c1a] text-white shadow-[#4a2c2a]/20"
-              }`}
+              className="inline-flex items-center justify-center gap-2 bg-[#4a2c2a] hover:bg-[#3a1c1a] text-white rounded-full px-8 py-4 text-base font-semibold shadow-lg shadow-[#4a2c2a]/20 hover:shadow-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] group"
             >
               {language === 'nl' ? 'Plan een gratis gesprek' : 'Book a free call'}
               <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
