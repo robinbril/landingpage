@@ -494,3 +494,14 @@ a:hover {
   background: rgba(230, 126, 34, 0.12);
   border-color: rgba(230, 126, 34, 0.2);
 }
+/* Shader-hero: de navbar is bovenaan transparant en zou met zijn donkere
+   tekst wegvallen op de donkere shader. Zodra hij scrollt krijgt hij zijn
+   eigen achtergrond (bg-transparent verdwijnt) en geldt dit niet meer. */
+[data-hero-bg="shader"] header.bg-transparent {
+  color: #fdf2e9;
+}
+
+[data-hero-bg="shader"] header.bg-transparent .bg-foreground {
+  background-color: #fdf2e9;
+  color: #3a1c1a;
+}
